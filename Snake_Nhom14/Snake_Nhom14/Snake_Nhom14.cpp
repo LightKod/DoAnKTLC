@@ -2,10 +2,15 @@
 //
 
 #include <iostream>
+#include <Windows.h>
+#include <conio.h>
+#include "Graphic.h"
+
+using namespace std;
 
 int main()
 {
-    system("MODE 160, 45");
-    std::cout << "Hello snake\n";
+	SetUp();
+	cout << "Hello snake\n";
 }
 
