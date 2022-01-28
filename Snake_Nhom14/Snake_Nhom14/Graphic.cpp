@@ -66,26 +66,185 @@ void GoToXYPixel(int x, int y)
     GoToXY(x * PIXEL_WIDTH, y * PIXEL_HEIGHT);
 }
 
+void GoToXYPixel(POINT pos)
+{
+    GoToXY(pos.x * PIXEL_WIDTH, pos.y * PIXEL_HEIGHT);
+}
+
 void SetColor(int bg_color, int text_color)
 {
     int color_mode = bg_color * 16 + text_color;
     /*
-    0 = black
-    1 = blue
-    2 = green
-    3 = aqua
-    4 = red
-    5 = purple
-    6 = yellow
-    7 = white
-    8 = gray
-    9 = light blue
-    10 = light green
-    11 = light aqua
-    12 = light red
-    13 = light purple
-    14 = light yellow
-    15 = bright white
-    */
+	0 = black
+	1 = blue
+	2 = green
+	3 = aqua
+	4 = red
+	5 = purple
+	6 = yellow
+	7 = white
+	8 = gray
+	9 = light blue
+	10 = light green
+	11 = light aqua
+	12 = light red
+	13 = light purple
+	14 = light yellow
+	15 = bright white
+	*/
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color_mode);
+}
+
+void DrawPixel(int x, int y, int color)
+{
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+    {
+        return;
+    }
+    for (int i = 0; i < PIXEL_WIDTH; i++)
+    {
+        for (int j = 0; j < PIXEL_HEIGHT; j++)
+        {
+            GoToXY(x * PIXEL_WIDTH + i, y * PIXEL_HEIGHT + j);
+            SetColor(color, DEFAULT_TEXT_COLOR);
+            cout << " ";
+            SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+        }
+    }
+}
+
+void DrawPixel(POINT pos, int color)
+{
+    if (pos.x < 0 || pos.x >= SCREEN_WIDTH || pos.y < 0 || pos.y >= SCREEN_HEIGHT)
+    {
+        return;
+    }
+    for (int i = 0; i < PIXEL_WIDTH; i++)
+    {
+        for (int j = 0; j < PIXEL_HEIGHT; j++)
+        {
+            GoToXY(pos.x * PIXEL_WIDTH + i, pos.y * PIXEL_HEIGHT + j);
+            SetColor(color, DEFAULT_TEXT_COLOR);
+            cout << " ";
+            SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+        }
+    }
+}
+
+void DrawPixel(int x, int y, int bg_color, int text_color, char text)
+{
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+    {
+        return;
+    }
+    for (int i = 0; i < PIXEL_WIDTH; i++)
+    {
+        for (int j = 0; j < PIXEL_HEIGHT; j++)
+        {
+            GoToXY(x * PIXEL_WIDTH + i, y * PIXEL_HEIGHT + j);
+            SetColor(bg_color, text_color);
+            if (i == 0 && j == 0)
+            {
+                cout << text;
+            }
+            else
+            {
+                cout << " ";
+            }
+            SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+        }
+    }
+}
+
+void DrawPixel(POINT pos, int bg_color, int text_color, char text)
+{
+    if (pos.x < 0 || pos.x >= SCREEN_WIDTH || pos.y < 0 || pos.y >= SCREEN_HEIGHT)
+    {
+        return;
+    }
+    for (int i = 0; i < PIXEL_WIDTH; i++)
+    {
+        for (int j = 0; j < PIXEL_HEIGHT; j++)
+        {
+            GoToXY(pos.x * PIXEL_WIDTH + i, pos.y * PIXEL_HEIGHT + j);
+            SetColor(bg_color, text_color);
+            if (i == 0 && j == 0)
+            {
+                cout << text;
+            }
+            else
+            {
+                cout << " ";
+            }
+            SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+        }
+    }
+}
+
+void DrawRectangle(int x, int y, int width, int height, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            DrawPixel(x + i, y + j, color);
+        }
+    }
+}
+
+void DrawRectangle(POINT pos, int width, int height, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            DrawPixel(pos.x + i, pos.y + j, color);
+        }
+    }
+}
+
+void DrawBorder(int x, int y, int width, int height, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
+            {
+                DrawPixel(x + i, y + j, color);
+            }
+        }
+    }
+}
+
+void DrawBorder(POINT pos, int width, int height, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
+            {
+                DrawPixel(pos.x + i, pos.y + j, color);
+            }
+        }
+    }
+}
+
+void DrawBorder(int x, int y, int width, int height, int border_color, int inner_color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
+            {
+                DrawPixel(x + i, y + j, border_color);
+            }
+            else
+            {
+                DrawPixel(x + i, y + j, inner_color);
+            }
+        }
+    }
 }
