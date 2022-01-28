@@ -139,7 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Snake_Nhom14.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Gameplay.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="GUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
