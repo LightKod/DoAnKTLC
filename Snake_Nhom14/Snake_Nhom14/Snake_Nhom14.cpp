@@ -5,6 +5,7 @@
 
 int main()
 {
+    system("MODE 160, 45");
     std::cout << "Hello snake\n";
 }
 
