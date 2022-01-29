@@ -248,3 +248,133 @@ void DrawBorder(int x, int y, int width, int height, int border_color, int inner
         }
     }
 }
+
+void DrawBorder(POINT pos, int width, int height, int border_color, int inner_color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
+            {
+                DrawPixel(pos.x + i, pos.y + j, border_color);
+            }
+            else
+            {
+                DrawPixel(pos.x + i, pos.y + j, inner_color);
+            }
+        }
+    }
+}
+
+void DrawBorderWithThickness(int x, int y, int width, int height, int thickness, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if ((i >= 0 && i < thickness) || (i <= width - 1 && i > width - 1 - thickness) || (j >= 0 && j < thickness) || (j <= height - 1 && j > height - 1 - thickness))
+            {
+                DrawPixel(x + i, y + j, color);
+            }
+        }
+    }
+}
+
+void DrawBorderWithThickness(POINT pos, int width, int height, int thickness, int color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if ((i >= 0 && i < thickness) || (i <= width - 1 && i > width - 1 - thickness) || (j >= 0 && j < thickness) || (j <= height - 1 && j > height - 1 - thickness))
+            {
+                DrawPixel(pos.x + i, pos.y + j, color);
+            }
+        }
+    }
+}
+
+void DrawBorderWithThickness(int x, int y, int width, int height, int thickness, int border_color, int inner_color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if ((i >= 0 && i < thickness) || (i <= width - 1 && i > width - 1 - thickness) || (j >= 0 && j < thickness) || (j <= height - 1 && j > height - 1 - thickness))
+            {
+                DrawPixel(x + i, y + j, border_color);
+            }
+            else
+            {
+                DrawPixel(x + i, y + j, inner_color);
+            }
+        }
+    }
+}
+
+void DrawBorderWithThickness(POINT pos, int width, int height, int thickness, int border_color, int inner_color)
+{
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if ((i >= 0 && i < thickness) || (i <= width - 1 && i > width - 1 - thickness) || (j >= 0 && j < thickness) || (j <= height - 1 && j > height - 1 - thickness))
+            {
+                DrawPixel(pos.x + i, pos.y + j, border_color);
+            }
+            else
+            {
+                DrawPixel(pos.x + i, pos.y + j, inner_color);
+            }
+        }
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int color)
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], color);
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int color[])
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], color[i]);
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int bg_color, int text_color, char text)
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], bg_color, text_color, text);
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int bg_color, int text_color, char text[])
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], bg_color, text_color, text[i]);
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char text)
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], bg_color[i], text_color[i], text);
+    }
+}
+
+void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char text[])
+{
+    for (int i = 0; i < size; i++)
+    {
+        DrawPixel(pos[i], bg_color[i], text_color[i], text[i]);
+    }
+}

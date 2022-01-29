@@ -13,4 +13,3 @@ int main()
 	SetUp();
 	cout << "Hello snake\n";
 }
-
