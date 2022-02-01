@@ -1,2 +1,5 @@
-﻿  Snake_Nhom14.cpp
-  Snake_Nhom14.vcxproj -> D:\New folder\Project\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
+﻿  Gameplay.cpp
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Snake_Nhom14.cpp
+  Generating Code...
+  Snake_Nhom14.vcxproj -> C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
