@@ -25,9 +25,8 @@ void GenerateFood() {
 void TestFoodSpawn() {
 	while (true) {
 		GenerateFood();
-		DrawPixel(food, 0, 7, 'X');
+		DrawPixel(food, 10, 7, 'X');
 		Sleep(1000);
-		DrawPixel(food, 0, 0, ' ');
-
+		DrawPixel(food, DEFAULT_BACKGROUND_COLOR);
 	}
 }
