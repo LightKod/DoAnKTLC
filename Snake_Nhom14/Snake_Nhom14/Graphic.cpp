@@ -52,6 +52,7 @@ void SetUp()
 	DisableControlButton(0, 0, 1);
 	DisableSelection();
 	ShowCursor(false);
+	srand(time(NULL));
 }
 
 void GoToXY(int x, int y)

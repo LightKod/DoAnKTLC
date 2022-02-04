@@ -12,6 +12,8 @@ using namespace std;
 int main()
 {
 	SetUp();
-	//TestFoodSpawn();
+	ResetData();
+	//Press any key to change position
+	TestFoodSpawn();
 	cout << "Hello snake\n";
 }
