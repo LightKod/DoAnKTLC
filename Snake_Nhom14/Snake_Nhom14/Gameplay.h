@@ -24,6 +24,7 @@ static int food_color = 12;
 static Direction snake_dir;
 static State snake_state;
 static float snake_speed;
+static int score;
 
 bool IsValid(int x, int y);
 void GenerateFood();

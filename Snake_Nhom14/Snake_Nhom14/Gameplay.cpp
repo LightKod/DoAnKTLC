@@ -50,12 +50,13 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 2, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = {2, 2};
+	snake_pos[1] = {2, 2};
 	snake_color = 3;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
 	snake_speed = 10;
+	score = 0;
 }
 
 void MoveRight()
@@ -110,10 +111,10 @@ void TestSnakeMove()
 			if (timer >= 1 / snake_speed)
 			{
 				timer = 0;
+				DrawPixel(last_pos, DEFAULT_BACKGROUND_COLOR);
 				Move();
 				ProcessDead();
 				Eat(last_pos);
-				DrawPixel(last_pos, DEFAULT_BACKGROUND_COLOR);
 			}
 		}
 		else
