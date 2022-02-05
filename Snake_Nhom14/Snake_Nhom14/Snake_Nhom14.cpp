@@ -13,7 +13,6 @@ int main()
 {
 	SetUp();
 	ResetData();
-	// Press any key to change position
 	//  TestFoodSpawn();
 	TestSnakeMove();
 	cout << "Hello snake\n";

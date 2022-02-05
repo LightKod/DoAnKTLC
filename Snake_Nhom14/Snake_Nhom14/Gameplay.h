@@ -17,9 +17,10 @@ enum class State // state of snake
 };
 
 static POINT snake_pos[100];
-static int snake_color = 15;
+static int snake_color;
 static int snakeSize;
-static POINT food;
+static POINT food_pos;
+static int food_color = 12;
 static Direction snake_dir;
 static State snake_state;
 static float snake_speed;
@@ -35,3 +36,7 @@ void MoveDown();
 void TestSnakeMove();
 void GameInput();
 void Move();
+bool IsHitTheWall();
+bool IsHitYourself();
+void ProcessDead();
+void Eat(POINT last_pos);
