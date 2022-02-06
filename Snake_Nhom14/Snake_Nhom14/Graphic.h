@@ -20,6 +20,8 @@ void DrawPixel(int x, int y, int color);
 void DrawPixel(POINT pos, int color);
 void DrawPixel(int x, int y, int bg_color, int text_color, char text);
 void DrawPixel(POINT pos, int bg_color, int text_color, char text);
+void DrawPixel(int x, int y, int bg_color, int text_color, char text[], int size);
+void DrawPixel(int x, int y, int bg_color, int text_color, const char text[], int size);
 void DrawRectangle(int x, int y, int width, int height, int color);
 void DrawRectangle(POINT pos, int width, int height, int color);
 void DrawBorder(int x, int y, int width, int height, int color);

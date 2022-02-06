@@ -183,6 +183,54 @@ void DrawPixel(POINT pos, int bg_color, int text_color, char text)
 	}
 }
 
+void DrawPixel(int x, int y, int bg_color, int text_color, char text[], int size)
+{
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+	{
+		return;
+	}
+	int t = 0;
+	for (int i = 0; i < PIXEL_WIDTH; i++)
+	{
+		for (int j = 0; j < PIXEL_HEIGHT; j++)
+		{
+			GoToXY(x * PIXEL_WIDTH + i, y * PIXEL_HEIGHT + j);
+			SetColor(bg_color, text_color);
+			cout << text[t];
+			SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+			t++;
+			if (t >= size)
+			{
+				t = 0;
+			}
+		}
+	}
+}
+
+void DrawPixel(int x, int y, int bg_color, int text_color, const char text[], int size)
+{
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+	{
+		return;
+	}
+	int t = 0;
+	for (int i = 0; i < PIXEL_WIDTH; i++)
+	{
+		for (int j = 0; j < PIXEL_HEIGHT; j++)
+		{
+			GoToXY(x * PIXEL_WIDTH + i, y * PIXEL_HEIGHT + j);
+			SetColor(bg_color, text_color);
+			cout << text[t];
+			SetColor(DEFAULT_BACKGROUND_COLOR, DEFAULT_TEXT_COLOR);
+			t++;
+			if (t >= size)
+			{
+				t = 0;
+			}
+		}
+	}
+}
+
 void DrawRectangle(int x, int y, int width, int height, int color)
 {
 	for (int i = 0; i < width; i++)
