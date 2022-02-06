@@ -380,3 +380,93 @@ void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char te
 		DrawPixel(pos[i], bg_color[i], text_color[i], text[i]);
 	}
 }
+
+void DrawGate(int x, int y, int color, int direction)
+{
+	// 0: up
+	// 1: down
+	// 2: left
+	// 3: right
+	switch (direction)
+	{
+	case 0:
+		DrawPixel(x, y, color);
+		DrawPixel(x + 1, y, color);
+		DrawPixel(x + 2, y, color);
+		DrawPixel(x, y + 1, color);
+		DrawPixel(x + 2, y + 1, color);
+		break;
+
+	case 1:
+		DrawPixel(x, y, color);
+		DrawPixel(x + 2, y, color);
+		DrawPixel(x, y + 1, color);
+		DrawPixel(x + 1, y + 1, color);
+		DrawPixel(x + 2, y + 1, color);
+		break;
+
+	case 2:
+		DrawPixel(x, y, color);
+		DrawPixel(x + 1, y, color);
+		DrawPixel(x, y + 1, color);
+		DrawPixel(x, y + 2, color);
+		DrawPixel(x + 1, y + 2, color);
+		break;
+
+	case 3:
+		DrawPixel(x, y, color);
+		DrawPixel(x + 1, y, color);
+		DrawPixel(x + 1, y + 1, color);
+		DrawPixel(x, y + 2, color);
+		DrawPixel(x + 1, y + 2, color);
+		break;
+
+	default:
+		break;
+	}
+}
+
+void DrawGate(POINT pos, int color, int direction)
+{
+	// 0: up
+	// 1: down
+	// 2: left
+	// 3: right
+	switch (direction)
+	{
+	case 0:
+		DrawPixel(pos, color);
+		DrawPixel(pos.x + 1, pos.y, color);
+		DrawPixel(pos.x + 2, pos.y, color);
+		DrawPixel(pos.x, pos.y + 1, color);
+		DrawPixel(pos.x + 2, pos.y + 1, color);
+		break;
+
+	case 1:
+		DrawPixel(pos, color);
+		DrawPixel(pos.x + 2, pos.y, color);
+		DrawPixel(pos.x, pos.y + 1, color);
+		DrawPixel(pos.x + 1, pos.y + 1, color);
+		DrawPixel(pos.x + 2, pos.y + 1, color);
+		break;
+
+	case 2:
+		DrawPixel(pos, color);
+		DrawPixel(pos.x + 1, pos.y, color);
+		DrawPixel(pos.x, pos.y + 1, color);
+		DrawPixel(pos.x, pos.y + 2, color);
+		DrawPixel(pos.x + 1, pos.y + 2, color);
+		break;
+
+	case 3:
+		DrawPixel(pos, color);
+		DrawPixel(pos.x + 1, pos.y, color);
+		DrawPixel(pos.x + 1, pos.y + 1, color);
+		DrawPixel(pos.x, pos.y + 2, color);
+		DrawPixel(pos.x + 1, pos.y + 2, color);
+		break;
+
+	default:
+		break;
+	}
+}

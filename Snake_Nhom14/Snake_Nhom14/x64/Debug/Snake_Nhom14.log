@@ -1,3 +1,9 @@
-﻿  Gameplay.cpp
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(131,8): warning C4551: function call missing argument list
+﻿  GUI.cpp
+D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(40,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Gameplay.cpp
+D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(130,8): warning C4551: function call missing argument list
+  Graphic.cpp
+D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Graphic.cpp(55,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Snake_Nhom14.cpp
+  Generating Code...
   Snake_Nhom14.vcxproj -> D:\New folder\Project\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe

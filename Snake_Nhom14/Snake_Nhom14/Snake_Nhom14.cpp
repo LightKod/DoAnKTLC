@@ -14,6 +14,6 @@ int main()
 	SetUp();
 	ResetData();
 	//  TestFoodSpawn();
-	TestSnakeMove();
+	//TestSnakeMove();
 	cout << "Hello snake\n";
 }
