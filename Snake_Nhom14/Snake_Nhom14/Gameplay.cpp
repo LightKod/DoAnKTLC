@@ -50,13 +50,13 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 2, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = {2, 2};
+	snake_pos[1] = {2, 2};
 	snake_color = 3;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
 	snake_speed = 10;
-	//score = 0;
+	score = 0;
 }
 
 void MoveRight()
@@ -103,7 +103,6 @@ void TestSnakeMove()
 	while (1)
 	{
 		DrawPixels(snake_pos, snakeSize, snake_color);
-		POINT last_pos = snake_pos[snakeSize - 1];
 		GameInput();
 		if (snake_dir != Direction::STOP && snake_state != State::DEAD)
 		{
@@ -111,10 +110,10 @@ void TestSnakeMove()
 			if (timer >= 1 / snake_speed)
 			{
 				timer = 0;
-				DrawPixel(last_pos, DEFAULT_BACKGROUND_COLOR);
 				Move();
+				DrawPixel(last_pos, DEFAULT_BACKGROUND_COLOR);
 				ProcessDead();
-				Eat(last_pos);
+				Eat();
 			}
 		}
 		else
@@ -174,6 +173,7 @@ void GameInput()
 
 void Move()
 {
+	last_pos = snake_pos[snakeSize - 1];
 	switch (snake_dir)
 	{
 	case Direction::LEFT:
@@ -247,7 +247,7 @@ void ProcessDead()
 	}
 }
 
-void Eat(POINT last_pos)
+void Eat()
 {
 	if (snake_pos[0].x == food_pos.x && snake_pos[0].y == food_pos.y)
 	{

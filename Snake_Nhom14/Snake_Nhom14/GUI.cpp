@@ -7,15 +7,16 @@
 #include "Graphic.h"
 bool playingGame = true;
 bool howtoplay = true;
-bool score = true;
+bool highScore = true;
 bool exitGame = false;
 bool exitStartMenu = false;
 
-POINT cursor = { 0, 0 };
+POINT cursor = {0, 0};
 void Option()
 {
 
-	if (playingGame);
+	if (playingGame)
+		;
 	else if (howtoplay)
 	{
 		printf("\t\t      How to play \n");
@@ -27,10 +28,10 @@ void Option()
 		printf("\t and you have 3 lives - 3 chances to get\n");
 		printf("\t more points - before the game ends.    \n");
 	}
-	else if (score);
+	else if (highScore)
+		;
 	else if (exitGame)
 		return;
-
 }
 void GUI()
 {
@@ -38,7 +39,6 @@ void GUI()
 	SetUp();
 	SetConsoleOutputCP(65001);
 	srand(time(NULL));
-
 
 	while (!exitGame)
 	{
@@ -54,7 +54,7 @@ void GUI()
 		SetColor(0, 7);
 		GoToXYPixel(2, 2);
 		SetColor(0, 1);
-		cout << "Score";
+		cout << "High score";
 		SetColor(0, 7);
 		GoToXYPixel(2, 3);
 		SetColor(0, 1);
@@ -62,8 +62,8 @@ void GUI()
 		SetColor(0, 7);
 		GoToXYPixel(0, 4);
 		cout << "WASD: move" << endl
-			<< "Enter: select" << endl
-			<< "Esc: exit" << endl;
+			 << "Enter: select" << endl
+			 << "Esc: exit" << endl;
 
 		while (1)
 		{
@@ -77,7 +77,7 @@ void GUI()
 				{
 					playingGame = false;
 					howtoplay = false;
-					score = false;
+					highScore = false;
 					exitGame = true;
 					break;
 				}
@@ -88,37 +88,37 @@ void GUI()
 					{
 						playingGame = true;
 						howtoplay = false;
-						score = false;
+						highScore = false;
 						exitGame = false;
 					}
-					else if(cursor.y==1)
+					else if (cursor.y == 1)
 					{
 						playingGame = false;
 						howtoplay = true;
-						score = false;
+						highScore = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 2)
 					{
 						playingGame = false;
 						howtoplay = false;
-						score = true;
+						highScore = true;
 						exitGame = false;
 					}
 					else if (cursor.y == 3)
 					{
 						playingGame = false;
 						howtoplay = false;
-						score = false;
+						highScore = false;
 						exitGame = true;
 					}
 					break;
 				}
-				if (toupper(temp) == 'S' && cursor.y == 0)
-						{
-							cursor.y++;
-						}
-				else if (toupper(temp) == 'W' && cursor.y == 1)
+				if (toupper(temp) == 'S' && cursor.y <= 3)
+				{
+					cursor.y++;
+				}
+				else if (toupper(temp) == 'W' && cursor.y >= 1)
 				{
 					cursor.y--;
 				}

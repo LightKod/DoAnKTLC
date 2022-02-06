@@ -6,6 +6,7 @@
 #include <conio.h>
 #include "Graphic.h"
 #include "Gameplay.h"
+#include "GUI.h"
 
 using namespace std;
 
@@ -14,6 +15,6 @@ int main()
 	SetUp();
 	ResetData();
 	//  TestFoodSpawn();
-	//TestSnakeMove();
+	TestSnakeMove();
 	cout << "Hello snake\n";
 }
