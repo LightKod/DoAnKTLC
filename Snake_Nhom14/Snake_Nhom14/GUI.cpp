@@ -129,3 +129,11 @@ void GUI()
 		}
 	}
 }
+
+void GameplayUI()
+{
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawBorder(game_field_pos, game_field_width, game_field_height, 15, game_field_color);
+	DrawBorder(45, 1, 34, 10, 15, 0);
+	DrawBorder(45, 12, 34, 32, 15, 0);
+}

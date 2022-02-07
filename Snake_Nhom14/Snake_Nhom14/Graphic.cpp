@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include <iostream>
+#include <time.h>
 #include "Graphic.h"
 
 using namespace std;

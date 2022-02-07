@@ -1,5 +1,6 @@
 #include "Gameplay.h"
 #include "Graphic.h"
+#include "GUI.h"
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
@@ -23,14 +24,19 @@ void GenerateFood()
 	int x, y;
 	do
 	{
-		// x = rand() % (SCREEN_WIDTH - 1) + 1;
-		// y = rand() % (SCREEN_HEIGHT - 1) + 1;
-		x = rand() % (43 - 2) + 2;
-		y = rand() % (43 - 2) + 2;
+		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
+		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 	} while (!IsValid(x, y));
 	food_pos.x = x;
 	food_pos.y = y;
-	food_text = snake_default_text[current_last_text + 1];
+	if (current_last_text >= textSize - 1)
+	{
+		food_text = snake_default_text[0];
+	}
+	else
+	{
+		food_text = snake_default_text[current_last_text + 1];
+	}
 }
 
 void TestFoodSpawn()
@@ -57,12 +63,10 @@ void ResetData()
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
-	snake_color = 2;
-	snake_dir = Direction::RIGHT;
+	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
 	snake_speed = 10;
 	score = 0;
-	t1 = time(0);
 	game_time = 0;
 }
 
@@ -104,41 +108,43 @@ void MoveDown()
 void TestSnakeMove()
 {
 	float timer = 1;
-	DrawBorder(1, 1, 43, 43, 15, 0);
+	GameplayUI();
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
 	while (1)
 	{
+
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		DrawRectangle(45, 2, 10, 1, 0);
-		GoToXYPixel(45, 2);
+		GoToXYPixel(46, 2);
 		SetColor(0, 15);
 		cout << "Score: " << score;
-		DrawRectangle(45, 4, 10, 1, 0);
-		GoToXYPixel(45, 4);
+		GoToXYPixel(46, 4);
 		SetColor(0, 15);
-		t2 = time(0);
-		game_time += t2 - t1;
-		t1 = time(0);
+
 		cout << "Time: " << game_time;
 		if (snake_state != State::DEAD)
 		{
+
 			GameInput();
+
 			if (snake_dir != Direction::STOP)
 			{
+				t2 = time(0);
+				game_time += t2 - t1;
+				t1 = time(0);
 				timer += 1 / fps;
 				if (timer >= 1 / snake_speed)
 				{
 					timer = 0;
 					ProcessDead();
 					Move();
-					DrawPixel(last_pos, DEFAULT_BACKGROUND_COLOR);
 					Eat();
 				}
 			}
 			else
 			{
 				timer = 1;
+				t1 = time(0);
 			}
 		}
 		else
@@ -152,7 +158,7 @@ void TestSnakeMove()
 				if (_getch())
 				{
 					ResetData();
-					DrawBorder(1, 1, 43, 43, 15, 0);
+					GameplayUI();
 					GenerateFood();
 					DrawPixel(food_pos, food_color);
 				}
@@ -167,6 +173,11 @@ void GameInput()
 	if (_kbhit())
 	{
 		int temp = _getch();
+		if (temp == 27)
+		{
+			snake_dir = Direction::STOP;
+			return;
+		}
 		switch (toupper(temp))
 		{
 		case 'A':
@@ -195,6 +206,7 @@ void GameInput()
 void Move()
 {
 	last_pos = snake_pos[snakeSize - 1];
+	DrawPixel(last_pos, game_field_color);
 	switch (snake_dir)
 	{
 	case Direction::LEFT:
@@ -285,8 +297,13 @@ void Eat()
 			current_last_text = 0;
 		}
 		snake_text[snakeSize - 1] = snake_default_text[current_last_text];
-		DrawPixel(food_pos, DEFAULT_BACKGROUND_COLOR);
-		GenerateFood();
-		DrawPixel(food_pos, food_color, 15, food_text);
+		SpawnFood();
 	}
+}
+
+void SpawnFood()
+{
+	DrawPixel(food_pos, game_field_color);
+	GenerateFood();
+	DrawPixel(food_pos, food_color, 15, food_text);
 }

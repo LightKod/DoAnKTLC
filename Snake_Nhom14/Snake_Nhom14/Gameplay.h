@@ -16,13 +16,13 @@ enum class State // state of snake
 };
 
 const char snake_default_text[] = "21127151 21127077 21127483 21127297";
-const int textSize = 35;
+const int textSize = 9;
 
 static float fps = 60;
 
 // snake's properties
 static POINT snake_pos[100];
-static int snake_color;
+static int snake_color = 1;
 static int snakeSize;
 static Direction snake_dir;
 static State snake_state;
@@ -40,6 +40,11 @@ static POINT last_pos;
 
 static int t1, t2, game_time;
 
+const int game_field_width = 43;
+const int game_field_height = 43;
+const POINT game_field_pos = {1, 1};
+const int game_field_color = 2;
+
 bool IsValid(int x, int y);
 void GenerateFood();
 void TestFoodSpawn();
@@ -55,3 +60,4 @@ bool IsHitTheWall();
 bool IsHitYourself();
 void ProcessDead();
 void Eat();
+void SpawnFood();
