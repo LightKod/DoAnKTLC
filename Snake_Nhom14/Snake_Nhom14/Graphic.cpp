@@ -45,7 +45,6 @@ void DisableControlButton(bool close, bool min, bool max)
 void SetUp()
 {
 	system("MODE 160, 45");
-
 	SetConsoleTitle(TEXT("Snake project"));
 	SetConsoleOutputCP(65001);
 	FixWindowSize();
