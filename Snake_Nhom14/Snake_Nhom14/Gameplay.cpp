@@ -19,6 +19,19 @@ bool IsValid(int x, int y)
 	}
 	return true;
 }
+
+bool IsWallValid(int x, int y)
+{
+	for (int i = 0; i < wall_size; i++)
+	{
+		if (wall_pos[i].x == x && wall_pos[i].y == y)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 void GenerateFood()
 {
 	int x, y;
@@ -26,7 +39,7 @@ void GenerateFood()
 	{
 		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
-	} while (!IsValid(x, y));
+	} while (!IsValid(x, y) || !IsWallValid);
 	food_pos.x = x;
 	food_pos.y = y;
 	if (current_last_text >= textSize - 1)
@@ -58,16 +71,17 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = {3, 2};
-	snake_pos[1] = {2, 2};
+	snake_pos[0] = { 3, 2 };
+	snake_pos[1] = { 2, 2 };
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
-	snake_speed = 10;
+	snake_speed = 5;
 	score = 0;
 	game_time = 0;
+	wall_size = 0;
 }
 
 void MoveRight()
@@ -108,6 +122,7 @@ void MoveDown()
 void TestSnakeMove()
 {
 	float timer = 1;
+	int h = 0, min = 0, sec = 0;
 	GameplayUI();
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
@@ -115,24 +130,26 @@ void TestSnakeMove()
 	{
 
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
+		DrawPixels(wall_pos, wall_size, wall_color);
 		GoToXYPixel(46, 2);
 		SetColor(0, 15);
-		cout << "Score: " << score;
+		cout << "SCORE: " << score;
 		GoToXYPixel(46, 4);
 		SetColor(0, 15);
-
-		cout << "Time: " << game_time;
+		cout << "TIME: " << game_time << " => " << h << ":" << min << ":" << sec;
 		if (snake_state != State::DEAD)
 		{
 
 			GameInput();
-
 			if (snake_dir != Direction::STOP)
 			{
 				t2 = time(0);
 				game_time += t2 - t1;
+				h = game_time / 3600;
+				min = game_time / 60 - 60 * h;
+				sec = game_time - h * 3600 - min * 60;
 				t1 = time(0);
-				timer += 1 / fps;
+				timer += 2 / fps;
 				if (timer >= 1 / snake_speed)
 				{
 					timer = 0;
@@ -226,7 +243,7 @@ void Move()
 	}
 }
 
-bool IsHitTheWall()
+bool IsHitTheBorder()
 {
 	switch (snake_dir)
 	{
@@ -271,9 +288,44 @@ bool IsHitYourself()
 	return false;
 }
 
+bool IsHitTheWall()
+{
+	for (int i = 0; i < wall_size; i++)
+	{
+		switch (snake_dir)
+		{
+		case Direction::UP:
+			if (snake_pos[0].y == wall_pos[i].y + 1 && snake_pos[0].x == wall_pos[i].x)
+			{
+				return true;
+			}
+			break;
+		case Direction::DOWN:
+			if (snake_pos[0].y == wall_pos[i].y - 1 && snake_pos[0].x == wall_pos[i].x)
+			{
+				return true;
+			}
+			break;
+		case Direction::LEFT:
+			if (snake_pos[0].x == wall_pos[i].x + 1 && snake_pos[0].y == wall_pos[i].y)
+			{
+				return true;
+			}
+			break;
+		case Direction::RIGHT:
+			if (snake_pos[0].x == wall_pos[i].x - 1 && snake_pos[0].y == wall_pos[i].y)
+			{
+				return true;
+			}
+			break;
+		}
+	}
+	return false;
+}
+
 void ProcessDead()
 {
-	if (IsHitTheWall() || IsHitYourself())
+	if (IsHitTheBorder() || IsHitYourself() || IsHitTheWall())
 	{
 		snake_state = State::DEAD;
 		snake_dir = Direction::STOP;
@@ -286,9 +338,13 @@ void Eat()
 	{
 		score += 10;
 		snakeSize++;
+		if (snakeSize % 4 == 0)
+		{
+			GenerateWall();
+		}
 		if (snakeSize % 8 == 0)
 		{
-			snake_speed += 5;
+			snake_speed += 1;
 		}
 		snake_pos[snakeSize - 1] = last_pos;
 		current_last_text++;
@@ -306,4 +362,28 @@ void SpawnFood()
 	DrawPixel(food_pos, game_field_color);
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
+}
+
+bool IsAlreadyHad(int x, int y)
+{
+	for (int i = 0; i < wall_size; i++)
+	{
+		if (wall_pos[i].x == x && wall_pos[i].y == y)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void GenerateWall()
+{
+	int x, y;
+	do
+	{
+		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
+		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
+	} while (!IsValid(x, y) || IsAlreadyHad(x, y));
+	wall_size++;
+	wall_pos[wall_size - 1] = { x, y };
 }

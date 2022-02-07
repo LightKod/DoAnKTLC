@@ -16,7 +16,7 @@ enum class State // state of snake
 };
 
 const char snake_default_text[] = "21127151 21127077 21127483 21127297";
-const int textSize = 9;
+const int textSize = 35;
 
 static float fps = 60;
 
@@ -45,7 +45,12 @@ const int game_field_height = 43;
 const POINT game_field_pos = {1, 1};
 const int game_field_color = 2;
 
+static POINT wall_pos[100];
+static int wall_size;
+static int wall_color = 15;
+
 bool IsValid(int x, int y);
+bool IsWallValid(int x, int y);
 void GenerateFood();
 void TestFoodSpawn();
 void ResetData(); // Reset game data
@@ -56,8 +61,11 @@ void MoveDown();
 void TestSnakeMove();
 void GameInput();
 void Move();
-bool IsHitTheWall();
+bool IsHitTheBorder();
 bool IsHitYourself();
+bool IsHitTheWall();
 void ProcessDead();
 void Eat();
 void SpawnFood();
+bool IsAlreadyHad();
+void GenerateWall();
