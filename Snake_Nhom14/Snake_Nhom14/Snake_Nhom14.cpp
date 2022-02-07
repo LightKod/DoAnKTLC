@@ -4,18 +4,21 @@
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
+#include <mmsystem.h>
 #include "Graphic.h"
 #include "Gameplay.h"
 #include "GUI.h"
+#include "Sound.h"
+#pragma comment(lib, "Winmm.lib")
 
 using namespace std;
 
 int main()
 {
 	SetUp();
-	ResetData();
 	//  TestFoodSpawn();
 	TestSnakeMove();
 	GoToXYPixel(0, 0);
 	cout << "Hello snake\n";
+	system("pause");
 }

@@ -123,6 +123,7 @@ void TestSnakeMove()
 {
 	float timer = 1;
 	int h = 0, min = 0, sec = 0;
+	ResetData();
 	GameplayUI();
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
@@ -338,9 +339,12 @@ void Eat()
 	{
 		score += 10;
 		snakeSize++;
-		if (snakeSize % 4 == 0)
+		if (snakeSize % 2 == 0)
 		{
-			GenerateWall();
+			for (int i = 0; i < snakeSize; i++)
+			{
+				GenerateWall();
+			}
 		}
 		if (snakeSize % 8 == 0)
 		{
