@@ -137,7 +137,7 @@ void TestSnakeMove()
 		cout << "SCORE: " << score;
 		GoToXYPixel(46, 4);
 		SetColor(0, 15);
-		cout << "TIME: " << game_time << " => " << h << ":" << min << ":" << sec;
+		cout << "TIME: " << game_time << " => " << h << ":" << min << ":" << sec << "  ";
 		if (snake_state != State::DEAD)
 		{
 
@@ -176,6 +176,9 @@ void TestSnakeMove()
 				if (_getch())
 				{
 					ResetData();
+					h = 0;
+					min = 0;
+					sec = 0;
 					GameplayUI();
 					GenerateFood();
 					DrawPixel(food_pos, food_color);
