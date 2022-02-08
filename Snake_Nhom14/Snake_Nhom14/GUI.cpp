@@ -7,7 +7,7 @@
 #include "Graphic.h"
 bool playingGame = true;
 bool howtoplay = true;
-bool score = true;
+bool highscore = true;
 bool exitGame = false;
 bool exitStartMenu = false;
 
@@ -27,7 +27,7 @@ void DisplayOptions()
 	cout << "HOW TO PLAY";
 	GoToXYPixel(2, 2);
 	SetColor(0, 1);
-	cout << "SCORE";
+	cout << "HIGHSCORE";
 	GoToXYPixel(2, 3);
 	SetColor(0, 1);
 	cout << "EXIT";
@@ -36,6 +36,12 @@ void DisplayOptions()
 	cout << "WASD: move" << endl
 		<< "Enter: select" << endl
 		<< "Esc: exit" << endl;
+}
+void PlayingGame()
+{
+	ClearScreen();
+	GameplayUI();
+
 }
 void DisplayInstructions()
 {
@@ -64,7 +70,7 @@ void GUI()
 	while (!exitGame)
 	{
 
-		DrawRectangle(0, 0, 50, 30, 0);
+		DrawRectangle(0, 0, 90, 70, 0);
 		DisplayOptions();
 		while (1)
 		{
@@ -87,28 +93,28 @@ void GUI()
 					{
 						playingGame = true;
 						howtoplay = false;
-						score = false;
+						highscore = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 1)
 					{
 						playingGame = false;
 						howtoplay = true;
-						score = false;
+						highscore = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 2)
 					{
 						playingGame = false;
 						howtoplay = false;
-						score = true;
+						highscore = true;
 						exitGame = false;
 					}
 					else if (cursor.y == 3)
 					{
 						playingGame = false;
 						howtoplay = false;
-						score = false;
+						highscore = false;
 						exitGame = true;
 					}
 					break;
@@ -123,7 +129,17 @@ void GUI()
 				}
 			}
 		}
-		if (playingGame);
+		if (playingGame) 
+		{
+			PlayingGame();
+			while (true)
+				if (_kbhit())
+				{
+					int temp1 = _getch();
+					if (temp1 == 27)
+						break;
+				}
+		}
 		else if (howtoplay)
 		{
 			DisplayInstructions();
@@ -134,7 +150,7 @@ void GUI()
 			_getch();
 
 		}
-		else if (score);
+		else if (highscore);
 		else if (exitGame)
 			return;
 		DrawPixel(cursor.x, cursor.y, 15);
@@ -149,3 +165,4 @@ void GameplayUI()
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 34, 32, 15, 0);
 }
+
