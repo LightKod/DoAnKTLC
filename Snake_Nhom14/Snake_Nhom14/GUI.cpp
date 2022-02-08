@@ -40,7 +40,7 @@ void DisplayOptions()
 void PlayingGame()
 {
 	ClearScreen();
-	GameplayUI();
+	TestSnakeMove();
 
 }
 void DisplayInstructions()
