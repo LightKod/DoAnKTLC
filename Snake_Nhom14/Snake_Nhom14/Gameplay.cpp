@@ -39,7 +39,7 @@ void GenerateFood()
 	{
 		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
-	} while (!IsValid(x, y) || !IsWallValid);
+	} while (!IsValid(x, y) || !IsWallValid(x, y));
 	food_pos.x = x;
 	food_pos.y = y;
 	if (current_last_text >= textSize - 1)
@@ -71,8 +71,8 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 3, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = {3, 2};
+	snake_pos[1] = {2, 2};
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
@@ -82,6 +82,7 @@ void ResetData()
 	score = 0;
 	game_time = 0;
 	wall_size = 0;
+	gate_state = 0;
 }
 
 void MoveRight()
@@ -132,6 +133,10 @@ void TestSnakeMove()
 
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
 		DrawPixels(wall_pos, wall_size, wall_color);
+		// if (gate_state == 1)
+		// {
+		// 	DrawGate(gate_pos, gate_color, gate_dir);
+		// }
 		GoToXYPixel(46, 2);
 		SetColor(0, 15);
 		cout << "SCORE: " << score;
@@ -154,6 +159,10 @@ void TestSnakeMove()
 				if (timer >= 1 / snake_speed)
 				{
 					timer = 0;
+					// if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y)
+					// {
+					// 	ResetData();
+					// }
 					ProcessDead();
 					Move();
 					Eat();
@@ -329,7 +338,7 @@ bool IsHitTheWall()
 
 void ProcessDead()
 {
-	if (IsHitTheBorder() || IsHitYourself() || IsHitTheWall())
+	if (IsHitTheBorder() || IsHitYourself() || IsHitTheWall() || IsHitTheGate())
 	{
 		snake_state = State::DEAD;
 		snake_dir = Direction::STOP;
@@ -342,17 +351,15 @@ void Eat()
 	{
 		score += 10;
 		snakeSize++;
-		if (snakeSize % 2 == 0)
-		{
-			for (int i = 0; i < snakeSize; i++)
-			{
-				GenerateWall();
-			}
-		}
 		if (snakeSize % 8 == 0)
 		{
 			snake_speed += 1;
 		}
+		// if (snakeSize == 5)
+		// {
+		// 	gate_state = 1;
+		// 	GenerateGate();
+		// }
 		snake_pos[snakeSize - 1] = last_pos;
 		current_last_text++;
 		if (current_last_text >= textSize)
@@ -392,5 +399,95 @@ void GenerateWall()
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || IsAlreadyHad(x, y));
 	wall_size++;
-	wall_pos[wall_size - 1] = { x, y };
+	wall_pos[wall_size - 1] = {x, y};
+}
+
+void SetGateCollider()
+{
+	switch (gate_dir)
+	{
+	case 0:
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
+		break;
+
+	case 1:
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y};
+		break;
+
+	case 2:
+		gate_colliders[0] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
+		break;
+
+	case 3:
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x, gate_pos.y + 1};
+		break;
+	}
+}
+
+bool IsHitTheGate()
+{
+	if (gate_state == 0)
+	{
+		return false;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		switch (snake_dir)
+		{
+		case Direction::UP:
+			if (snake_pos[0].y == gate_colliders[i].y + 1 && snake_pos[0].x == gate_colliders[i].x)
+			{
+				return true;
+			}
+			break;
+		case Direction::DOWN:
+			if (snake_pos[0].y == gate_colliders[i].y - 1 && snake_pos[0].x == gate_colliders[i].x)
+			{
+				return true;
+			}
+			break;
+		case Direction::LEFT:
+			if (snake_pos[0].x == gate_colliders[i].x + 1 && snake_pos[0].y == gate_colliders[i].y)
+			{
+				return true;
+			}
+			break;
+		case Direction::RIGHT:
+			if (snake_pos[0].x == gate_colliders[i].x - 1 && snake_pos[0].y == gate_colliders[i].y)
+			{
+				return true;
+			}
+			break;
+		}
+	}
+	return false;
+}
+
+void GenerateGate()
+{
+	int x, y;
+	do
+	{
+		x = rand() % (game_field_width - 8) + game_field_pos.x + 1;
+		y = rand() % (game_field_height - 8) + game_field_pos.y + 1;
+	} while (!IsValid(x, y) || !IsWallValid);
+	gate_pos = {x, y};
+	gate_dir = rand() % 4;
+	SetGateCollider();
 }

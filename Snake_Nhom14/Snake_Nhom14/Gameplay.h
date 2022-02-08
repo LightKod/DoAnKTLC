@@ -45,9 +45,16 @@ const int game_field_height = 43;
 const POINT game_field_pos = {1, 1};
 const int game_field_color = 2;
 
-static POINT wall_pos[100];
+// Wall
+static POINT wall_pos[1000];
 static int wall_size;
 static int wall_color = 15;
+
+static POINT gate_pos;
+static int gate_color = 8;
+static int gate_dir;
+static POINT gate_colliders[6];
+static int gate_state;
 
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);
@@ -69,3 +76,6 @@ void Eat();
 void SpawnFood();
 bool IsAlreadyHad();
 void GenerateWall();
+void SetGateCollider();
+bool IsHitTheGate();
+void GenerateGate();

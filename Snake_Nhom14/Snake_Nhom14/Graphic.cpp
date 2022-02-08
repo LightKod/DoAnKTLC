@@ -438,35 +438,35 @@ void DrawGate(int x, int y, int color, int direction)
 	switch (direction)
 	{
 	case 0:
-		DrawPixel(x, y, color);
+		DrawPixel(x - 1, y, color);
 		DrawPixel(x + 1, y, color);
-		DrawPixel(x + 2, y, color);
+		DrawPixel(x - 1, y + 1, color);
 		DrawPixel(x, y + 1, color);
-		DrawPixel(x + 2, y + 1, color);
+		DrawPixel(x + 1, y + 1, color);
 		break;
 
 	case 1:
-		DrawPixel(x, y, color);
-		DrawPixel(x + 2, y, color);
-		DrawPixel(x, y + 1, color);
-		DrawPixel(x + 1, y + 1, color);
-		DrawPixel(x + 2, y + 1, color);
+		DrawPixel(x, y - 1, color);
+		DrawPixel(x - 1, y - 1, color);
+		DrawPixel(x + 1, y - 1, color);
+		DrawPixel(x + 1, y, color);
+		DrawPixel(x - 1, y, color);
 		break;
 
 	case 2:
-		DrawPixel(x, y, color);
 		DrawPixel(x + 1, y, color);
+		DrawPixel(x + 1, y - 1, color);
+		DrawPixel(x + 1, y + 1, color);
+		DrawPixel(x, y - 1, color);
 		DrawPixel(x, y + 1, color);
-		DrawPixel(x, y + 2, color);
-		DrawPixel(x + 1, y + 2, color);
 		break;
 
 	case 3:
-		DrawPixel(x, y, color);
-		DrawPixel(x + 1, y, color);
-		DrawPixel(x + 1, y + 1, color);
-		DrawPixel(x, y + 2, color);
-		DrawPixel(x + 1, y + 2, color);
+		DrawPixel(x - 1, y, color);
+		DrawPixel(x - 1, y - 1, color);
+		DrawPixel(x - 1, y + 1, color);
+		DrawPixel(x, y - 1, color);
+		DrawPixel(x, y + 1, color);
 		break;
 
 	default:
@@ -483,35 +483,35 @@ void DrawGate(POINT pos, int color, int direction)
 	switch (direction)
 	{
 	case 0:
-		DrawPixel(pos, color);
+		DrawPixel(pos.x - 1, pos.y, color);
 		DrawPixel(pos.x + 1, pos.y, color);
-		DrawPixel(pos.x + 2, pos.y, color);
+		DrawPixel(pos.x - 1, pos.y + 1, color);
 		DrawPixel(pos.x, pos.y + 1, color);
-		DrawPixel(pos.x + 2, pos.y + 1, color);
+		DrawPixel(pos.x + 1, pos.y + 1, color);
 		break;
 
 	case 1:
-		DrawPixel(pos, color);
-		DrawPixel(pos.x + 2, pos.y, color);
-		DrawPixel(pos.x, pos.y + 1, color);
-		DrawPixel(pos.x + 1, pos.y + 1, color);
-		DrawPixel(pos.x + 2, pos.y + 1, color);
+		DrawPixel(pos.x, pos.y - 1, color);
+		DrawPixel(pos.x - 1, pos.y - 1, color);
+		DrawPixel(pos.x + 1, pos.y - 1, color);
+		DrawPixel(pos.x + 1, pos.y, color);
+		DrawPixel(pos.x - 1, pos.y, color);
 		break;
 
 	case 2:
-		DrawPixel(pos, color);
 		DrawPixel(pos.x + 1, pos.y, color);
+		DrawPixel(pos.x + 1, pos.y - 1, color);
+		DrawPixel(pos.x + 1, pos.y + 1, color);
+		DrawPixel(pos.x, pos.y - 1, color);
 		DrawPixel(pos.x, pos.y + 1, color);
-		DrawPixel(pos.x, pos.y + 2, color);
-		DrawPixel(pos.x + 1, pos.y + 2, color);
 		break;
 
 	case 3:
-		DrawPixel(pos, color);
-		DrawPixel(pos.x + 1, pos.y, color);
-		DrawPixel(pos.x + 1, pos.y + 1, color);
-		DrawPixel(pos.x, pos.y + 2, color);
-		DrawPixel(pos.x + 1, pos.y + 2, color);
+		DrawPixel(pos.x - 1, pos.y, color);
+		DrawPixel(pos.x - 1, pos.y - 1, color);
+		DrawPixel(pos.x - 1, pos.y + 1, color);
+		DrawPixel(pos.x, pos.y - 1, color);
+		DrawPixel(pos.x, pos.y + 1, color);
 		break;
 
 	default:
