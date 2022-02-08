@@ -39,9 +39,7 @@ void DisplayOptions()
 }
 void PlayingGame()
 {
-	ClearScreen();
 	TestSnakeMove();
-
 }
 void DisplayInstructions()
 {
@@ -74,10 +72,11 @@ void GUI()
 		DisplayOptions();
 		while (1)
 		{
-			DrawPixel(cursor.x, cursor.y, 0);
+			DrawPixel(cursor.x, cursor.y, 15);
 			if (_kbhit())
 			{
 				int temp = _getch();
+				DrawPixel(cursor.x, cursor.y, 0);
 				DrawRectangle(0, 3, 3, 0, 0);
 				GoToXYPixel(0, 3);
 				if (temp == 27)
@@ -126,19 +125,23 @@ void GUI()
 				else if (toupper(temp) == 'W' && cursor.y != 0)
 				{
 					cursor.y--;
+
 				}
+
 			}
+
 		}
-		if (playingGame) 
+		if (playingGame)
 		{
 			PlayingGame();
-			while (true)
+			/*while (true)
 				if (_kbhit())
 				{
 					int temp1 = _getch();
 					if (temp1 == 27)
 						break;
-				}
+				}*/
+			playingGame = false;
 		}
 		else if (howtoplay)
 		{
@@ -148,12 +151,10 @@ void GUI()
 				if (_kbhit())
 					break;
 			_getch();
-
 		}
 		else if (highscore);
 		else if (exitGame)
 			return;
-		DrawPixel(cursor.x, cursor.y, 15);
 		Sleep(100);
 	}
 }
