@@ -7,64 +7,65 @@
 #include "Graphic.h"
 bool playingGame = true;
 bool howtoplay = true;
-bool highScore = true;
+bool score = true;
 bool exitGame = false;
 bool exitStartMenu = false;
 
-POINT cursor = {0, 0};
-void Option()
+POINT cursor = { 0, 0 };
+using namespace std;
+void ClearScreen()
 {
+	system("cls");
+}
+void DisplayOptions()
+{
+	GoToXYPixel(2, 0);
+	SetColor(0, 4);
+	cout << "START";
+	GoToXYPixel(2, 1);
+	SetColor(0, 1);
+	cout << "HOW TO PLAY";
+	GoToXYPixel(2, 2);
+	SetColor(0, 1);
+	cout << "SCORE";
+	GoToXYPixel(2, 3);
+	SetColor(0, 1);
+	cout << "EXIT";
+	SetColor(0, 7);
+	GoToXYPixel(0, 4);
+	cout << "WASD: move" << endl
+		<< "Enter: select" << endl
+		<< "Esc: exit" << endl;
+}
+void DisplayInstructions()
+{
+	ClearScreen();
 
-	if (playingGame)
-		;
-	else if (howtoplay)
-	{
-		printf("\t\t      How to play \n");
-		printf("\t\t      =========== \n\n\n");
-		printf("\t     The objective of the game is to eat\n");
-		printf("\t as many food items as possible and     \n");
-		printf("\t avoid hitting the walls.               \n");
-		printf("\t     Each food items gives you 10 points\n");
-		printf("\t and you have 3 lives - 3 chances to get\n");
-		printf("\t more points - before the game ends.    \n");
-	}
-	else if (highScore)
-		;
-	else if (exitGame)
-		return;
+	printf("\n\n");
+
+
+	printf("\n\n\n");
+
+	printf("\t\t      How to play \n");
+	printf("\t\t      =========== \n\n\n");
+	printf("\t     The objective of the game is to eat\n");
+	printf("\t     as many food items as possible and     \n");
+	printf("\t          avoid hitting the walls.               \n");
+	printf("\t     Each food items gives you 10 points\n");
+	printf("\t        and you have 3 lives to get\n");
+	printf("\t      more points - before the game ends.    \n");
+	printf("\n\n\n");
 }
 void GUI()
 {
-	using namespace std;
 	SetUp();
 	SetConsoleOutputCP(65001);
 	srand(time(NULL));
-
 	while (!exitGame)
 	{
 
 		DrawRectangle(0, 0, 50, 30, 0);
-		GoToXYPixel(2, 0);
-		SetColor(0, 4);
-		cout << "START";
-		SetColor(0, 7);
-		GoToXYPixel(2, 1);
-		SetColor(0, 1);
-		cout << "How to play";
-		SetColor(0, 7);
-		GoToXYPixel(2, 2);
-		SetColor(0, 1);
-		cout << "High score";
-		SetColor(0, 7);
-		GoToXYPixel(2, 3);
-		SetColor(0, 1);
-		cout << "Exit";
-		SetColor(0, 7);
-		GoToXYPixel(0, 4);
-		cout << "WASD: move" << endl
-			 << "Enter: select" << endl
-			 << "Esc: exit" << endl;
-
+		DisplayOptions();
 		while (1)
 		{
 			DrawPixel(cursor.x, cursor.y, 0);
@@ -76,8 +77,6 @@ void GUI()
 				if (temp == 27)
 				{
 					playingGame = false;
-					howtoplay = false;
-					highScore = false;
 					exitGame = true;
 					break;
 				}
@@ -88,45 +87,58 @@ void GUI()
 					{
 						playingGame = true;
 						howtoplay = false;
-						highScore = false;
+						score = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 1)
 					{
 						playingGame = false;
 						howtoplay = true;
-						highScore = false;
+						score = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 2)
 					{
 						playingGame = false;
 						howtoplay = false;
-						highScore = true;
+						score = true;
 						exitGame = false;
 					}
 					else if (cursor.y == 3)
 					{
 						playingGame = false;
 						howtoplay = false;
-						highScore = false;
+						score = false;
 						exitGame = true;
 					}
 					break;
 				}
-				if (toupper(temp) == 'S' && cursor.y <= 3)
+				else if (toupper(temp) == 'S' && cursor.y != 3)
 				{
 					cursor.y++;
 				}
-				else if (toupper(temp) == 'W' && cursor.y >= 1)
+				else if (toupper(temp) == 'W' && cursor.y != 0)
 				{
 					cursor.y--;
 				}
 			}
-			Option();
-			DrawPixel(cursor.x, cursor.y, 15);
-			Sleep(100);
 		}
+		if (playingGame);
+		else if (howtoplay)
+		{
+			DisplayInstructions();
+			printf("\t Press any key to return to the main menu...");
+			while (true)
+				if (_kbhit())
+					break;
+			_getch();
+
+		}
+		else if (score);
+		else if (exitGame)
+			return;
+		DrawPixel(cursor.x, cursor.y, 15);
+		Sleep(100);
 	}
 }
 
