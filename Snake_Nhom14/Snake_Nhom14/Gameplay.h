@@ -15,8 +15,8 @@ enum class State // state of snake
 	ALIVE
 };
 
-const char snake_default_text[] = "21127151 21127077 21127483 21127297";
-const int textSize = 35;
+const char snake_default_text[] = "21127151 21127077 21127483 21127297 ";
+const int textSize = 36;
 
 static float fps = 60;
 
@@ -56,6 +56,8 @@ static int gate_dir;
 static POINT gate_colliders[6];
 static int gate_state;
 
+static int level;
+
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);
 void GenerateFood();
@@ -79,3 +81,4 @@ void GenerateWall();
 void SetGateCollider();
 bool IsHitTheGate();
 void GenerateGate();
+void ToTheNextLevel();
