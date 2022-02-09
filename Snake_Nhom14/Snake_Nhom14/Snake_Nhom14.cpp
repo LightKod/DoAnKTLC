@@ -19,7 +19,7 @@ int main()
 	//  TestFoodSpawn();
 	//GUI();
 	TestSnakeMove();
-	GoToXYPixel(10, 10);
+	//GoToXYPixel(10, 10);
 	cout << "Hello snake\n";
 	system("pause");
 }

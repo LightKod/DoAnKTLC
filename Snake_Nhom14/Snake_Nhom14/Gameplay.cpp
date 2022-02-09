@@ -149,7 +149,6 @@ void TestSnakeMove()
 		cout << "LEVEL: " << level << " ";
 		if (snake_state != State::DEAD)
 		{
-
 			GameInput();
 			if (snake_dir != Direction::STOP)
 			{
@@ -163,10 +162,6 @@ void TestSnakeMove()
 				if (timer >= 1 / snake_speed)
 				{
 					timer = 0;
-					if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y && gate_state == 1)
-					{
-						ToTheNextLevel();
-					}
 					ProcessDead();
 					Move();
 					Eat();
@@ -366,17 +361,24 @@ void Eat()
 		}
 		snake_pos[snakeSize - 1] = last_pos;
 		current_last_text++;
-		if (current_last_text >= textSize)
+		/*if (current_last_text >= textSize)
 		{
 			current_last_text = 0;
-		}
+		}*/
 		snake_text[snakeSize - 1] = snake_default_text[current_last_text];
-		if (snakeSize == 35)
+		if (snakeSize != (8 * level)) {
+			SpawnFood();
+		}
+		if (snakeSize == (8 * level))
 		{
 			gate_state = 1;
 			GenerateGate();
 		}
-		SpawnFood();
+	}
+	
+	if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y && gate_state == 1)
+	{
+		ToTheNextLevel();
 	}
 }
 
@@ -506,10 +508,10 @@ void ToTheNextLevel()
 	GameplayUI();
 	gate_state = 0;
 	level += 1;
-	snakeSize = 2;
-	current_last_text = 1;
+	//current_last_text = 1;
+	//snakeSize = 2;
 	snake_dir = Direction::STOP;
-	snake_pos[1] = gate_pos;
+	snake_pos[0] = gate_pos;
 	switch (gate_dir)
 	{
 	case 0:
@@ -531,6 +533,24 @@ void ToTheNextLevel()
 		snake_pos[0].x = gate_pos.x + 1;
 		snake_pos[0].y = gate_pos.y;
 		break;
+	}
+	for (int i = 1; i < snakeSize; i++) {
+		if (i <= 8) {
+			snake_pos[i].x = (snake_pos[i - 1].x + 1);
+			snake_pos[i].y = (snake_pos[i - 1].y);
+		}
+		if (8 < i && i <= 17) {
+			snake_pos[i].y = (snake_pos[i - 1].y + 1);
+			snake_pos[i].x = (snake_pos[i - 1].x);
+		}
+		if (17 < i && i <= 26) {
+			snake_pos[i].x = (snake_pos[i - 1].x - 1);
+			snake_pos[i].y = (snake_pos[i - 1].y);
+		}
+		if (26 < i && i <= 35) {
+			snake_pos[i].y = (snake_pos[i - 1].y + 1);
+			snake_pos[i].x = (snake_pos[i - 1].x - 1);
+		}
 	}
 	for (int i = 0; i < level; i++)
 	{
