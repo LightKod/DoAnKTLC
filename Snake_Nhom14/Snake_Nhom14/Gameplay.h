@@ -18,7 +18,7 @@ enum class State // state of snake
 const char snake_default_text[] = "21127151 21127077 21127483 21127297 ";
 const int textSize = 36;
 
-static float fps = 60;
+static float fps = 100;
 
 // snake's properties
 static POINT snake_pos[100];
