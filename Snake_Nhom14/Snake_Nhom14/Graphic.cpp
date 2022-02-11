@@ -421,11 +421,11 @@ void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char te
 	}
 }
 
-void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char text[])
+void DrawPixels(POINT pos[], int size, int bg_color[], int text_color, char text[])
 {
 	for (int i = 0; i < size; i++)
 	{
-		DrawPixel(pos[i], bg_color[i], text_color[i], text[i]);
+		DrawPixel(pos[i], bg_color[i], text_color, text[i]);
 	}
 }
 

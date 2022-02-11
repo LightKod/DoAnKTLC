@@ -37,6 +37,6 @@ void DrawPixels(POINT pos[], int size, int color[]);
 void DrawPixels(POINT pos[], int size, int bg_color, int text_color, char text);
 void DrawPixels(POINT pos[], int size, int bg_color, int text_color, char text[]);
 void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char text);
-void DrawPixels(POINT pos[], int size, int bg_color[], int text_color[], char text[]);
+void DrawPixels(POINT pos[], int size, int bg_color[], int text_color, char text[]);
 void DrawGate(int x, int y, int color, int direction);
 void DrawGate(POINT pos, int color, int direction);
