@@ -71,8 +71,8 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 3, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = {3, 2};
+	snake_pos[1] = {2, 2};
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
@@ -193,8 +193,7 @@ void TestSnakeMove()
 					min = 0;
 					sec = 0;
 					GameplayUI();
-					GenerateFood();
-					DrawPixel(food_pos, food_color);
+					SpawnFood();
 				}
 			}
 		}
@@ -361,12 +360,13 @@ void Eat()
 		}
 		snake_pos[snakeSize - 1] = last_pos;
 		current_last_text++;
-		/*if (current_last_text >= textSize)
+		if (current_last_text >= textSize)
 		{
 			current_last_text = 0;
-		}*/
+		}
 		snake_text[snakeSize - 1] = snake_default_text[current_last_text];
-		if (snakeSize != (8 * level)) {
+		if (snakeSize != (8 * level))
+		{
 			SpawnFood();
 		}
 		if (snakeSize == (8 * level))
@@ -375,7 +375,7 @@ void Eat()
 			GenerateGate();
 		}
 	}
-	
+
 	if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y && gate_state == 1)
 	{
 		ToTheNextLevel();
@@ -403,6 +403,10 @@ bool IsAlreadyHad(int x, int y)
 
 void GenerateWall()
 {
+	if (wall_size >= 1600)
+	{
+		return;
+	}
 	int x, y;
 	do
 	{
@@ -410,7 +414,7 @@ void GenerateWall()
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || IsAlreadyHad(x, y));
 	wall_size++;
-	wall_pos[wall_size - 1] = { x, y };
+	wall_pos[wall_size - 1] = {x, y};
 }
 
 void SetGateCollider()
@@ -418,35 +422,35 @@ void SetGateCollider()
 	switch (gate_dir)
 	{
 	case 0:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y };
-		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y + 1 };
-		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
 		break;
 
 	case 1:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y - 1 };
-		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y};
 		break;
 
 	case 2:
-		gate_colliders[0] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y };
-		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
 		break;
 
 	case 3:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x, gate_pos.y + 1};
 		break;
 	}
 }
@@ -498,7 +502,7 @@ void GenerateGate()
 		x = rand() % (game_field_width - 8) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 8) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || !IsWallValid);
-	gate_pos = { x, y };
+	gate_pos = {x, y};
 	gate_dir = rand() % 4;
 	SetGateCollider();
 }
@@ -508,50 +512,6 @@ void ToTheNextLevel()
 	GameplayUI();
 	gate_state = 0;
 	level += 1;
-	//current_last_text = 1;
-	//snakeSize = 2;
-	snake_dir = Direction::STOP;
-	snake_pos[0] = gate_pos;
-	switch (gate_dir)
-	{
-	case 0:
-		snake_pos[0].x = gate_pos.x;
-		snake_pos[0].y = gate_pos.y - 1;
-		break;
-
-	case 1:
-		snake_pos[0].x = gate_pos.x;
-		snake_pos[0].y = gate_pos.y + 1;
-		break;
-
-	case 2:
-		snake_pos[0].x = gate_pos.x - 1;
-		snake_pos[0].y = gate_pos.y;
-		break;
-
-	case 3:
-		snake_pos[0].x = gate_pos.x + 1;
-		snake_pos[0].y = gate_pos.y;
-		break;
-	}
-	for (int i = 1; i < snakeSize; i++) {
-		if (i <= 8) {
-			snake_pos[i].x = (snake_pos[i - 1].x + 1);
-			snake_pos[i].y = (snake_pos[i - 1].y);
-		}
-		if (8 < i && i <= 17) {
-			snake_pos[i].y = (snake_pos[i - 1].y + 1);
-			snake_pos[i].x = (snake_pos[i - 1].x);
-		}
-		if (17 < i && i <= 26) {
-			snake_pos[i].x = (snake_pos[i - 1].x - 1);
-			snake_pos[i].y = (snake_pos[i - 1].y);
-		}
-		if (26 < i && i <= 35) {
-			snake_pos[i].y = (snake_pos[i - 1].y + 1);
-			snake_pos[i].x = (snake_pos[i - 1].x - 1);
-		}
-	}
 	for (int i = 0; i < level; i++)
 	{
 		GenerateWall();

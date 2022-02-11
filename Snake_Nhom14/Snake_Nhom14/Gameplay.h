@@ -21,13 +21,13 @@ const int textSize = 36;
 static float fps = 100;
 
 // snake's properties
-static POINT snake_pos[100];
+static POINT snake_pos[2000];
 static int snake_color = 1;
 static int snakeSize;
 static Direction snake_dir;
 static State snake_state;
 static float snake_speed;
-static char snake_text[100];
+static char snake_text[2000];
 static int current_last_text;
 
 // food's properties
@@ -46,7 +46,7 @@ const POINT game_field_pos = {1, 1};
 const int game_field_color = 2;
 
 // Wall
-static POINT wall_pos[1000];
+static POINT wall_pos[2000];
 static int wall_size;
 static int wall_color = 15;
 
