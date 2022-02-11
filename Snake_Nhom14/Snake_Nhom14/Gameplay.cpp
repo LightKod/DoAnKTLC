@@ -127,6 +127,7 @@ void TestSnakeMove()
 	int h = 0, min = 0, sec = 0;
 	ResetData();
 	GameplayUI();
+	GenerateWallNew();
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
 	while (1)
@@ -417,6 +418,41 @@ void GenerateWall()
 	wall_pos[wall_size - 1] = {x, y};
 }
 
+void GenerateWallNew() {
+	switch (level % 3 + 1) {
+	case 1://Level 1: 0 wall
+		wall_size = 0;
+		break;
+	case 2://Level 2: 4 cuc vuong o 4 goc
+		wall_size = 16;
+		//Top Right
+		wall_pos[0] = { 5,5 };
+		wall_pos[1] = { 6,5 };
+		wall_pos[2] = { 6,6 };
+		wall_pos[3] = { 5,6 };
+
+		//Top Left
+		wall_pos[4] = { 42 - 5,5 };
+		wall_pos[5] = { 42 - 6,5 };
+		wall_pos[6] = { 42 - 6,6 };
+		wall_pos[7] = { 42 - 5,6 };
+		
+		//Bottom Left
+		wall_pos[8] = { 42 - 5, 42 - 5 };
+		wall_pos[9] = { 42 - 6,42 - 5 };
+		wall_pos[10] = { 42 - 6,42 - 6 };
+		wall_pos[11] = { 42 - 5,42 - 6 };
+
+		//Bottom Right
+		wall_pos[12] = { 5, 42 - 5 };
+		wall_pos[13] = { 6,42 - 5 };
+		wall_pos[14] = {  6,42 - 6 };
+		wall_pos[15] = { 5,42 - 6 };
+
+		//De suy nghi them...
+	}
+}
+
 void SetGateCollider()
 {
 	switch (gate_dir)
@@ -512,9 +548,10 @@ void ToTheNextLevel()
 	GameplayUI();
 	gate_state = 0;
 	level += 1;
-	for (int i = 0; i < level; i++)
+	/*for (int i = 0; i < level; i++)
 	{
 		GenerateWall();
-	}
+	}*/
+	GenerateWallNew();
 	SpawnFood();
 }

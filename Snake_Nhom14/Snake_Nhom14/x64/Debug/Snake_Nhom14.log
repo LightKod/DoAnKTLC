@@ -1,12 +1,8 @@
-﻿  GUI.cpp
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Gameplay.cpp
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(155,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(160,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(161,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(173,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(200,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(504,29): warning C4551: function call missing argument list
-  Snake_Nhom14.cpp
-  Generating Code...
-  Snake_Nhom14.vcxproj -> D:\New folder\Project\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
+﻿  Gameplay.cpp
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(156,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(161,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(162,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(174,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(201,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(538,29): warning C4551: function call missing argument list
+  Snake_Nhom14.vcxproj -> C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe

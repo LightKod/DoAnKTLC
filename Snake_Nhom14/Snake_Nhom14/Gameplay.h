@@ -15,6 +15,7 @@ enum class State // state of snake
 	ALIVE
 };
 
+
 const char snake_default_text[] = "21127151 21127077 21127483 21127297 ";
 const int textSize = 36;
 
@@ -78,6 +79,7 @@ void Eat();
 void SpawnFood();
 bool IsAlreadyHad();
 void GenerateWall();
+void GenerateWallNew();
 void SetGateCollider();
 bool IsHitTheGate();
 void GenerateGate();
