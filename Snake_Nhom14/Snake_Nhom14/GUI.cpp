@@ -5,19 +5,13 @@
 #include "GUI.h"
 #include "Gameplay.h"
 #include "Graphic.h"
-bool playingGame = true;
-bool howtoplay = true;
-bool highscore = true;
-bool exitGame = false;
-bool exitStartMenu = false;
 
-POINT cursor = { 0, 0 };
 using namespace std;
 void ClearScreen()
 {
 	system("cls");
 }
-void DisplayOptions()
+void StartMenu()
 {
 	GoToXYPixel(2, 0);
 	SetColor(0, 4);
@@ -34,42 +28,39 @@ void DisplayOptions()
 	SetColor(0, 7);
 	GoToXYPixel(0, 4);
 	cout << "WASD: move" << endl
-		<< "Enter: select" << endl
-		<< "Esc: exit" << endl;
+		 << "Enter: select" << endl
+		 << "Esc: exit" << endl;
 }
+
 void PlayingGame()
 {
 	TestSnakeMove();
+	playingGame = false;
 }
+
 void DisplayInstructions()
 {
 	ClearScreen();
 
 	printf("\n\n");
 
-
 	printf("\n\n\n");
 
 	printf("\t\t      How to play \n");
 	printf("\t\t      =========== \n\n\n");
 	printf("\t     The objective of the game is to eat\n");
-	printf("\t     as many food items as possible and     \n");
-	printf("\t          avoid hitting the walls.               \n");
-	printf("\t     Each food items gives you 10 points\n");
-	printf("\t        and you have 3 lives to get\n");
-	printf("\t      more points - before the game ends.    \n");
+	printf("\t     as many food items as possible and avoid hitting the walls.\n");
+	printf("\t     Each food items gives you points according to level\n");
+	printf("\t     and you have to get more points - before the game ends. \n");
 	printf("\n\n\n");
 }
 void GUI()
 {
-	SetUp();
-	SetConsoleOutputCP(65001);
-	srand(time(NULL));
 	while (!exitGame)
 	{
 
 		DrawRectangle(0, 0, 90, 70, 0);
-		DisplayOptions();
+		StartMenu();
 		while (1)
 		{
 			DrawPixel(cursor.x, cursor.y, 15);
@@ -125,23 +116,12 @@ void GUI()
 				else if (toupper(temp) == 'W' && cursor.y != 0)
 				{
 					cursor.y--;
-
 				}
-
 			}
-
 		}
 		if (playingGame)
 		{
 			PlayingGame();
-			/*while (true)
-				if (_kbhit())
-				{
-					int temp1 = _getch();
-					if (temp1 == 27)
-						break;
-				}*/
-			playingGame = false;
 		}
 		else if (howtoplay)
 		{
@@ -152,7 +132,8 @@ void GUI()
 					break;
 			_getch();
 		}
-		else if (highscore);
+		else if (highscore)
+			;
 		else if (exitGame)
 			return;
 		Sleep(100);
@@ -166,4 +147,3 @@ void GameplayUI()
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 34, 32, 15, 0);
 }
-
