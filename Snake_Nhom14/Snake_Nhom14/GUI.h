@@ -1,10 +1,9 @@
 #include <Windows.h>
 
 static bool playingGame = true;
-static bool howtoplay = true;
-static bool highscore = true;
+static bool howtoplay = false;
+static bool highscore = false;
 static bool exitGame = false;
-static bool optionMenu = false;
 static bool exitStartMenu = false;
 static POINT cursor = { 59, 19 };
 
