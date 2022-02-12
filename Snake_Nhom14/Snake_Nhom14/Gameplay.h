@@ -15,7 +15,6 @@ enum class State // state of snake
 	ALIVE
 };
 
-
 const char snake_default_text[] = "21127151 21127077 21127483 21127297 ";
 const int textSize = 36;
 
@@ -23,7 +22,7 @@ static float fps = 100;
 
 // snake's properties
 static POINT snake_pos[2000];
-static int snake_color[2000] = { 1, 9 };
+static int snake_color[2000] = {1, 9};
 static int snakeSize;
 static Direction snake_dir;
 static State snake_state;
@@ -43,7 +42,7 @@ static int t1, t2, game_time;
 
 const int game_field_width = 43;
 const int game_field_height = 43;
-const POINT game_field_pos = { 1, 1 };
+const POINT game_field_pos = {1, 1};
 const int game_field_color = 2;
 
 // Wall
@@ -58,6 +57,7 @@ static POINT gate_colliders[6];
 static int gate_state;
 
 static int level;
+static Direction previous_dir;
 
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);

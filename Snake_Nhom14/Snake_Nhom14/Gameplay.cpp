@@ -1,6 +1,7 @@
 #include "Gameplay.h"
 #include "Graphic.h"
 #include "GUI.h"
+#include "Sound.h"
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
@@ -71,16 +72,17 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 3, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = {3, 2};
+	snake_pos[1] = {2, 2};
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
-	snake_dir = Direction::STOP;
+	snake_dir = Direction::RIGHT;
 	snake_state = State::ALIVE;
 	snake_speed = 5;
 	score = 0;
 	game_time = 0;
+	t1 = time(0);
 	wall_size = 0;
 	gate_state = 0;
 	level = 1;
@@ -148,8 +150,21 @@ void TestSnakeMove()
 		GoToXYPixel(46, 6);
 		SetColor(0, 15);
 		cout << "LEVEL: " << level << " ";
+
 		if (snake_state != State::DEAD)
 		{
+			GoToXYPixel(46, 9);
+			cout << "                                     ";
+			GoToXYPixel(46, 8);
+			SetColor(0, 15);
+			if (snake_dir == Direction::STOP)
+			{
+				cout << "GAME PAUSED: Press esc to resume game";
+			}
+			else
+			{
+				cout << "Press esc to pause game              ";
+			}
 			GameInput();
 			if (snake_dir != Direction::STOP)
 			{
@@ -176,9 +191,10 @@ void TestSnakeMove()
 		}
 		else
 		{
-			GoToXYPixel(20, 20);
-			cout << "DEAD";
-			GoToXYPixel(20, 21);
+			GoToXYPixel(46, 8);
+			SetColor(0, 15);
+			cout << "Press esc to pause game              ";
+			GoToXYPixel(46, 9);
 			cout << "Press any key to restart";
 			if (_kbhit())
 			{
@@ -207,9 +223,18 @@ void GameInput()
 	if (_kbhit())
 	{
 		int temp = _getch();
+		PlayKey();
 		if (temp == 27)
 		{
-			snake_dir = Direction::STOP;
+			if (snake_dir != Direction::STOP)
+			{
+				previous_dir = snake_dir;
+				snake_dir = Direction::STOP;
+			}
+			else
+			{
+				snake_dir = previous_dir;
+			}
 			return;
 		}
 		switch (toupper(temp))
@@ -355,7 +380,7 @@ void Eat()
 	{
 		score += level * 10;
 		snakeSize++;
-		if (snakeSize % 16 == 0)
+		if (snakeSize % 4 == 0)
 		{
 			snake_speed += 1;
 		}
@@ -367,11 +392,11 @@ void Eat()
 			current_last_text = 0;
 		}
 		snake_text[snakeSize - 1] = snake_default_text[current_last_text];
-		if (snakeSize != (8 * level))
+		if (snakeSize != (9 * level))
 		{
 			SpawnFood();
 		}
-		if (snakeSize == (8 * level))
+		if (snakeSize == (9 * level))
 		{
 			gate_state = 1;
 			GenerateGate();
@@ -416,12 +441,12 @@ void GenerateWall()
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || IsAlreadyHad(x, y));
 	wall_size++;
-	wall_pos[wall_size - 1] = { x, y };
+	wall_pos[wall_size - 1] = {x, y};
 }
 
 void GenerateWallNew()
 {
-	switch (level % 2 + 1)
+	switch ((level - 1) % 3 + 1)
 	{
 	case 1: // Level 1: 0 wall
 		wall_size = 0;
@@ -429,28 +454,68 @@ void GenerateWallNew()
 	case 2: // Level 2: 4 cuc vuong o 4 goc
 		wall_size = 16;
 		// Top Right
-		wall_pos[0] = { 5, 5 };
-		wall_pos[1] = { 6, 5 };
-		wall_pos[2] = { 6, 6 };
-		wall_pos[3] = { 5, 6 };
+		wall_pos[0] = {5, 5};
+		wall_pos[1] = {6, 5};
+		wall_pos[2] = {6, 6};
+		wall_pos[3] = {5, 6};
 
 		// Top Left
-		wall_pos[4] = { 42 - 5, 5 };
-		wall_pos[5] = { 42 - 6, 5 };
-		wall_pos[6] = { 42 - 6, 6 };
-		wall_pos[7] = { 42 - 5, 6 };
+		wall_pos[4] = {42 - 5, 5};
+		wall_pos[5] = {42 - 6, 5};
+		wall_pos[6] = {42 - 6, 6};
+		wall_pos[7] = {42 - 5, 6};
 
 		// Bottom Left
-		wall_pos[8] = { 42 - 5, 42 - 5 };
-		wall_pos[9] = { 42 - 6, 42 - 5 };
-		wall_pos[10] = { 42 - 6, 42 - 6 };
-		wall_pos[11] = { 42 - 5, 42 - 6 };
+		wall_pos[8] = {42 - 5, 42 - 5};
+		wall_pos[9] = {42 - 6, 42 - 5};
+		wall_pos[10] = {42 - 6, 42 - 6};
+		wall_pos[11] = {42 - 5, 42 - 6};
 
 		// Bottom Right
-		wall_pos[12] = { 5, 42 - 5 };
-		wall_pos[13] = { 6, 42 - 5 };
-		wall_pos[14] = { 6, 42 - 6 };
-		wall_pos[15] = { 5, 42 - 6 };
+		wall_pos[12] = {5, 42 - 5};
+		wall_pos[13] = {6, 42 - 5};
+		wall_pos[14] = {6, 42 - 6};
+		wall_pos[15] = {5, 42 - 6};
+		break;
+
+	case 3:
+		wall_size = 28;
+
+		// Top left
+		wall_pos[0] = {6, 3};
+		wall_pos[1] = {6, 4};
+		wall_pos[2] = {6, 5};
+		wall_pos[3] = {6, 6};
+		wall_pos[4] = {5, 6};
+		wall_pos[5] = {4, 6};
+		wall_pos[6] = {3, 6};
+
+		// Top right
+		wall_pos[7] = {38, 3};
+		wall_pos[8] = {38, 4};
+		wall_pos[9] = {38, 5};
+		wall_pos[10] = {38, 6};
+		wall_pos[11] = {39, 6};
+		wall_pos[12] = {40, 6};
+		wall_pos[13] = {41, 6};
+
+		// Bottom right
+		wall_pos[14] = {38, 41};
+		wall_pos[15] = {38, 40};
+		wall_pos[16] = {38, 39};
+		wall_pos[17] = {38, 38};
+		wall_pos[18] = {39, 38};
+		wall_pos[19] = {40, 38};
+		wall_pos[20] = {41, 38};
+
+		// Bottom left
+		wall_pos[21] = {6, 41};
+		wall_pos[22] = {6, 40};
+		wall_pos[23] = {6, 39};
+		wall_pos[24] = {6, 38};
+		wall_pos[25] = {5, 38};
+		wall_pos[26] = {4, 38};
+		wall_pos[27] = {3, 38};
 		break;
 	}
 }
@@ -460,35 +525,35 @@ void SetGateCollider()
 	switch (gate_dir)
 	{
 	case 0:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y };
-		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y + 1 };
-		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
 		break;
 
 	case 1:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y - 1 };
-		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y};
 		break;
 
 	case 2:
-		gate_colliders[0] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y };
-		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
 		break;
 
 	case 3:
-		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
-		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y };
-		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y + 1 };
-		gate_colliders[4] = { gate_pos.x, gate_pos.y + 1 };
+		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
+		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
+		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y};
+		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y + 1};
+		gate_colliders[4] = {gate_pos.x, gate_pos.y + 1};
 		break;
 	}
 }
@@ -539,8 +604,8 @@ void GenerateGate()
 	{
 		x = rand() % (game_field_width - 8) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 8) + game_field_pos.y + 1;
-	} while (!IsValid(x, y) || !IsWallValid);
-	gate_pos = { x, y };
+	} while (!IsValid(x, y) || !IsWallValid(x, y));
+	gate_pos = {x, y};
 	gate_dir = rand() % 4;
 	SetGateCollider();
 }

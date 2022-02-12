@@ -13,7 +13,7 @@ bool highscore = false;
 bool exitGame = false;
 bool exitStartMenu = false;
 
-POINT cursor = { 59, 19 };
+POINT cursor = {59, 19};
 using namespace std;
 
 void DisplaySNAKE()
@@ -182,8 +182,6 @@ void GUI()
 	{
 		MenuBG();
 		StartMenu();
-		OpenMusic();
-		PlayMusic();
 		while (1)
 		{
 			DrawPixel(cursor.x, cursor.y, 15);
@@ -192,6 +190,7 @@ void GUI()
 				int temp = _getch();
 				DrawPixel(cursor.x, cursor.y, 2);
 				GoToXYPixel(0, 3);
+				PlayKey();
 				if (temp == 27)
 				{
 					playingGame = false;
@@ -254,12 +253,12 @@ void GUI()
 					break;
 			_getch();
 		}
-		else if (highscore);
+		else if (highscore)
+			;
 		else if (exitGame)
 			return;
 		Sleep(100);
 	}
-	CloseMusic();
 }
 
 void GameplayUI()

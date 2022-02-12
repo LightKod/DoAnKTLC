@@ -16,12 +16,12 @@ using namespace std;
 int main()
 {
 	SetUp();
-	//  TestFoodSpawn();
+	OpenSound();
+	PlayMusic();
 	GUI();
-	//OpenMusic();
-	//PlayMusic();
-	//TestSnakeMove();
-	//GoToXYPixel(10, 10);
+	// TestSnakeMove();
+	// GoToXYPixel(10, 10);
+	CloseMusic();
 	cout << "Hello snake\n";
-	//system("pause");
+	// system("pause");
 }
