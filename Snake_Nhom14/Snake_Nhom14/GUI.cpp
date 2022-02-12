@@ -8,11 +8,113 @@
 
 using namespace std;
 
-void OptionMenu()
+void DisplaySNAKE()
 {
-
+	DrawPixel(10, 1, 15);
+	DrawRectangle(13, 1, 2, 1, 15);
+	DrawRectangle(16, 1, 2, 2, 15);
+	DrawRectangle(19, 1, 4, 2, 15);
+	DrawRectangle(24, 1, 4, 2, 15);
+	DrawRectangle(29, 1, 2, 1, 15);
+	DrawRectangle(32, 1, 1, 7, 15);
+	DrawRectangle(11, 2, 2, 2, 15);
+	DrawRectangle(14, 2, 1,6, 15);
+	DrawRectangle(23, 2, 1, 2, 15);
+	DrawRectangle(29, 2, 1, 2, 15);
+	DrawRectangle(31, 2, 1, 5, 15);
+	DrawRectangle(34, 2, 3, 2, 15);
+	DrawRectangle(13, 3, 1, 2, 15);
+	DrawRectangle(17, 3, 1, 2, 15);
+	DrawRectangle(19, 3, 3, 2, 15);
+	DrawRectangle(25, 3, 3, 2, 15);
+	DrawRectangle(30, 3, 1, 3, 15);
+	DrawRectangle(10, 4, 1, 2, 15);
+	DrawRectangle(16, 4, 1, 4, 15);
+	DrawRectangle(11, 5, 2, 2, 15);
+	DrawRectangle(19, 5, 2, 2, 15);
+	DrawRectangle(22, 5, 3, 3, 15);
+	DrawRectangle(26, 5, 2, 2, 15);
+	DrawRectangle(29, 5, 1, 3, 15);
+	DrawRectangle(34, 5, 3, 2, 15);
+	DrawRectangle(17, 6, 1, 2, 15);
+	DrawRectangle(21, 6, 1, 2, 15);
+	DrawRectangle(25, 6, 1, 2, 15);
+	DrawPixel(10, 7, 15);
+	DrawPixel(13, 7, 15);
+	DrawPixel(19, 7, 15);
+	DrawPixel(27, 7, 15);
+	DrawPixel(30, 7, 15);
 }
-
+void DisplayGAME()
+{
+	DrawPixel(12, 9, 15);
+	DrawPixel(15, 9, 15);
+	DrawRectangle(16, 9, 3, 4, 15);
+	DrawRectangle(19, 9, 1, 2, 15);
+	DrawRectangle(21, 9, 4, 2, 15);
+	DrawRectangle(26, 9, 3, 1, 15);
+	DrawRectangle(30, 9, 1, 7, 15);
+	DrawRectangle(13, 10, 2, 2, 15);
+	DrawRectangle(20, 10, 1, 2, 15);
+	DrawRectangle(27, 10, 1, 2, 15);
+	DrawRectangle(32, 10, 3, 2, 15);
+	DrawPixel(15, 11, 15);
+	DrawRectangle(22, 11, 3, 2, 15);
+	DrawRectangle(26, 11, 1, 5, 15);
+	DrawRectangle(28, 11, 1, 5, 15);
+	DrawRectangle(13, 12, 1, 3, 15);
+	DrawRectangle(14, 13, 1, 2, 15);
+	DrawRectangle(26, 13, 1, 5, 15);
+	DrawRectangle(16, 13, 2, 2, 15);
+	DrawRectangle(19, 13, 3, 3, 15);
+	DrawRectangle(23, 13, 2, 2, 15);
+	DrawRectangle(27, 13, 1, 3, 15);
+	DrawRectangle(32, 13, 3, 2, 15);
+	DrawRectangle(18, 14, 1, 2, 15);
+	DrawRectangle(22, 14, 1, 2, 15);
+	DrawRectangle(12, 15, 1, 1, 15);
+	DrawRectangle(15, 15, 2, 1, 15);
+	DrawRectangle(24, 15, 1, 1, 15);
+}
+void DisplaySNAKEIMG()
+{
+	DrawRectangle(26, 16, 1, 2, 2);
+	DrawRectangle(22, 18, 6, 1, 3);
+	DrawRectangle(21, 19, 8, 1, 3);
+	DrawRectangle(20, 20, 10, 1, 3);
+	DrawRectangle(19, 21, 12, 1, 3);
+	DrawRectangle(18, 22,5, 1, 3);
+	DrawRectangle(17, 23, 6, 3, 3);
+	DrawRectangle(18, 26, 6, 1, 3);
+	DrawRectangle(19, 27, 6, 1, 3);
+	DrawRectangle(20, 28, 6, 1, 3);
+	DrawRectangle(21, 29, 6, 1, 3);
+	DrawRectangle(22, 30, 6, 1, 3);
+	DrawRectangle(23, 31, 6, 1, 3);
+	DrawRectangle(24, 32, 6, 1, 3);
+	DrawRectangle(25, 33, 5, 1, 3);
+	DrawRectangle(24, 34, 6, 1, 3);
+	DrawRectangle(16, 35, 13, 1, 3);
+	DrawRectangle(17, 36, 11, 1, 3);
+	DrawRectangle(18, 37, 9, 1, 3);
+	DrawRectangle(25, 19, 2, 2, 15);
+	DrawRectangle(26, 20, 1, 1, 0);
+	DrawRectangle(16, 30, 3, 5, 14);
+	DrawPixel(31, 22, 4);
+	DrawRectangle(32, 23, 2, 1, 4);
+	DrawPixel(32, 24, 4);
+}
+void MenuBG()
+{
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH-2, SCREEN_HEIGHT-2, 2);
+	DrawRectangle(45, 1, 1, SCREEN_HEIGHT - 2, 15);
+	DrawRectangle(10, 1, 27,7, 12);
+	DrawRectangle(12, 9, 23, 7, 12);
+	DisplaySNAKE();
+	DisplayGAME();
+	DisplaySNAKEIMG();
+}
 void ClearScreen()
 {
 	system("cls");
@@ -64,8 +166,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-
-		DrawRectangle(0, 0, 90, 70, 0);
+		MenuBG();
 		StartMenu();
 		while (1)
 		{
@@ -73,8 +174,7 @@ void GUI()
 			if (_kbhit())
 			{
 				int temp = _getch();
-				DrawPixel(cursor.x, cursor.y, 0);
-				DrawRectangle(0, 3, 3, 0, 0);
+				DrawPixel(cursor.x, cursor.y, 2);
 				GoToXYPixel(0, 3);
 				if (temp == 27)
 				{
