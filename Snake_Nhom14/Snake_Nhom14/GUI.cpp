@@ -5,6 +5,8 @@
 #include "GUI.h"
 #include "Gameplay.h"
 #include "Graphic.h"
+#include "Sound.h"
+
 bool playingGame = true;
 bool howtoplay = false;
 bool highscore = false;
@@ -24,7 +26,7 @@ void DisplaySNAKE()
 	DrawRectangle(29, 1, 2, 1, 15);
 	DrawRectangle(32, 1, 1, 7, 15);
 	DrawRectangle(11, 2, 2, 2, 15);
-	DrawRectangle(14, 2, 1,6, 15);
+	DrawRectangle(14, 2, 1, 6, 15);
 	DrawRectangle(23, 2, 1, 2, 15);
 	DrawRectangle(29, 2, 1, 2, 15);
 	DrawRectangle(31, 2, 1, 5, 15);
@@ -89,7 +91,7 @@ void DisplaySNAKEIMG()
 	DrawRectangle(21, 19, 8, 1, 3);
 	DrawRectangle(20, 20, 10, 1, 3);
 	DrawRectangle(19, 21, 12, 1, 3);
-	DrawRectangle(18, 22,5, 1, 3);
+	DrawRectangle(18, 22, 5, 1, 3);
 	DrawRectangle(17, 23, 6, 3, 3);
 	DrawRectangle(18, 26, 6, 1, 3);
 	DrawRectangle(19, 27, 6, 1, 3);
@@ -113,9 +115,9 @@ void DisplaySNAKEIMG()
 void MenuBG()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH-2, SCREEN_HEIGHT-2, 2);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
 	DrawRectangle(45, 1, 1, SCREEN_HEIGHT - 2, 15);
-	DrawRectangle(10, 1, 27,7, 12);
+	DrawRectangle(10, 1, 27, 7, 12);
 	DrawRectangle(12, 9, 23, 7, 12);
 	DisplaySNAKE();
 	DisplayGAME();
@@ -128,16 +130,13 @@ void ClearScreen()
 void StartMenu()
 {
 	GoToXYPixel(61, 19);
-	SetColor(2, 3);
+	SetColor(2, 11);
 	cout << "START";
 	GoToXYPixel(61, 20);
-	SetColor(2, 3);
 	cout << "HOW TO PLAY";
 	GoToXYPixel(61, 21);
-	SetColor(2, 3);
 	cout << "HIGHSCORE";
 	GoToXYPixel(61, 22);
-	SetColor(2, 3);
 	cout << "EXIT";
 	SetColor(2, 15);
 	GoToXYPixel(61, 23);
@@ -179,10 +178,12 @@ void DisplayInstructions()
 }
 void GUI()
 {
-	MenuBG();
 	while (!exitGame)
 	{
+		MenuBG();
 		StartMenu();
+		OpenMusic();
+		PlayMusic();
 		while (1)
 		{
 			DrawPixel(cursor.x, cursor.y, 15);
@@ -251,7 +252,6 @@ void GUI()
 			while (true)
 				if (_kbhit())
 					break;
-			MenuBG();
 			_getch();
 		}
 		else if (highscore);
@@ -259,6 +259,7 @@ void GUI()
 			return;
 		Sleep(100);
 	}
+	CloseMusic();
 }
 
 void GameplayUI()
