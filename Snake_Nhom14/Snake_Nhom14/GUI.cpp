@@ -7,6 +7,12 @@
 #include "Graphic.h"
 
 using namespace std;
+
+void OptionMenu()
+{
+
+}
+
 void ClearScreen()
 {
 	system("cls");
@@ -28,8 +34,8 @@ void StartMenu()
 	SetColor(0, 7);
 	GoToXYPixel(0, 4);
 	cout << "WASD: move" << endl
-		 << "Enter: select" << endl
-		 << "Esc: exit" << endl;
+		<< "Enter: select" << endl
+		<< "Esc: exit" << endl;
 }
 
 void PlayingGame()
@@ -136,6 +142,9 @@ void GUI()
 			;
 		else if (exitGame)
 			return;
+		else if (optionMenu) {
+			OptionMenu();
+		}
 		Sleep(100);
 	}
 }
