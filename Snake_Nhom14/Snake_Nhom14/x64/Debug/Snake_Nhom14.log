@@ -9,6 +9,8 @@ D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(541,29): w
 D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Graphic.cpp(55,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   GUI.cpp
 D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  SaveLoad.cpp
   Snake_Nhom14.cpp
+  Sound.cpp
   Generating Code...
   Snake_Nhom14.vcxproj -> D:\New folder\Project\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
