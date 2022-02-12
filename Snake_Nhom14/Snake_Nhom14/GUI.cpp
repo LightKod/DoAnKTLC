@@ -5,7 +5,13 @@
 #include "GUI.h"
 #include "Gameplay.h"
 #include "Graphic.h"
+bool playingGame = true;
+bool howtoplay = false;
+bool highscore = false;
+bool exitGame = false;
+bool exitStartMenu = false;
 
+POINT cursor = { 59, 19 };
 using namespace std;
 
 void DisplaySNAKE()
@@ -143,30 +149,37 @@ void StartMenu()
 void PlayingGame()
 {
 	TestSnakeMove();
-	playingGame = false;
 }
 
 void DisplayInstructions()
 {
 	ClearScreen();
-
-	printf("\n\n");
-
-	printf("\n\n\n");
-
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	SetColor(2, 15);
+	GoToXYPixel(29, 12);
 	printf("\t\t      How to play \n");
+	GoToXYPixel(29, 13);
 	printf("\t\t      =========== \n\n\n");
-	printf("\t     The objective of the game is to eat\n");
-	printf("\t     as many food items as possible and avoid hitting the walls.\n");
-	printf("\t     Each food items gives you points according to level\n");
-	printf("\t     and you have to get more points - before the game ends. \n");
-	printf("\n\n\n");
+	GoToXYPixel(29, 14);
+	printf("\t   The objective of the game is to eat\n");
+	GoToXYPixel(29, 15);
+	printf("\t   as many food items as possible and     \n");
+	GoToXYPixel(29, 16);
+	printf("\t        avoid hitting the walls.               \n");
+	GoToXYPixel(29, 17);
+	printf("\t   Each food items gives you 10 points\n");
+	GoToXYPixel(29, 18);
+	printf("\t      and you have 3 lives to get\n");
+	GoToXYPixel(29, 19);
+	printf("\t    more points - before the game ends.    \n");
+	GoToXYPixel(29, 22);
 }
 void GUI()
 {
+	MenuBG();
 	while (!exitGame)
 	{
-		MenuBG();
 		StartMenu();
 		while (1)
 		{
