@@ -127,23 +127,25 @@ void ClearScreen()
 }
 void StartMenu()
 {
-	GoToXYPixel(2, 0);
-	SetColor(0, 4);
+	GoToXYPixel(61, 19);
+	SetColor(2, 3);
 	cout << "START";
-	GoToXYPixel(2, 1);
-	SetColor(0, 1);
+	GoToXYPixel(61, 20);
+	SetColor(2, 3);
 	cout << "HOW TO PLAY";
-	GoToXYPixel(2, 2);
-	SetColor(0, 1);
+	GoToXYPixel(61, 21);
+	SetColor(2, 3);
 	cout << "HIGHSCORE";
-	GoToXYPixel(2, 3);
-	SetColor(0, 1);
+	GoToXYPixel(61, 22);
+	SetColor(2, 3);
 	cout << "EXIT";
-	SetColor(0, 7);
-	GoToXYPixel(0, 4);
-	cout << "WASD: move" << endl
-		<< "Enter: select" << endl
-		<< "Esc: exit" << endl;
+	SetColor(2, 15);
+	GoToXYPixel(61, 23);
+	cout << "WASD: move" << endl;
+	GoToXYPixel(61, 24);
+	cout << "Enter: select" << endl;
+	GoToXYPixel(61, 25);
+	cout << "Esc: exit" << endl;
 }
 
 void PlayingGame()
@@ -198,28 +200,28 @@ void GUI()
 				else if (temp == 13)
 				{
 					exitGame = false;
-					if (cursor.y == 0)
+					if (cursor.y == 19)
 					{
 						playingGame = true;
 						howtoplay = false;
 						highscore = false;
 						exitGame = false;
 					}
-					else if (cursor.y == 1)
+					else if (cursor.y == 20)
 					{
 						playingGame = false;
 						howtoplay = true;
 						highscore = false;
 						exitGame = false;
 					}
-					else if (cursor.y == 2)
+					else if (cursor.y == 21)
 					{
 						playingGame = false;
 						howtoplay = false;
 						highscore = true;
 						exitGame = false;
 					}
-					else if (cursor.y == 3)
+					else if (cursor.y == 22)
 					{
 						playingGame = false;
 						howtoplay = false;
@@ -228,11 +230,11 @@ void GUI()
 					}
 					break;
 				}
-				else if (toupper(temp) == 'S' && cursor.y != 3)
+				else if (toupper(temp) == 'S' && cursor.y != 22)
 				{
 					cursor.y++;
 				}
-				else if (toupper(temp) == 'W' && cursor.y != 0)
+				else if (toupper(temp) == 'W' && cursor.y != 19)
 				{
 					cursor.y--;
 				}
@@ -249,15 +251,12 @@ void GUI()
 			while (true)
 				if (_kbhit())
 					break;
+			MenuBG();
 			_getch();
 		}
-		else if (highscore)
-			;
+		else if (highscore);
 		else if (exitGame)
 			return;
-		else if (optionMenu) {
-			OptionMenu();
-		}
 		Sleep(100);
 	}
 }
