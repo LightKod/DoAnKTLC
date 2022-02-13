@@ -8,6 +8,14 @@ void OpenSound()
 {
 	OpenMusic();
 	OpenKey();
+	OpenEatSound();
+}
+
+void CloseSound()
+{
+	CloseMusic();
+	CloseKey();
+	CloseEatSound();
 }
 
 void OpenMusic()
@@ -43,4 +51,19 @@ void PlayKey()
 void CloseKey()
 {
 	mciSendString(TEXT("close key"), NULL, 0, NULL);
+}
+
+void OpenEatSound()
+{
+	mciSendString(TEXT("open \"eat.mp3\" type mpegvideo alias eat"), NULL, 0, NULL);
+}
+
+void PlayEatSound()
+{
+	mciSendString(TEXT("play eat"), NULL, 0, NULL);
+}
+
+void CloseEatSound()
+{
+	mciSendString(TEXT("close eat"), NULL, 0, NULL);
 }

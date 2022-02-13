@@ -21,7 +21,7 @@ int main()
 	GUI();
 	// TestSnakeMove();
 	// GoToXYPixel(10, 10);
-	CloseMusic();
+	CloseSound();
 	cout << "Hello snake\n";
 	// system("pause");
 }
