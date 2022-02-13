@@ -107,15 +107,19 @@ void DisplaySNAKEIMG()
 	DrawRectangle(24, 32, 6, 1, 3);
 	DrawRectangle(25, 33, 5, 1, 3);
 	DrawRectangle(24, 34, 6, 1, 3);
-	DrawRectangle(16, 35, 13, 1, 3);
-	DrawRectangle(17, 36, 11, 1, 3);
-	DrawRectangle(18, 37, 9, 1, 3);
+	DrawRectangle(15, 35, 14, 1, 3);
+	DrawRectangle(16, 36, 12, 1, 3);
+	DrawRectangle(17, 37, 10, 1, 3);
+	DrawRectangle(18, 38, 8, 1, 3);
 	DrawRectangle(25, 19, 2, 2, 15);
 	DrawRectangle(26, 20, 1, 1, 0);
-	DrawRectangle(16, 30, 3, 5, 14);
+	DrawRectangle(15, 34, 5, 1, 12);
+	DrawRectangle(16, 33, 3, 1, 12);
+	DrawRectangle(17, 32, 1, 1, 12);
 	DrawPixel(31, 22, 4);
-	DrawRectangle(32, 23, 2, 1, 4);
-	DrawPixel(32, 24, 4);
+	//DrawRectangle(32, 23, 2, 1, 4);
+	DrawPixel(32, 23, 4);
+	DrawRectangle(34, 25, 2, 2, 4);
 }
 void MenuBG()
 {
@@ -134,22 +138,24 @@ void ClearScreen()
 }
 void StartMenu()
 {
-	GoToXYPixel(61, 19);
+	GoToXYPixel(62, 19);
 	SetColor(2, 11);
-	cout << "START";
+	cout << " START";
 	GoToXYPixel(61, 20);
 	cout << "HOW TO PLAY";
 	GoToXYPixel(61, 21);
-	cout << "HIGHSCORE";
-	GoToXYPixel(61, 22);
-	cout << "EXIT";
-	SetColor(2, 15);
+	cout << " HIGHSCORE";
+	GoToXYPixel(62, 22);
+	cout << " EXIT";
 	GoToXYPixel(61, 23);
-	cout << "WASD: move" << endl;
+	cout << "-----.------";
+	SetColor(2, 15);
 	GoToXYPixel(61, 24);
-	cout << "Enter: select" << endl;
+	cout << "WASD: Move"<< endl;
 	GoToXYPixel(61, 25);
-	cout << "Esc: exit" << endl;
+	cout << "Enter: Select" << endl;
+	GoToXYPixel(61, 26);
+	cout << "Esc: Exit" << endl;
 }
 
 void PlayingGame()
