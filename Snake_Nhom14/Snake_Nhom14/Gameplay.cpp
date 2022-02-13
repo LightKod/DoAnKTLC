@@ -223,7 +223,6 @@ void GameInput()
 	if (_kbhit())
 	{
 		int temp = _getch();
-		PlayKey();
 		if (temp == 27)
 		{
 			if (snake_dir != Direction::STOP)
@@ -378,6 +377,7 @@ void Eat()
 {
 	if (snake_pos[0].x == food_pos.x && snake_pos[0].y == food_pos.y)
 	{
+		PlayEatSound();
 		score += level * 10;
 		snakeSize++;
 		if (snakeSize % 4 == 0)

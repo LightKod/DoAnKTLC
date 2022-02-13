@@ -60,7 +60,7 @@ void OpenEatSound()
 
 void PlayEatSound()
 {
-	mciSendString(TEXT("play eat"), NULL, 0, NULL);
+	mciSendString(TEXT("play eat from 0"), NULL, 0, NULL);
 }
 
 void CloseEatSound()
