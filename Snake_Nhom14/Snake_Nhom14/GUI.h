@@ -8,3 +8,4 @@ void GameplayUI();
 void ClearScreen();
 void StartMenu();
 void DisplayInstructions();
+void OptionMenu();

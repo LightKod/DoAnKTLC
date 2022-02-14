@@ -6,9 +6,9 @@
 
 void OpenSound()
 {
-	OpenMusic();
 	OpenKey();
 	OpenEatSound();
+	OpenMusic();
 }
 
 void CloseSound()
@@ -33,6 +33,11 @@ void PauseMusic()
 	mciSendString(TEXT("pause music"), NULL, 0, NULL);
 }
 
+void StopMusic()
+{
+	mciSendString(TEXT("stop music"), NULL, 0, NULL);
+}
+
 void CloseMusic()
 {
 	mciSendString(TEXT("close music"), NULL, 0, NULL);
@@ -46,6 +51,11 @@ void OpenKey()
 void PlayKey()
 {
 	mciSendString(TEXT("play key from 0"), NULL, 0, NULL);
+}
+
+void StopKey()
+{
+	mciSendString(TEXT("stop key"), NULL, 0, NULL);
 }
 
 void CloseKey()

@@ -68,7 +68,7 @@ void MoveRight();
 void MoveLeft();
 void MoveUp();
 void MoveDown();
-void TestSnakeMove();
+void RunGamePlay();
 void GameInput();
 void Move();
 bool IsHitTheBorder();

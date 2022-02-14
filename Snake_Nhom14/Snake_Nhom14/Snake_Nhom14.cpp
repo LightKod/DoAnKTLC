@@ -19,7 +19,7 @@ int main()
 	OpenSound();
 	PlayMusic();
 	GUI();
-	// TestSnakeMove();
+	// RunGamePlay();
 	// GoToXYPixel(10, 10);
 	CloseSound();
 	cout << "Hello snake\n";

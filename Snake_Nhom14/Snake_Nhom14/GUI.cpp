@@ -12,6 +12,7 @@ bool howtoplay = false;
 bool highscore = false;
 bool exitGame = false;
 bool exitStartMenu = false;
+bool optionMenu = false;
 
 POINT cursor = {59, 19};
 using namespace std;
@@ -117,7 +118,7 @@ void DisplaySNAKEIMG()
 	DrawRectangle(16, 33, 3, 1, 12);
 	DrawRectangle(17, 32, 1, 1, 12);
 	DrawPixel(31, 22, 4);
-	//DrawRectangle(32, 23, 2, 1, 4);
+	// DrawRectangle(32, 23, 2, 1, 4);
 	DrawPixel(32, 23, 4);
 	DrawRectangle(34, 25, 2, 2, 4);
 }
@@ -146,21 +147,23 @@ void StartMenu()
 	GoToXYPixel(61, 21);
 	cout << " HIGHSCORE";
 	GoToXYPixel(62, 22);
+	cout << "OPTION";
+	GoToXYPixel(62, 23);
 	cout << " EXIT";
-	GoToXYPixel(61, 23);
+	GoToXYPixel(61, 24);
 	cout << "-----.------";
 	SetColor(2, 15);
-	GoToXYPixel(61, 24);
-	cout << "WASD: Move"<< endl;
 	GoToXYPixel(61, 25);
-	cout << "Enter: Select" << endl;
+	cout << "WASD: Move" << endl;
 	GoToXYPixel(61, 26);
+	cout << "Enter: Select" << endl;
+	GoToXYPixel(61, 27);
 	cout << "Esc: Exit" << endl;
 }
 
 void PlayingGame()
 {
-	TestSnakeMove();
+	RunGamePlay();
 }
 
 void DisplayInstructions()
@@ -191,6 +194,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
+		cursor = {59, 19};
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -201,7 +205,8 @@ void GUI()
 				int temp = _getch();
 				DrawPixel(cursor.x, cursor.y, 2);
 				GoToXYPixel(0, 3);
-				PlayKey();
+				if (sfx_toggle)
+					PlayKey();
 				if (temp == 27)
 				{
 					playingGame = false;
@@ -216,6 +221,7 @@ void GUI()
 						playingGame = true;
 						howtoplay = false;
 						highscore = false;
+						optionMenu = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 20)
@@ -223,6 +229,7 @@ void GUI()
 						playingGame = false;
 						howtoplay = true;
 						highscore = false;
+						optionMenu = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 21)
@@ -230,6 +237,7 @@ void GUI()
 						playingGame = false;
 						howtoplay = false;
 						highscore = true;
+						optionMenu = false;
 						exitGame = false;
 					}
 					else if (cursor.y == 22)
@@ -237,15 +245,24 @@ void GUI()
 						playingGame = false;
 						howtoplay = false;
 						highscore = false;
+						optionMenu = true;
+						exitGame = false;
+					}
+					else if (cursor.y == 23)
+					{
+						playingGame = false;
+						howtoplay = false;
+						highscore = false;
+						optionMenu = false;
 						exitGame = true;
 					}
 					break;
 				}
-				else if (toupper(temp) == 'S' && cursor.y != 22)
+				else if (toupper(temp) == 'S' && cursor.y < 23)
 				{
 					cursor.y++;
 				}
-				else if (toupper(temp) == 'W' && cursor.y != 19)
+				else if (toupper(temp) == 'W' && cursor.y > 19)
 				{
 					cursor.y--;
 				}
@@ -266,6 +283,10 @@ void GUI()
 		}
 		else if (highscore)
 			;
+		else if (optionMenu)
+		{
+			OptionMenu();
+		}
 		else if (exitGame)
 			return;
 		Sleep(100);
@@ -278,4 +299,83 @@ void GameplayUI()
 	DrawBorder(game_field_pos, game_field_width, game_field_height, 15, game_field_color);
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 34, 32, 15, 0);
+}
+
+void OptionMenu()
+{
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	cursor = {27, 12};
+	while (1)
+	{
+		DrawPixel(cursor, 15);
+		SetColor(2, 15);
+		GoToXYPixel(29, 12);
+		cout << "Music: ";
+		if (music_toggle)
+		{
+			cout << "enable ";
+		}
+		else
+		{
+			cout << "disable";
+		}
+		GoToXYPixel(29, 13);
+		cout << "SFX  : ";
+		if (sfx_toggle)
+		{
+			cout << "enable ";
+		}
+		else
+		{
+			cout << "disable";
+		}
+		GoToXYPixel(29, 14);
+		cout << "Exit";
+		if (_kbhit())
+		{
+			if (sfx_toggle)
+				PlayKey();
+			int temp = _getch();
+			if (temp == 27)
+			{
+				return;
+			}
+			else if (temp == 13)
+			{
+				if (cursor.y == 12)
+				{
+					if (music_toggle)
+					{
+						StopMusic();
+						music_toggle = false;
+					}
+					else
+					{
+						PlayMusic();
+						music_toggle = true;
+					}
+				}
+				else if (cursor.y == 13)
+				{
+					sfx_toggle = (sfx_toggle ? false : true);
+				}
+				else if (cursor.y == 14)
+				{
+					return;
+				}
+			}
+			else if (toupper(temp) == 'W' && cursor.y > 12)
+			{
+				DrawPixel(cursor, 2);
+				cursor.y--;
+			}
+			else if (toupper(temp) == 'S' && cursor.y < 14)
+			{
+				DrawPixel(cursor, 2);
+				cursor.y++;
+			}
+		}
+		Sleep(100);
+	}
 }

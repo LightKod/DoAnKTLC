@@ -123,7 +123,7 @@ void MoveDown()
 	snake_pos[0].y++;
 }
 
-void TestSnakeMove()
+void RunGamePlay()
 {
 	float timer = 1;
 	int h = 0, min = 0, sec = 0;
@@ -153,18 +153,6 @@ void TestSnakeMove()
 
 		if (snake_state != State::DEAD)
 		{
-			GoToXYPixel(46, 9);
-			cout << "                                     ";
-			GoToXYPixel(46, 8);
-			SetColor(0, 15);
-			if (snake_dir == Direction::STOP)
-			{
-				cout << "GAME PAUSED: Press esc to resume game";
-			}
-			else
-			{
-				cout << "Press esc to pause game              ";
-			}
 			GameInput();
 			if (snake_dir != Direction::STOP)
 			{
@@ -193,7 +181,7 @@ void TestSnakeMove()
 		{
 			GoToXYPixel(46, 8);
 			SetColor(0, 15);
-			cout << "Press esc to pause game              ";
+			cout << "Press esc to exit game              ";
 			GoToXYPixel(46, 9);
 			cout << "Press any key to restart";
 			if (_kbhit())
@@ -225,16 +213,9 @@ void GameInput()
 		int temp = _getch();
 		if (temp == 27)
 		{
-			if (snake_dir != Direction::STOP)
-			{
-				previous_dir = snake_dir;
-				snake_dir = Direction::STOP;
-			}
-			else
-			{
-				snake_dir = previous_dir;
-			}
-			return;
+			OptionMenu();
+			GameplayUI();
+			DrawPixel(food_pos, food_color, 15, food_text);
 		}
 		switch (toupper(temp))
 		{
@@ -377,7 +358,8 @@ void Eat()
 {
 	if (snake_pos[0].x == food_pos.x && snake_pos[0].y == food_pos.y)
 	{
-		PlayEatSound();
+		if (sfx_toggle)
+			PlayEatSound();
 		score += level * 10;
 		snakeSize++;
 		if (snakeSize % 4 == 0)
