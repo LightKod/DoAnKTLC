@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include <Windows.h>
+#include<string>
 #include <conio.h>
 #include <mmsystem.h>
 #include "Graphic.h"
 #include "Gameplay.h"
 #include "GUI.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 #pragma comment(lib, "Winmm.lib")
 
 using namespace std;
@@ -18,7 +20,8 @@ int main()
 	SetUp();
 	OpenSound();
 	PlayMusic();
-	GUI();
+	Load();
+	//GUI();
 	// RunGamePlay();
 	// GoToXYPixel(10, 10);
 	CloseSound();
