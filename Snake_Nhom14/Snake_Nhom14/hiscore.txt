@@ -1,6 +1,6 @@
-4
+5
 khh 20
 aaa 10
 ttt 10
+[B 0
 ads 0
-
