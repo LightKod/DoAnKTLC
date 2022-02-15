@@ -9,3 +9,4 @@ void ClearScreen();
 void StartMenu();
 void DisplayInstructions();
 void OptionMenu();
+void ScoreBox();

@@ -6,6 +6,7 @@
 #include "Gameplay.h"
 #include "Graphic.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 
 bool playingGame = true;
 bool howtoplay = false;
@@ -299,6 +300,7 @@ void GameplayUI()
 	DrawBorder(game_field_pos, game_field_width, game_field_height, 15, game_field_color);
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 34, 32, 15, 0);
+	DisplayScore(47,13);
 }
 
 void OptionMenu()

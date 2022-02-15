@@ -8,6 +8,6 @@ static int dataSize;
 static PlayerData playerDatas[11];
 void Save(PlayerData newData);
 void Load();
-void DisplayScore();
+void DisplayScore(int x, int y);
 void TestSaveLoad();
 

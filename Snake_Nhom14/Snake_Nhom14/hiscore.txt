@@ -1,4 +1,6 @@
-3
-kh 20
+4
+khh 20
+aaa 10
 ttt 10
-kj 0
+ads 0
+

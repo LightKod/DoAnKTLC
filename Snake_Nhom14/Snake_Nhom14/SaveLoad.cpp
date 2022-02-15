@@ -1,4 +1,5 @@
 #include "SaveLoad.h"
+#include "Graphic.h"
 using namespace std;
 #include <iostream>
 #include <fstream>
@@ -42,12 +43,21 @@ void Load()
 	}
 }
 
-void DisplayScore()
+void DisplayScore(int x, int y)
 {
-	for (int i = 0; i < 10; i++)
+	//HiScoreText
+	DrawRectangle(x, y, 1, 3,15);
+	DrawRectangle(x, y+1, 3, 1,15);
+	DrawRectangle(x+2, y, 1, 3,15);
+	//DrawRectangle(x+4, y, 1, 1,7);
+	DrawRectangle(x+4, y+1, 1, 2,15);
+	for (int i = 0; i < dataSize; i++)
 	{
-		printf("%s + %d\n", playerDatas[i].name, playerDatas[i].score);
+		GoToXYPixel(x, y + i+4);
+		printf("%s ----- %d", playerDatas[i].name, playerDatas[i].score);
 	}
+
+	DrawBorder(x-2, y-1, 10, 15, 15);
 }
 
 void TestSaveLoad()
@@ -60,5 +70,5 @@ void TestSaveLoad()
 	strcpy_s(p2.name, "BBB");
 	p2.score = 100;
 	Save(p2);
-	DisplayScore();
+	//DisplayScore();
 }
