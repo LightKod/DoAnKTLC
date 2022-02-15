@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <Windows.h>
-#include<string>
+#include <string>
 #include <conio.h>
 #include <mmsystem.h>
 #include "Graphic.h"
@@ -21,7 +21,8 @@ int main()
 	OpenSound();
 	PlayMusic();
 	Load();
-	//GUI();
+	// TestSaveLoad();
+	GUI();
 	// RunGamePlay();
 	// GoToXYPixel(10, 10);
 	CloseSound();

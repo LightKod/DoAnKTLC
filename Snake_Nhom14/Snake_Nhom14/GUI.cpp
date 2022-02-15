@@ -14,7 +14,7 @@ bool exitGame = false;
 bool exitStartMenu = false;
 bool optionMenu = false;
 
-POINT cursor = {59, 19};
+POINT cursor = { 59, 19 };
 using namespace std;
 
 void DisplaySNAKE()
@@ -194,7 +194,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-		cursor = {59, 19};
+		cursor = { 59, 19 };
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -305,7 +305,7 @@ void OptionMenu()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
-	cursor = {27, 12};
+	cursor = { 27, 12 };
 	while (1)
 	{
 		DrawPixel(cursor, 15);

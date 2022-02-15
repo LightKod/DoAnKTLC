@@ -37,6 +37,7 @@ static char food_text;
 
 static int score;
 static POINT last_pos;
+static char name[4];
 
 static int t1, t2, game_time;
 

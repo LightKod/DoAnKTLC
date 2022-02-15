@@ -2,6 +2,7 @@
 #include "Graphic.h"
 #include "GUI.h"
 #include "Sound.h"
+#include "SaveLoad.h"
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
@@ -179,26 +180,81 @@ void RunGamePlay()
 		}
 		else
 		{
+			bool saveName = false;
+			if (dataSize < 10)
+			{
+				saveName = true;
+			}
+			else
+			{
+				for (int i = 0; i < dataSize; i++)
+				{
+					if (playerDatas[i].score <= score)
+					{
+						saveName = true;
+						break;
+					}
+				}
+			}
 			GoToXYPixel(46, 8);
 			SetColor(0, 15);
-			cout << "Press esc to exit game              ";
-			GoToXYPixel(46, 9);
-			cout << "Press any key to restart";
-			if (_kbhit())
+			if (saveName)
 			{
-				int temp = _getch();
-				if (temp == 27)
+
+				cout << "Enter name: ";
+				ShowCursor(true);
+				cin.getline(name, 4);
+				PlayerData playerData;
+				strcpy_s(playerData.name, name);
+				playerData.score = score;
+				Save(playerData);
+				ShowCursor(false);
+				GoToXYPixel(46, 9);
+				SetColor(0, 15);
+				cout << "Press esc to exit game              ";
+				while (1)
 				{
-					break;
+					if (_kbhit())
+					{
+						int temp = _getch();
+						if (temp == 27)
+						{
+							return;
+						}
+						else
+						{
+							ResetData();
+							h = 0;
+							min = 0;
+							sec = 0;
+							GameplayUI();
+							SpawnFood();
+						}
+					}
 				}
-				else
+			}
+			else
+			{
+				cout << "Press any key to restart";
+				GoToXYPixel(46, 9);
+				SetColor(0, 15);
+				cout << "Press esc to exit game              ";
+				if (_kbhit())
 				{
-					ResetData();
-					h = 0;
-					min = 0;
-					sec = 0;
-					GameplayUI();
-					SpawnFood();
+					int temp = _getch();
+					if (temp == 27)
+					{
+						return;
+					}
+					else
+					{
+						ResetData();
+						h = 0;
+						min = 0;
+						sec = 0;
+						GameplayUI();
+						SpawnFood();
+					}
 				}
 			}
 		}
