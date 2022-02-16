@@ -24,8 +24,8 @@ int main()
 	// TestSaveLoad();
 	GUI();
 	// RunGamePlay();
-	// GoToXYPixel(10, 10);
 	CloseSound();
-	cout << "Hello snake\n";
+	GoToXYPixel(0, 0);
+	cout << "\tHello snake\n";
 	// system("pause");
 }
