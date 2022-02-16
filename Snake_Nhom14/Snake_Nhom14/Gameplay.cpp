@@ -484,7 +484,11 @@ void GenerateWall()
 
 void GenerateWallNew()
 {
-	switch ((level - 1) % 3 + 1)// Do not change this line
+	switch ((level - 1) % 4 + 1)// Do not change this line
+	// 4: how many levels
+	// 1 level -> 1
+	// 2 levels -> 2
+	// x levels -> x
 	{
 	case 1: // Level 1: 0 wall
 		wall_size = 0;
