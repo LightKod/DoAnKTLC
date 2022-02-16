@@ -73,8 +73,8 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = {3, 2};
-	snake_pos[1] = {2, 2};
+	snake_pos[0] = { 3, 2 };
+	snake_pos[1] = { 2, 2 };
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
@@ -475,8 +475,8 @@ void GenerateWall()
 	int x, y;
 	do
 	{
-	x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
-	y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
+		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
+		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || IsAlreadyHad(x, y));
 	wall_size++;
 	wall_pos[wall_size - 1] = { x, y };
@@ -484,7 +484,7 @@ void GenerateWall()
 
 void GenerateWallNew()
 {
-	switch ((level))
+	switch ((level - 1) % 3 + 1)// Do not change this line
 	{
 	case 1: // Level 1: 0 wall
 		wall_size = 0;
@@ -593,45 +593,37 @@ void GenerateWallNew()
 	}
 }
 
-void SetGateCollider()
+void SetGateCollider() //Do not change this function
 {
 	switch (gate_dir)
 	{
 	case 0:
-		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y};
-		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y};
-		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y + 1};
-		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
-		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
+		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y };
+		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y };
+		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y + 1 };
+		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
+		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
 		break;
 
 	case 1:
-		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
-		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
-		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y - 1};
-		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y};
-		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y};
+		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
+		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
+		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y - 1 };
+		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y };
+		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y };
 		break;
 
 	case 2:
-		gate_colliders[0] = {gate_pos.x, gate_pos.y - 1};
-		gate_colliders[1] = {gate_pos.x + 1, gate_pos.y - 1};
-		gate_colliders[2] = {gate_pos.x + 1, gate_pos.y};
-		gate_colliders[3] = {gate_pos.x, gate_pos.y + 1};
-		gate_colliders[4] = {gate_pos.x + 1, gate_pos.y + 1};
+		gate_colliders[0] = { gate_pos.x, gate_pos.y - 1 };
+		gate_colliders[1] = { gate_pos.x + 1, gate_pos.y - 1 };
+		gate_colliders[2] = { gate_pos.x + 1, gate_pos.y };
+		gate_colliders[3] = { gate_pos.x, gate_pos.y + 1 };
+		gate_colliders[4] = { gate_pos.x + 1, gate_pos.y + 1 };
 		break;
 
 	case 3:
-		gate_colliders[0] = {gate_pos.x - 1, gate_pos.y - 1};
-		gate_colliders[1] = {gate_pos.x, gate_pos.y - 1};
-		gate_colliders[2] = {gate_pos.x - 1, gate_pos.y};
-		gate_colliders[3] = {gate_pos.x - 1, gate_pos.y + 1};
-		gate_colliders[4] = {gate_pos.x, gate_pos.y + 1};
-		break;
-
-	case 4:
 		gate_colliders[0] = { gate_pos.x - 1, gate_pos.y - 1 };
-		gate_colliders[1] = { gate_pos.x - 1, gate_pos.y - 1 };
+		gate_colliders[1] = { gate_pos.x, gate_pos.y - 1 };
 		gate_colliders[2] = { gate_pos.x - 1, gate_pos.y };
 		gate_colliders[3] = { gate_pos.x - 1, gate_pos.y + 1 };
 		gate_colliders[4] = { gate_pos.x, gate_pos.y + 1 };
@@ -678,7 +670,7 @@ bool IsHitTheGate()
 	return false;
 }
 
-void GenerateGate()
+void GenerateGate() // Do not change this function
 {
 	int x, y;
 	do
@@ -686,7 +678,7 @@ void GenerateGate()
 		x = rand() % (game_field_width - 8) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 8) + game_field_pos.y + 1;
 	} while (!IsValid(x, y) || !IsWallValid(x, y));
-	gate_pos = {x, y};
+	gate_pos = { x, y };
 	gate_dir = rand() % 4;
 	SetGateCollider();
 }
