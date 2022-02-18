@@ -164,7 +164,91 @@ void StartMenu()
 
 void PlayingGame()
 {
-	RunGamePlay();
+	int time;
+	for (time = 1; time <= 4; time++) 
+	{
+		switch (time)
+		{
+		case 1:
+		{
+			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+
+			DrawRectangle(43, 1, 10, 43, 4);
+			DrawRectangle(42, 1, 1, 14, 4);
+			DrawRectangle(41, 2, 1, 13, 4);
+			DrawRectangle(40, 3, 1, 12, 4);
+			DrawRectangle(39, 4, 1, 11, 4);
+			DrawRectangle(38, 5, 1, 10, 4);
+			DrawRectangle(37, 6, 1, 9, 4);
+			DrawRectangle(36, 7, 1, 8, 4);
+			DrawRectangle(35, 8, 1, 7, 4);
+			DrawRectangle(34, 9, 1, 6, 4);
+			DrawRectangle(33, 10, 1, 5, 4);
+			DrawRectangle(32, 11, 1, 4, 4);
+			DrawRectangle(31, 12, 1, 3, 4);
+			DrawRectangle(30, 13, 1, 2, 4);
+			DrawRectangle(29, 14, 1, 1, 4);
+		}
+		case 2:
+		{
+			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+
+			DrawRectangle(30, 1, 23, 1, 4);
+			DrawRectangle(29, 2, 25, 1, 4);
+			DrawRectangle(28, 3, 27, 1, 4);
+			DrawRectangle(27, 4, 29, 1, 4);
+			DrawRectangle(27, 5, 29, 1, 4);
+			DrawRectangle(27, 6, 5, 8, 4);
+			DrawRectangle(51, 6, 5, 14, 4);
+			DrawRectangle(31, 20, 25, 1, 4);
+			DrawRectangle(30, 21, 25, 1, 4);
+			DrawRectangle(29, 22, 25, 1, 4);
+			DrawRectangle(28, 23, 25, 1, 4);
+			DrawRectangle(27, 24, 25, 1, 4);
+			DrawRectangle(27, 25, 5, 14, 4);
+			DrawRectangle(51, 31, 5, 8, 4);
+			DrawRectangle(27, 39, 29, 1, 4);
+			DrawRectangle(28, 40, 27, 1, 4);
+			DrawRectangle(29, 41, 25, 1, 4);
+			DrawRectangle(30, 42, 23, 1, 4);
+			DrawRectangle(31, 43, 21, 1, 4);
+		}
+		case 3:
+		{
+			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+
+			DrawRectangle(30, 1, 23, 1, 4);
+			DrawRectangle(29, 2, 25, 1, 4);
+			DrawRectangle(28, 3, 27, 1, 4);
+			DrawRectangle(27, 4, 29, 1, 4);
+			DrawRectangle(27, 5, 29, 1, 4);
+			DrawRectangle(27, 6, 5, 8, 4);
+			DrawRectangle(51, 6, 5, 13, 4);
+			DrawRectangle(51, 19, 4, 1, 4);
+			DrawRectangle(32, 20, 22, 1, 4);
+			DrawRectangle(32, 21, 21, 1, 4);
+			DrawRectangle(32, 22, 20, 1, 4);
+			DrawRectangle(32, 23, 21, 1, 4);
+			DrawRectangle(32, 24, 22, 1, 4);
+			DrawRectangle(51, 25, 4, 1, 4);
+			DrawRectangle(51, 26, 5, 13, 4);
+			DrawRectangle(27, 31, 5, 8, 4);
+			DrawRectangle(27, 39, 29, 1, 4);
+			DrawRectangle(28, 40, 27, 1, 4);
+			DrawRectangle(29, 41, 25, 1, 4);
+			DrawRectangle(30, 42, 23, 1, 4);
+			DrawRectangle(31, 43, 21, 1, 4);
+		}
+		case 4:
+		{
+			RunGamePlay();
+		}
+		Sleep(10 / fps);
+		}
+	}
 }
 
 void DisplayInstructions()
@@ -184,12 +268,12 @@ void DisplayInstructions()
 	GoToXYPixel(29, 16);
 	printf("\t        avoid hitting the walls.               \n");
 	GoToXYPixel(29, 17);
-	printf("\t   Each food items gives you 10 points\n");
+	printf("\tEach food items gives you 10 points x level\n");
 	GoToXYPixel(29, 18);
-	printf("\t      and you have 3 lives to get\n");
+	printf("\t      and you have 1 lives to get\n");
 	GoToXYPixel(29, 19);
 	printf("\t    more points - before the game ends.    \n");
-	GoToXYPixel(29, 22);
+	GoToXYPixel(30, 22);
 }
 void GUI()
 {
