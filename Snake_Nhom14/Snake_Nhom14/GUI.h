@@ -10,3 +10,4 @@ void StartMenu();
 void DisplayInstructions();
 void OptionMenu();
 void ScoreBox();
+void WaitPlayGame();

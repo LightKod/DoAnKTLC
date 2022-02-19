@@ -130,6 +130,7 @@ void RunGamePlay()
 	float timer = 1;
 	int h = 0, min = 0, sec = 0;
 	ResetData();
+	WaitPlayGame();
 	GameplayUI();
 	GenerateWallNew();
 	GenerateFood();
@@ -239,6 +240,7 @@ void RunGamePlay()
 						h = 0;
 						min = 0;
 						sec = 0;
+						WaitPlayGame();
 						GameplayUI();
 						SpawnFood();
 						break;
