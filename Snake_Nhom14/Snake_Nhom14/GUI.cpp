@@ -15,7 +15,7 @@ bool exitGame = false;
 bool exitStartMenu = false;
 bool optionMenu = false;
 
-POINT cursor = {59, 19};
+POINT cursor = { 59, 19 };
 using namespace std;
 
 void DisplaySNAKE()
@@ -164,7 +164,12 @@ void StartMenu()
 
 void PlayingGame()
 {
+	StopMusic();
 	RunGamePlay();
+	if (music_toggle)
+	{
+		PlayMusic();
+	}
 }
 
 void DisplayInstructions()
@@ -195,7 +200,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-		cursor = {59, 19};
+		cursor = { 59, 19 };
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -299,8 +304,8 @@ void GameplayUI()
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawBorder(game_field_pos, game_field_width, game_field_height, 15, game_field_color);
 	DrawBorder(45, 1, 34, 10, 15, 0);
-	DrawBorder(45, 12, 34, 32, 15, 0);
-	// DisplayScore(47,13);
+	DrawBorder(45, 12, 34, 4, 15, 0);
+	DrawBorder(45, 17, 34, 28, 15, 0);
 	DisplayHighScoreInGame();
 }
 
@@ -308,7 +313,7 @@ void OptionMenu()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
-	cursor = {27, 12};
+	cursor = { 27, 12 };
 	while (1)
 	{
 		DrawPixel(cursor, 15);
@@ -354,16 +359,25 @@ void OptionMenu()
 					{
 						StopMusic();
 						music_toggle = false;
+						sfx = false;
 					}
 					else
 					{
 						PlayMusic();
 						music_toggle = true;
+						sfx = true;
 					}
 				}
 				else if (cursor.y == 13)
 				{
-					sfx_toggle = (sfx_toggle ? false : true);
+					if (sfx_toggle)
+					{
+						sfx_toggle = false;
+					}
+					else
+					{
+						sfx_toggle = true;
+					}
 				}
 				else if (cursor.y == 14)
 				{

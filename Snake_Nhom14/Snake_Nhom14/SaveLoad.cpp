@@ -125,14 +125,14 @@ void DisplayScore(int x, int y)
 
 void DisplayHighScoreInGame()
 {
-	GoToXYPixel(46, 13);
+	GoToXYPixel(46, 18);
 	SetColor(0, 15);
-	printf("                                HIGHSCORE");
-	GoToXYPixel(46, 14);
+	printf("                            HIGHSCORE");
+	GoToXYPixel(46, 19);
 	printf("   | name |  score | time");
 	for (int i = 0; i < dataSize; i++)
 	{
-		GoToXYPixel(46, 15 + i);
+		GoToXYPixel(46, 20 + i);
 		printf("%2d | %4s | %6d | %d", i + 1, playerDatas[i].name, playerDatas[i].score, playerDatas[i].time);
 	}
 }

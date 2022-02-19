@@ -59,6 +59,8 @@ static int gate_state;
 
 static int level;
 static Direction previous_dir;
+static int process = 2;
+static bool sfx;
 
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);
@@ -85,3 +87,4 @@ void SetGateCollider();
 bool IsHitTheGate();
 void GenerateGate();
 void ToTheNextLevel();
+void ProcessBar();
