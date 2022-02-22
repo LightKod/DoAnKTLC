@@ -34,6 +34,9 @@ static int current_last_text;
 static POINT food_pos;
 static int food_color = 4;
 static char food_text;
+static POINT bigfood_pos[4];
+static int bigfood_state;
+static int bigfood_temp;
 
 static int score;
 static POINT last_pos;
@@ -89,3 +92,4 @@ void GenerateGate();
 void ToTheNextLevel();
 void ProcessBar();
 void ToggleSfx();
+void GenerateBigFood();

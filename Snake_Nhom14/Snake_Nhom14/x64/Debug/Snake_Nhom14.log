@@ -1,10 +1,73 @@
-﻿  Gameplay.cpp
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(87,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(164,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(169,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(170,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(182,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\New folder\Project\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(253,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+﻿Environment at start of build:
+ALLUSERSPROFILE = C:\ProgramData
+APPDATA = C:\Users\henry\AppData\Roaming
+CommonProgramFiles = C:\Program Files (x86)\Common Files
+CommonProgramFiles(Arm) = C:\Program Files (Arm)\Common Files
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+CommonProgramW6432 = C:\Program Files\Common Files
+COMPUTERNAME = DOPHAMTHANHCCBA
+ComSpec = C:\WINDOWS\system32\cmd.exe
+DriverData = C:\Windows\System32\Drivers\DriverData
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+FPS_BROWSER_USER_PROFILE_STRING = Default
+HOMEDRIVE = C:
+HOMEPATH = \Users\henry
+LOCALAPPDATA = C:\Users\henry\AppData\Local
+LOGONSERVER = \\DOPHAMTHANHCCBA
+MSBuildLoadMicrosoftTargetsReadOnly = true
+NUMBER_OF_PROCESSORS = 4
+OS = Windows_NT
+Path = C:\Program Files\Parallels\Parallels Tools\Applications;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\henry\AppData\Local\Microsoft\WindowsApps;
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PkgDefApplicationConfigFile = C:\Users\henry\AppData\Local\Microsoft\VisualStudio\16.0_05f0b2ad\devenv.exe.config
+PROCESSOR_ARCHITECTURE = x86
+PROCESSOR_ARCHITEW6432 = ARM64
+PROCESSOR_IDENTIFIER = ARMv8 (64-bit) Family 8 Model 0 Revision   0,  
+PROCESSOR_LEVEL = 0
+PROCESSOR_REVISION = 0000
+ProgramData = C:\ProgramData
+ProgramFiles = C:\Program Files (x86)
+ProgramFiles(Arm) = C:\Program Files (Arm)
+ProgramFiles(x86) = C:\Program Files (x86)
+ProgramW6432 = C:\Program Files
+PSModulePath = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC = C:\Users\Public
+ServiceHubLogSessionKey = 427A05E5
+SESSIONNAME = Console
+SystemDrive = C:
+SystemRoot = C:\WINDOWS
+TEMP = C:\Users\henry\AppData\Local\Temp
+ThreadedWaitDialogDpiContext = -4
+TMP = C:\Users\henry\AppData\Local\Temp
+USERDOMAIN = DOPHAMTHANHCCBA
+USERDOMAIN_ROAMINGPROFILE = DOPHAMTHANHCCBA
+USERNAME = henry
+USERPROFILE = C:\Users\henry
+VisualStudioDir = \\Mac\Home\Documents\Visual Studio 2019
+VisualStudioEdition = Microsoft Visual Studio Community 2019
+VisualStudioVersion = 16.0
+VSAPPIDDIR = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\
+VSAPPIDNAME = devenv.exe
+VSLANG = 1033
+VSLS_SESSION_KEEPALIVE_INTERVAL = 0
+VSSKUEDITION = Community
+windir = C:\WINDOWS
+
+  GUI.cpp
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(405,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(410,12): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\GUI.cpp(412,12): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+  Gameplay.cpp
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(87,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(165,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(170,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(171,18): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(183,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(254,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  Graphic.cpp
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Graphic.cpp(55,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   SaveLoad.cpp
+  Snake_Nhom14.cpp
+  Sound.cpp
   Generating Code...
-  Snake_Nhom14.vcxproj -> D:\New folder\Project\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
+  Snake_Nhom14.vcxproj -> \\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe

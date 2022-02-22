@@ -89,6 +89,7 @@ void ResetData()
 	gate_state = 0;
 	level = 1;
 	process = 2;
+	bigfood_temp = 0;
 }
 
 void MoveRight()
@@ -441,11 +442,30 @@ void Eat()
 			gate_state = 1;
 			GenerateGate();
 		}
+		if (snakeSize == 8 + (9 * (level - 1)))
+		{
+			if (bigfood_temp == 0)
+			{
+				bigfood_state = 0;
+				GenerateBigFood();
+			}
+		}
 	}
-
 	if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y && gate_state == 1)
 	{
 		ToTheNextLevel();
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		if (snake_pos[0].x == bigfood_pos[i].x && snake_pos[0].y == bigfood_pos[i].y)
+		{
+			bigfood_temp++;
+			bigfood_state++;
+			if (sfx) PlayEatSound();
+			score += level * 30;
+			GenerateBigFood();
+			break;
+		}
 	}
 }
 
@@ -699,6 +719,7 @@ void GenerateGate() // Do not change this function
 void ToTheNextLevel()
 {
 	GameplayUI();
+	bigfood_temp = 0;
 	gate_state = 0;
 	level += 1;
 	process = 0;
@@ -735,5 +756,27 @@ void ToggleSfx()
 	else
 	{
 		sfx = true;
+	}
+}
+void GenerateBigFood()
+{
+	if (bigfood_state == 0) {
+		int a, b;
+		do {
+			a = rand() % (game_field_width - 3) + game_field_pos.x + 1;
+			b = rand() % (game_field_height - 3) + game_field_pos.y + 1;
+			bigfood_pos[0] = { a,b };
+			bigfood_pos[1] = { a + 1,b };
+			bigfood_pos[2] = { a,b + 1 };
+			bigfood_pos[3] = { a + 1,b + 1 };
+		} while (!IsValid(a, b) || !IsWallValid(a, b));
+		for (int i = 0; i < 4; i++) DrawPixel(bigfood_pos[i], 4);
+	}
+	else if (bigfood_state != 0) {
+		for (int i = 0; i < 4; i++) {
+			DrawPixel(bigfood_pos[i], game_field_color);
+			bigfood_pos[i] = { 0,0 };
+		}
+		bigfood_state = 0;
 	}
 }
