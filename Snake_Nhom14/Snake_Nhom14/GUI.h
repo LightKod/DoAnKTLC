@@ -1,4 +1,8 @@
 #include <Windows.h>
+
+static bool key_toggle = true;
+static bool music_toggle = true;
+
 void DisplaySNAKE();
 void DisplayGAME();
 void DisplaySNAKEIMG();

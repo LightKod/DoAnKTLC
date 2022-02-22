@@ -407,7 +407,8 @@ void Eat()
 {
 	if (snake_pos[0].x == food_pos.x && snake_pos[0].y == food_pos.y)
 	{
-		if (sfx) {
+		if (sfx)
+		{
 			PlayEatSound();
 		}
 
@@ -718,5 +719,17 @@ void ProcessBar()
 		DrawPixel(48 + i * 4, 14, 11);
 		DrawPixel(49 + i * 4, 13, 3);
 		DrawPixel(49 + i * 4, 14, 3);
+	}
+}
+
+void ToggleSfx()
+{
+	if (sfx)
+	{
+		sfx = false;
+	}
+	else
+	{
+		sfx = true;
 	}
 }

@@ -2,9 +2,6 @@
 #include <Windows.h>
 #include <mmsystem.h>
 
-static bool music_toggle = true;
-static bool sfx_toggle = true;
-
 void OpenSound();
 void CloseSound();
 void OpenMusic();

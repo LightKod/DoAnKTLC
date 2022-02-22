@@ -15,7 +15,7 @@ bool exitGame = false;
 bool exitStartMenu = false;
 bool optionMenu = false;
 
-POINT cursor = { 59, 19 };
+POINT cursor = {59, 19};
 using namespace std;
 
 void DisplaySNAKE()
@@ -164,12 +164,7 @@ void StartMenu()
 
 void PlayingGame()
 {
-	StopMusic();
 	RunGamePlay();
-	if (music_toggle)
-	{
-		PlayMusic();
-	}
 }
 
 void DisplayInstructions()
@@ -200,7 +195,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-		cursor = { 59, 19 };
+		cursor = {59, 19};
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -211,7 +206,7 @@ void GUI()
 				int temp = _getch();
 				DrawPixel(cursor.x, cursor.y, 2);
 				GoToXYPixel(0, 3);
-				if (sfx_toggle)
+				if (key_toggle)
 					PlayKey();
 				if (temp == 27)
 				{
@@ -313,7 +308,7 @@ void OptionMenu()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
-	cursor = { 27, 12 };
+	cursor = {27, 12};
 	while (1)
 	{
 		DrawPixel(cursor, 15);
@@ -330,7 +325,7 @@ void OptionMenu()
 		}
 		GoToXYPixel(29, 13);
 		cout << "SFX  : ";
-		if (sfx_toggle)
+		if (key_toggle)
 		{
 			cout << "enable ";
 		}
@@ -344,7 +339,7 @@ void OptionMenu()
 		cout << "Exit";
 		if (_kbhit())
 		{
-			if (sfx_toggle)
+			if (key_toggle)
 				PlayKey();
 			int temp = _getch();
 			if (temp == 27)
@@ -370,13 +365,14 @@ void OptionMenu()
 				}
 				else if (cursor.y == 13)
 				{
-					if (sfx_toggle)
+					ToggleSfx();
+					if (key_toggle)
 					{
-						sfx_toggle = false;
+						key_toggle = false;
 					}
 					else
 					{
-						sfx_toggle = true;
+						key_toggle = true;
 					}
 				}
 				else if (cursor.y == 14)
