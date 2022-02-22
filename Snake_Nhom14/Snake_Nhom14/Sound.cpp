@@ -9,6 +9,7 @@ void OpenSound()
 	OpenKey();
 	OpenEatSound();
 	OpenMusic();
+	OpenDieSound();
 }
 
 void CloseSound()
@@ -16,6 +17,7 @@ void CloseSound()
 	CloseMusic();
 	CloseKey();
 	CloseEatSound();
+	CloseDieSound();
 }
 
 void OpenMusic()
@@ -76,4 +78,19 @@ void PlayEatSound()
 void CloseEatSound()
 {
 	mciSendString(TEXT("close eat"), NULL, 0, NULL);
+}
+
+void OpenDieSound()
+{
+	mciSendString(TEXT("open \"die.mp3\" type mpegvideo alias die"), NULL, 0, NULL);
+}
+
+void PlayDieSound()
+{
+	mciSendString(TEXT("play die from 0"), NULL, 0, NULL);
+}
+
+void CloseDieSound()
+{
+	mciSendString(TEXT("close die"), NULL, 0, NULL);
 }

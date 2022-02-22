@@ -16,3 +16,6 @@ void CloseKey();
 void OpenEatSound();
 void PlayEatSound();
 void CloseEatSound();
+void OpenDieSound();
+void PlayDieSound();
+void CloseDieSound();
