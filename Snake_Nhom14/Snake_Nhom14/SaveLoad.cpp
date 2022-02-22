@@ -9,32 +9,36 @@ void Save(PlayerData newData)
 	fstream file;
 	file.open(savePath);
 
-	for (int i = 0; i < dataSize; i++)
-	{
-		if (playerDatas[i].score < newData.score || (playerDatas[i].time > newData.time && playerDatas[i].score == newData.score))
-		{
-			for (int j = i; j < dataSize - 1; j++)
-			{
-				playerDatas[j + 1] = playerDatas[j];
-			}
-			playerDatas[i] = newData;
-			if (dataSize < 10)
-			{
-				dataSize++;
-			}
-			break;
-		}
-		else if (i == dataSize - 1 && dataSize < 10)
-		{
-			dataSize++;
-			playerDatas[dataSize - 1] = newData;
-			break;
-		}
-	}
 	if (dataSize == 0)
 	{
 		playerDatas[0] = newData;
 		dataSize++;
+	}
+	else
+	{
+		for (int i = 0; i < dataSize; i++)
+		{
+			if (playerDatas[i].score < newData.score || (playerDatas[i].time >= newData.time && playerDatas[i].score == newData.score))
+			{
+				if (dataSize < 10)
+				{
+					dataSize++;
+				}
+				for (int j = i; j < dataSize - 1; j++)
+				{
+					playerDatas[j + 1] = playerDatas[j];
+				}
+				playerDatas[i] = newData;
+
+				break;
+			}
+			else if (i == dataSize - 1 && dataSize < 10)
+			{
+				dataSize++;
+				playerDatas[dataSize - 1] = newData;
+				break;
+			}
+		}
 	}
 
 	file << dataSize << endl;
@@ -129,11 +133,11 @@ void DisplayHighScoreInGame()
 	SetColor(0, 15);
 	printf("                            HIGHSCORE");
 	GoToXYPixel(46, 19);
-	printf("   | name |  score | time");
+	printf("   | name |     time     | score");
 	for (int i = 0; i < dataSize; i++)
 	{
 		GoToXYPixel(46, 20 + i);
-		printf("%2d | %4s | %6d | %d", i + 1, playerDatas[i].name, playerDatas[i].score, playerDatas[i].time);
+		printf("%2d | %4s | %12d | %d", i + 1, playerDatas[i].name, playerDatas[i].time, playerDatas[i].score);
 	}
 }
 
