@@ -429,21 +429,21 @@ void WaitPlayGame()
 				DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 				DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
 
-				DrawRectangle(43, 1, 10, 43, 4);
-				DrawRectangle(42, 1, 1, 14, 4);
-				DrawRectangle(41, 2, 1, 13, 4);
-				DrawRectangle(40, 3, 1, 12, 4);
-				DrawRectangle(39, 4, 1, 11, 4);
-				DrawRectangle(38, 5, 1, 10, 4);
-				DrawRectangle(37, 6, 1, 9, 4);
-				DrawRectangle(36, 7, 1, 8, 4);
-				DrawRectangle(35, 8, 1, 7, 4);
-				DrawRectangle(34, 9, 1, 6, 4);
-				DrawRectangle(33, 10, 1, 5, 4);
-				DrawRectangle(32, 11, 1, 4, 4);
-				DrawRectangle(31, 12, 1, 3, 4);
-				DrawRectangle(30, 13, 1, 2, 4);
-				DrawRectangle(29, 14, 1, 1, 4);
+				DrawRectangle(39, 1, 10, 43, 4);
+				DrawRectangle(38, 1, 1, 14, 4);
+				DrawRectangle(37, 2, 1, 13, 4);
+				DrawRectangle(36, 3, 1, 12, 4);
+				DrawRectangle(35, 4, 1, 11, 4);
+				DrawRectangle(34, 5, 1, 10, 4);
+				DrawRectangle(33, 6, 1, 9, 4);
+				DrawRectangle(32, 7, 1, 8, 4);
+				DrawRectangle(31, 8, 1, 7, 4);
+				DrawRectangle(30, 9, 1, 6, 4);
+				DrawRectangle(29, 10, 1, 5, 4);
+				DrawRectangle(28, 11, 1, 4, 4);
+				DrawRectangle(27, 12, 1, 3, 4);
+				DrawRectangle(26, 13, 1, 2, 4);
+				DrawRectangle(25, 14, 1, 1, 4);
 				break;
 			}
 			case 2:
