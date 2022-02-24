@@ -301,7 +301,7 @@ void GameplayUI()
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 29, 4, 15, 0);
 	DrawBorder(75, 12, 4, 4, 15, 0);
-	DrawBorder(45, 17, 34, 28, 15, 0);
+	DrawBorder(45, 17, 34, 27, 15, 0);
 	DisplayHighScoreInGame();
 }
 

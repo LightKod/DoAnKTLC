@@ -131,6 +131,7 @@ void MoveDown()
 void RunGamePlay()
 {
 	float timer = 1;
+	float bigfood_timer = 0;
 	int h = 0, min = 0, sec = 0;
 	ResetData();
 	WaitPlayGame();
@@ -170,6 +171,16 @@ void RunGamePlay()
 				sec = game_time - h * 3600 - min * 60;
 				t1 = time(0);
 				timer += 0.01;
+				if (bigfood_state == 1)
+				{
+					bigfood_timer += 0.01;
+					if (bigfood_timer >= bigfood_lifeTime)
+					{
+						bigfood_state = 0;
+						bigfood_timer = 0;
+						GenerateBigFood();
+					}
+				}
 				if (timer >= 1 / snake_speed)
 				{
 					timer = 0;
@@ -244,6 +255,8 @@ void RunGamePlay()
 						h = 0;
 						min = 0;
 						sec = 0;
+						bigfood_timer = 0;
+						timer = 1;
 						WaitPlayGame();
 						GameplayUI();
 						SpawnFood();
@@ -443,30 +456,32 @@ void Eat()
 		{
 			SpawnFood();
 		}
-		if (snakeSize % 9 == 8)
+		if (rand() % 100 <= bigfood_ratio && bigfood_state == 0)
+			// if (snakeSize % 9 == 4)
 		{
-			if (bigfood_temp == 0)
-			{
-				bigfood_state = 0;
-				GenerateBigFood();
-			}
+			bigfood_state = 1;
+			GenerateBigFood();
 		}
 	}
 	if (snake_pos[0].x == gate_pos.x && snake_pos[0].y == gate_pos.y && gate_state == 1)
 	{
 		ToTheNextLevel();
 	}
-	for (int i = 0; i < 4; i++)
+	if (bigfood_state == 1)
 	{
-		if (snake_pos[0].x == bigfood_pos[i].x && snake_pos[0].y == bigfood_pos[i].y)
+		for (int i = 0; i < 4; i++)
 		{
-			bigfood_temp++;
-			bigfood_state++;
-			if (sfx)
-				PlayEatSound();
-			score += level * 30;
-			GenerateBigFood();
-			break;
+			if (snake_pos[0].x == bigfood_pos[i].x && snake_pos[0].y == bigfood_pos[i].y)
+			{
+				if (sfx)
+				{
+					PlayEatSound();
+				}
+				score += level * 30;
+				bigfood_state = 0;
+				GenerateBigFood();
+				break;
+			}
 		}
 	}
 }
@@ -722,6 +737,7 @@ void ToTheNextLevel()
 {
 	GameplayUI();
 	bigfood_temp = 0;
+	bigfood_state = 0;
 	gate_state = 0;
 	level += 1;
 	process = 0;
@@ -739,20 +755,10 @@ void ProcessBar()
 	DrawRectangle(46, 13, 27, 2, 0);
 	for (int i = 0; i < process; i++)
 	{
-		// DrawPixel(46 + i * 3, 13, 11);
-		// DrawPixel(46 + i * 3, 14, 11);
-		// DrawPixel(47 + i * 3, 13, 11);
-		// DrawPixel(47 + i * 3, 14, 11);
-		// DrawPixel(48 + i * 3, 13, 11);
-		// DrawPixel(48 + i * 3, 14, 11);
 		DrawRectangle(46 + i * 3, 13, 3, 2, 11);
 	}
 	if (process == 9)
 	{
-		// DrawPixel(76, 13, 11);
-		// DrawPixel(77, 13, 11);
-		// DrawPixel(76, 14, 11);
-		// DrawPixel(77, 14, 11);
 		DrawRectangle(76, 13, 2, 2, 11);
 	}
 }
@@ -770,7 +776,7 @@ void ToggleSfx()
 }
 void GenerateBigFood()
 {
-	if (bigfood_state == 0)
+	if (bigfood_state == 1)
 	{
 		int a, b;
 		do
@@ -781,18 +787,11 @@ void GenerateBigFood()
 			bigfood_pos[1] = { a + 1, b };
 			bigfood_pos[2] = { a, b + 1 };
 			bigfood_pos[3] = { a + 1, b + 1 };
-		} while (!IsValid(a, b) || !IsWallValid(a, b));
-		for (int i = 0; i < 4; i++)
-			DrawPixel(bigfood_pos[i], 4);
+		} while (!IsValid(a, b) || !IsWallValid(a, b) || !IsValid(a + 1, b) || !IsWallValid(a + 1, b) || !IsValid(a, b + 1) || !IsWallValid(a, b + 1) || !IsValid(a + 1, b + 1) || !IsWallValid(a + 1, b + 1));
+		DrawPixels(bigfood_pos, 4, bigfood_color);
 	}
-	else if (bigfood_state != 0)
+	else
 	{
-		// for (int i = 0; i < 4; i++)
-		// {
-		// 	DrawPixel(bigfood_pos[i], game_field_color);
-		// 	bigfood_pos[i] = {0, 0};
-		// }
 		DrawPixels(bigfood_pos, 4, game_field_color);
-		bigfood_state = 0;
 	}
 }

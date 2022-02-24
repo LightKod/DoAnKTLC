@@ -38,6 +38,9 @@ static int food_state;
 static POINT bigfood_pos[4];
 static int bigfood_state;
 static int bigfood_temp;
+static int bigfood_color = 4;
+static int bigfood_ratio = 10;
+static float bigfood_lifeTime = 5;
 
 static int score;
 static POINT last_pos;
