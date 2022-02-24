@@ -34,6 +34,7 @@ static int current_last_text;
 static POINT food_pos;
 static int food_color = 4;
 static char food_text;
+static int food_state;
 static POINT bigfood_pos[4];
 static int bigfood_state;
 static int bigfood_temp;
