@@ -7,6 +7,7 @@
 #include <Windows.h>
 #include <conio.h>
 #include <time.h>
+#include <fstream>
 
 using namespace std;
 
@@ -787,6 +788,8 @@ void GenerateBigFood()
 			bigfood_pos[1] = { a + 1, b };
 			bigfood_pos[2] = { a, b + 1 };
 			bigfood_pos[3] = { a + 1, b + 1 };
+			bigfood_lifeTime = (abs(bigfood_pos[0].x - snake_pos[0].x) + abs(bigfood_pos[0].y - snake_pos[0].y) + bigfood_lifetimeDelay) * 0.2f;
+
 		} while (!IsValid(a, b) || !IsWallValid(a, b) || !IsValid(a + 1, b) || !IsWallValid(a + 1, b) || !IsValid(a, b + 1) || !IsWallValid(a, b + 1) || !IsValid(a + 1, b + 1) || !IsWallValid(a + 1, b + 1));
 		DrawPixels(bigfood_pos, 4, bigfood_color);
 	}
