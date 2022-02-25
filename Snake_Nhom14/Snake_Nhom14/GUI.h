@@ -13,5 +13,6 @@ void ClearScreen();
 void StartMenu();
 void DisplayInstructions();
 void OptionMenu();
+void DisplayHighscore();
 void ScoreBox();
 void WaitPlayGame();

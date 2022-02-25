@@ -282,8 +282,14 @@ void GUI()
 					break;
 			_getch();
 		}
-		else if (highscore)
-			;
+		else if (highscore) {
+			DisplayHighscore();
+			while (true)
+				if (_kbhit())
+					break;
+			_getch();
+
+		}
 		else if (optionMenu)
 		{
 			OptionMenu();
@@ -302,7 +308,7 @@ void GameplayUI()
 	DrawBorder(45, 12, 29, 4, 15, 0);
 	DrawBorder(75, 12, 4, 4, 15, 0);
 	DrawBorder(45, 17, 34, 27, 15, 0);
-	DisplayHighScoreInGame();
+	DisplayHighScoreInGame(46, 18, 0);
 }
 
 void OptionMenu()
@@ -509,4 +515,10 @@ void WaitPlayGame()
 
 		Sleep(100);
 	}
+}
+void DisplayHighscore() {
+	ClearScreen();
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DisplayHighScoreInGame(34, 15, 2);
 }

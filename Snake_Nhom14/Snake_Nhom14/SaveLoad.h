@@ -12,5 +12,5 @@ void Save(PlayerData newData);
 void SavePlayer(char name[], int score, int time);
 void Load();
 void DisplayScore(int x, int y);
-void DisplayHighScoreInGame();
+void DisplayHighScoreInGame(int x, int y, int color);
 void TestSaveLoad();
