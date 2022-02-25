@@ -15,7 +15,7 @@ bool exitGame = false;
 bool exitStartMenu = false;
 bool optionMenu = false;
 
-POINT cursor = {59, 19};
+POINT cursor = { 59, 19 };
 using namespace std;
 
 void DisplaySNAKE()
@@ -195,7 +195,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-		cursor = {59, 19};
+		cursor = { 59, 19 };
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -307,15 +307,14 @@ void GameplayUI()
 	DrawBorder(45, 1, 34, 10, 15, 0);
 	DrawBorder(45, 12, 29, 4, 15, 0);
 	DrawBorder(75, 12, 4, 4, 15, 0);
-	DrawBorder(45, 17, 34, 27, 15, 0);
-	DisplayHighScoreInGame(46, 18, 0);
+
 }
 
 void OptionMenu()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
-	cursor = {27, 12};
+	cursor = { 27, 12 };
 	while (1)
 	{
 		DrawPixel(cursor, 15);

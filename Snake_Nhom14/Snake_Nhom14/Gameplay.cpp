@@ -136,6 +136,7 @@ void RunGamePlay()
 	ResetData();
 	WaitPlayGame();
 	GameplayUI();
+	DisplayHighScoreInGame(46, 18, 0);
 	GenerateWallNew();
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
@@ -259,6 +260,8 @@ void RunGamePlay()
 						timer = 1;
 						WaitPlayGame();
 						GameplayUI();
+						DrawBorder(45, 17, 34, 27, 15, 0);
+						DisplayHighScoreInGame(46, 18, 0);
 						SpawnFood();
 						break;
 					}
