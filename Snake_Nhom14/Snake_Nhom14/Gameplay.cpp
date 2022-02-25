@@ -91,7 +91,6 @@ void ResetData()
 	gate_state = 0;
 	level = 1;
 	process = 2;
-	bigfood_temp = 0;
 }
 
 void MoveRight()
@@ -737,7 +736,6 @@ void GenerateGate() // Do not change this function
 void ToTheNextLevel()
 {
 	GameplayUI();
-	bigfood_temp = 0;
 	bigfood_state = 0;
 	gate_state = 0;
 	level += 1;
@@ -797,4 +795,9 @@ void GenerateBigFood()
 	{
 		DrawPixels(bigfood_pos, 4, game_field_color);
 	}
+}
+
+void RunMiniGame1()
+{
+
 }

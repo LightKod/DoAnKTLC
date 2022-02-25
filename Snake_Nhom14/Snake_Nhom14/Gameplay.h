@@ -22,7 +22,7 @@ static float fps = 100;
 
 // snake's properties
 static POINT snake_pos[2000];
-static int snake_color[2000] = {1, 9};
+static int snake_color[2000] = { 1, 9 };
 static int snakeSize;
 static Direction snake_dir;
 static State snake_state;
@@ -37,9 +37,8 @@ static char food_text;
 static int food_state;
 static POINT bigfood_pos[4];
 static int bigfood_state;
-static int bigfood_temp;
 static int bigfood_color = 4;
-static int bigfood_ratio = 10;
+static int bigfood_ratio = 50;
 static float bigfood_lifeTime = 5;
 static float bigfood_lifetimeDelay = 5;
 
@@ -51,7 +50,7 @@ static int t1, t2, game_time;
 
 const int game_field_width = 43;
 const int game_field_height = 43;
-const POINT game_field_pos = {1, 1};
+const POINT game_field_pos = { 1, 1 };
 const int game_field_color = 2;
 
 // Wall
@@ -98,3 +97,4 @@ void ToTheNextLevel();
 void ProcessBar();
 void ToggleSfx();
 void GenerateBigFood();
+void RunMiniGame1();
