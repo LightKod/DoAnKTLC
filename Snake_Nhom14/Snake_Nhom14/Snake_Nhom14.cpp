@@ -23,6 +23,7 @@ int main()
 	Load();
 	// TestSaveLoad();
 	GUI();
+	//RunMiniGame2();
 	// RunGamePlay();
 	CloseSound();
 	GoToXYPixel(0, 0);
