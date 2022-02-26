@@ -136,6 +136,7 @@ void RunGamePlay()
 	ResetData();
 	WaitPlayGame();
 	GameplayUI();
+	DrawBorder(45, 17, 15, 15, 15, 0);
 	DisplayHighScoreInGame(46, 18, 0);
 	GenerateWallNew();
 	GenerateFood();
@@ -260,7 +261,7 @@ void RunGamePlay()
 						timer = 1;
 						WaitPlayGame();
 						GameplayUI();
-						DrawBorder(45, 17, 34, 27, 15, 0);
+						DrawBorder(45, 17, 15, 15, 15, 0);
 						DisplayHighScoreInGame(46, 18, 0);
 						SpawnFood();
 						break;
