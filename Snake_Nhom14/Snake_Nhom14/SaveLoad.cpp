@@ -129,18 +129,19 @@ void DisplayScore(int x, int y)
 
 void DisplayHighScoreInGame(int x, int y, int color)
 {
-	//Ingame: 46 - 16
-	//Menu: 48 - 16
+	DrawBorder(x - 1, y - 1, 15, 15, 15, color);
+	// Ingame: 46 - 16
+	// Menu: 48 - 16
 	GoToXYPixel(x, y);
 	SetColor(color, 15);
-	//int x = 46+3;
-	//int y = 18 + 1;
+	// int x = 46+3;
+	// int y = 18 + 1;
 	printf("--------HIGHSCORE--------");
-	//DrawRectangle(x, y, 1, 3, 15);
-	//DrawRectangle(x, y + 1, 3, 1, 15);
-	//DrawRectangle(x + 2, y, 1, 3, 15);
+	// DrawRectangle(x, y, 1, 3, 15);
+	// DrawRectangle(x, y + 1, 3, 1, 15);
+	// DrawRectangle(x + 2, y, 1, 3, 15);
 
-	//DrawRectangle(x + 4, y + 1, 1, 2, 15);
+	// DrawRectangle(x + 4, y + 1, 1, 2, 15);
 	GoToXYPixel(x, y + 1);
 	printf("   | name |  time | score");
 	for (int i = 0; i < dataSize; i++)
@@ -148,7 +149,6 @@ void DisplayHighScoreInGame(int x, int y, int color)
 		GoToXYPixel(x, y + 2 + i);
 		printf("%2d | %4s | %5d | %d", i + 1, playerDatas[i].name, playerDatas[i].time, playerDatas[i].score);
 	}
-	DrawBorder(x - 1, y - 1, 15, 15, 15);
 }
 
 void TestSaveLoad()

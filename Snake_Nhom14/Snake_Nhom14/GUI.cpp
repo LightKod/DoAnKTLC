@@ -494,7 +494,7 @@ void WaitPlayGame()
 		case 4:
 
 			return;
-		}Sleep(1000);
+		}Sleep(500);
 	}
 
 
