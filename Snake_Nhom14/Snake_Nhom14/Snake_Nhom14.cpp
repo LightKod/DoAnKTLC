@@ -22,7 +22,7 @@ int main()
 	PlayMusic();
 	Load();
 	// TestSaveLoad();
-	GUI();
+	//GUI();
 	//RunMiniGame2();
 	// RunGamePlay();
 	CloseSound();
