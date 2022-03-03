@@ -804,6 +804,102 @@ void GenerateBigFood()
 
 void RunMiniGame1() // Maze
 {
+	//WaitPlayGame();
+	float timer = 1;
+	MiniGame2ResetData();
+	GameplayUI();
+	GenerateMaze();
+	snake_dir = Direction::STOP;
+	while (1)
+	{
+
+		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
+		GoToXYPixel(46, 2);
+		SetColor(0, 15);
+		cout << "SCORE: " << score;
+
+		if (snake_state != State::DEAD)
+		{
+			GameInput();
+			if (snake_dir != Direction::STOP)
+			{
+
+				timer += 0.01;
+
+				if (timer >= 1 / snake_speed)
+				{
+					timer = 0;
+					ProcessDead();
+					Move();
+					MiniGame2Eat();
+				}
+			}
+			else
+			{
+				timer = 1;
+			}
+		}
+		else
+		{
+			GoToXYPixel(46, 8);
+			SetColor(0, 15);
+			cout << "Press any key to restart";
+			GoToXYPixel(46, 9);
+			SetColor(0, 15);
+			cout << "Press esc to exit game              ";
+
+			while (1)
+			{
+				if (_kbhit())
+				{
+					int temp = _getch();
+					if (temp == 27)
+					{
+						return;
+					}
+					else
+					{
+						ResetData();
+						timer = 1;
+						//WaitPlayGame();
+						GameplayUI();
+						GenerateMaze();
+						//SpawnFood();
+						break;
+					}
+				}
+				Sleep(100);
+			}
+		}
+		Sleep(1000 / fps);
+	}
+}
+void GenerateMaze() {
+	//https://www.dcode.fr/maze-generator width 14 || height 21
+	
+	char mazePath[100] = "mazes\\maze_0.txt";
+	fstream file;
+	file.open(mazePath);
+	char maze[game_field_width][game_field_height];
+	for (int i = 0; i < game_field_width; i++) {
+		file >> maze[i];
+		//cout << (maze[i]) <<endl;
+	}
+	wall_size = 0;
+	for(int x = 0; x < game_field_width; x++)
+	{
+		for (int y = 0; y < game_field_width; y++)
+		{
+			if (maze[x][y] == 'X') {
+				wall_pos[wall_size] = { x+1,y+1 };
+				wall_size++;
+			}
+		}
+	}
+	DrawPixels(wall_pos, wall_size, 15);
+	food_pos = { 42, 42 };
+	DrawPixel(food_pos, food_color);
+
 }
 
 void RunMiniGame2() // Revert
@@ -940,3 +1036,4 @@ void MiniGame2Eat()
 		SpawnFood();
 	}
 }
+

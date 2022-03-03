@@ -24,9 +24,11 @@ int main()
 	// TestSaveLoad();
 	//GUI();
 	//RunMiniGame2();
+	RunMiniGame1();
+	//GenerateMaze();
 	// RunGamePlay();
 	CloseSound();
-	GoToXYPixel(0, 0);
-	cout << "\tHello snake\n";
+	//GoToXYPixel(0, 0);
+	//cout << "\tHello snake\n";
 	// system("pause");
 }

@@ -98,6 +98,7 @@ void ProcessBar();
 void ToggleSfx();
 void GenerateBigFood();
 void RunMiniGame1();//Maze
+void GenerateMaze();
 void RunMiniGame2();//Revert
 void MiniGame2ResetData();
 void MiniGame2Eat();
