@@ -164,7 +164,52 @@ void StartMenu()
 
 void PlayingGame()
 {
-	RunGamePlay();
+	ClearScreen();
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	SetColor(2, 15);
+	GoToXYPixel(27, 12);
+	cout << "Normal" << endl;
+	GoToXYPixel(27, 13);
+	cout << "MiniGameMaze" << endl;
+	GoToXYPixel(27, 14);
+	cout << "MiniGameRevert" << endl;
+	GoToXYPixel(27, 15);
+	cout << "Return" << endl;
+	cursor = { 25,12 };
+	while (1)
+	{
+		DrawPixel(cursor.x, cursor.y, 15);
+		if (_kbhit())
+		{
+			int temp = _getch();
+			DrawPixel(cursor.x, cursor.y, 2);
+			GoToXYPixel(0, 3);
+			if (key_toggle)
+				PlayKey();
+			if (temp == 27)
+				break;
+			else if (temp == 13)
+			{
+				if (cursor.y == 12)
+					RunGamePlay();
+				else if (cursor.y == 13)
+					RunMiniGame1();
+				else if (cursor.y == 14)
+					RunMiniGame2();
+				else if (cursor.y == 15)
+					break;
+			}
+			else if (toupper(temp) == 'S' && cursor.y < 15)
+			{
+				cursor.y++;
+			}
+			else if (toupper(temp) == 'W' && cursor.y > 12)
+			{
+				cursor.y--;
+			}
+		}
+	}
 }
 
 void DisplayInstructions()
