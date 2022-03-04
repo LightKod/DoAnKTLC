@@ -41,6 +41,7 @@ static int bigfood_color = 4;
 static int bigfood_ratio = 50;
 static float bigfood_lifeTime = 5;
 static float bigfood_lifetimeDelay = 5;
+static POINT two_food_pos[2];
 
 static int score;
 static POINT last_pos;
@@ -68,6 +69,8 @@ static int level;
 static Direction previous_dir;
 static int process = 2;
 static bool sfx = true;
+
+int static MiniGame3_state;
 
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);
@@ -102,3 +105,7 @@ void GenerateMaze();
 void RunMiniGame2();//Revert
 void MiniGame2ResetData();
 void MiniGame2Eat();
+void RunMiniGame3();
+void Generate2Food();
+void MiniGame3Eat();
+void SpawnTwoFood();

@@ -1,14 +1,80 @@
-﻿  Gameplay.cpp
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(89,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(168,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(173,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(174,18): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(177,27): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(196,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(272,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(284,13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(827,18): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(874,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(925,18): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(971,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  Snake_Nhom14.vcxproj -> C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
+﻿Environment at start of build:
+ALLUSERSPROFILE = C:\ProgramData
+APPDATA = C:\Users\henry\AppData\Roaming
+CommonProgramFiles = C:\Program Files (x86)\Common Files
+CommonProgramFiles(Arm) = C:\Program Files (Arm)\Common Files
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+CommonProgramW6432 = C:\Program Files\Common Files
+COMPUTERNAME = DOPHAMTHANHCCBA
+ComSpec = C:\WINDOWS\system32\cmd.exe
+DriverData = C:\Windows\System32\Drivers\DriverData
+ForceIdentityAuthenticationType = Embedded
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+FPS_BROWSER_USER_PROFILE_STRING = Default
+HOMEDRIVE = C:
+HOMEPATH = \Users\henry
+LOCALAPPDATA = C:\Users\henry\AppData\Local
+LOGONSERVER = \\DOPHAMTHANHCCBA
+MSBuildLoadMicrosoftTargetsReadOnly = true
+NUMBER_OF_PROCESSORS = 4
+OS = Windows_NT
+Path = C:\Program Files\Parallels\Parallels Tools\Applications;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\henry\AppData\Local\Microsoft\WindowsApps;
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PkgDefApplicationConfigFile = C:\Users\henry\AppData\Local\Microsoft\VisualStudio\16.0_05f0b2ad\devenv.exe.config
+PROCESSOR_ARCHITECTURE = x86
+PROCESSOR_ARCHITEW6432 = ARM64
+PROCESSOR_IDENTIFIER = ARMv8 (64-bit) Family 8 Model 0 Revision   0,  
+PROCESSOR_LEVEL = 0
+PROCESSOR_REVISION = 0000
+ProgramData = C:\ProgramData
+ProgramFiles = C:\Program Files (x86)
+ProgramFiles(Arm) = C:\Program Files (Arm)
+ProgramFiles(x86) = C:\Program Files (x86)
+ProgramW6432 = C:\Program Files
+PSModulePath = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC = C:\Users\Public
+ServiceHubLogSessionKey = A24835FA
+SESSIONNAME = Console
+SignInWithHomeTenantOnly = False
+SystemDrive = C:
+SystemRoot = C:\WINDOWS
+TEMP = C:\Users\henry\AppData\Local\Temp
+ThreadedWaitDialogDpiContext = -4
+TMP = C:\Users\henry\AppData\Local\Temp
+USERDOMAIN = DOPHAMTHANHCCBA
+USERDOMAIN_ROAMINGPROFILE = DOPHAMTHANHCCBA
+USERNAME = henry
+USERPROFILE = C:\Users\henry
+VisualStudioDir = \\Mac\Home\Documents\Visual Studio 2019
+VisualStudioEdition = Microsoft Visual Studio Community 2019
+VisualStudioVersion = 16.0
+VSAPPIDDIR = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\
+VSAPPIDNAME = devenv.exe
+VSLANG = 1033
+VSLS_SESSION_KEEPALIVE_INTERVAL = 0
+VSSKUEDITION = Community
+windir = C:\WINDOWS
+
+  GUI.cpp
+  Gameplay.cpp
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(91,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(170,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(175,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(176,18): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(179,27): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(198,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(274,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(286,13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(837,18): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(884,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(937,18): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(983,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1071,18): warning C4305: '+=': truncation from 'double' to 'float'
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1116,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  Graphic.cpp
+\\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Graphic.cpp(55,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  SaveLoad.cpp
+  Snake_Nhom14.cpp
+  Sound.cpp
+  Generating Code...
+  Snake_Nhom14.vcxproj -> \\Mac\Home\Desktop\Kì 2_1Y\GitHub\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe

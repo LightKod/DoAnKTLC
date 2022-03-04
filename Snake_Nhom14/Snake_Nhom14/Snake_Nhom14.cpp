@@ -23,8 +23,9 @@ int main()
 	Load();
 	// TestSaveLoad();
 	//GUI();
+	RunMiniGame3();
 	//RunMiniGame2();
-	RunMiniGame1();
+	//RunMiniGame1();
 	//GenerateMaze();
 	// RunGamePlay();
 	CloseSound();

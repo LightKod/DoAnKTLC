@@ -63,9 +63,11 @@ void TestFoodSpawn()
 		{
 			int temp = _getch();
 			if (temp)
-				GenerateFood();
+				Generate2Food();
 		}
-		DrawPixel(food_pos, 10, 7, 'X');
+		DrawPixel(two_food_pos[0], 10, 7, 'X');
+		DrawPixel(two_food_pos[1], 10, 7, 'X');
+
 		Sleep(1000 / 60);
 		DrawPixel(food_pos, DEFAULT_BACKGROUND_COLOR);
 	}
@@ -283,7 +285,15 @@ void GameInput()
 			OptionMenu();
 			t1 = time(0);
 			GameplayUI();
-			DrawPixel(food_pos, food_color, 15, food_text);
+			if (MiniGame3_state == 0)
+			{
+				DrawPixel(food_pos, food_color, 15, food_text);
+			}
+			else
+				for (int i = 0; i < 2; i++)
+				{
+					DrawPixel(two_food_pos[i], food_color, 15, food_text);
+				}
 		}
 		switch (toupper(temp))
 		{
@@ -876,7 +886,7 @@ void RunMiniGame1() // Maze
 }
 void GenerateMaze() {
 	//https://www.dcode.fr/maze-generator width 14 || height 21
-	
+
 	char mazePath[100] = "mazes\\maze_0.txt";
 	fstream file;
 	file.open(mazePath);
@@ -886,12 +896,12 @@ void GenerateMaze() {
 		//cout << (maze[i]) <<endl;
 	}
 	wall_size = 0;
-	for(int x = 0; x < game_field_width; x++)
+	for (int x = 0; x < game_field_width; x++)
 	{
 		for (int y = 0; y < game_field_width; y++)
 		{
 			if (maze[x][y] == 'X') {
-				wall_pos[wall_size] = { x+1,y+1 };
+				wall_pos[wall_size] = { x + 1,y + 1 };
 				wall_size++;
 			}
 		}
@@ -1036,4 +1046,142 @@ void MiniGame2Eat()
 		SpawnFood();
 	}
 }
+void RunMiniGame3() //Teleport
+{
+	//WaitPlayGame();
+	float timer = 1;
+	MiniGame2ResetData();
+	GameplayUI();
+	Generate2Food();
+	DrawPixel(two_food_pos[0], food_color, 15, food_text);
+	DrawPixel(two_food_pos[1], food_color, 15, food_text);
+	snake_dir = Direction::STOP;
+	while (1)
+	{
+		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
+		GoToXYPixel(46, 2);
+		SetColor(0, 15);
+		cout << "SCORE: " << score;
 
+		if (snake_state != State::DEAD)
+		{
+			GameInput();
+			if (snake_dir != Direction::STOP)
+			{
+				timer += 0.01;
+				if (timer >= 1 / snake_speed)
+				{
+					timer = 0;
+					ProcessDead();
+					Move();
+					MiniGame3Eat();
+				}
+			}
+			else
+			{
+				timer = 1;
+			}
+		}
+		else
+		{
+			GoToXYPixel(46, 8);
+			SetColor(0, 15);
+			cout << "Press any key to restart";
+			GoToXYPixel(46, 9);
+			SetColor(0, 15);
+			cout << "Press esc to exit game              ";
+
+			while (1)
+			{
+				if (_kbhit())
+				{
+					int temp = _getch();
+					if (temp == 27)
+					{
+						return;
+					}
+					else
+					{
+						ResetData();
+						timer = 1;
+						WaitPlayGame();
+						GameplayUI();
+						SpawnTwoFood();
+						break;
+					}
+				}
+				Sleep(100);
+			}
+		}
+		Sleep(1000 / fps);
+	}
+}
+void Generate2Food()
+{
+	int x1, x0, y0, y1;
+	do {
+		do
+		{
+			x0 = rand() % (game_field_width - 2) + game_field_pos.x + 1;
+			y0 = rand() % (game_field_height - 2) + game_field_pos.y + 1;
+			x1 = rand() % (game_field_width - 2) + game_field_pos.x + 1;
+			y1 = rand() % (game_field_height - 2) + game_field_pos.y + 1;
+		} while (!IsValid(x0, y0) || !IsWallValid(x0, y0) || !IsValid(x1, y1) || !IsWallValid(x1, y1));
+	} while (x0 == x1 && y0 == y1);
+	two_food_pos[0].x = x0;
+	two_food_pos[1].x = x1;
+	two_food_pos[0].y = y0;
+	two_food_pos[1].y = y1;
+	if (current_last_text >= textSize - 1)
+	{
+		food_text = snake_default_text[0];
+	}
+	else
+	{
+		food_text = snake_default_text[current_last_text + 1];
+	}
+}
+void MiniGame3Eat()
+{
+	if (food_state == 1)
+	{
+		if ((snake_pos[0].x == two_food_pos[0].x && snake_pos[0].y == two_food_pos[0].y) || (snake_pos[0].x == two_food_pos[1].x && snake_pos[0].y == two_food_pos[1].y))
+		{
+			if (sfx)
+			{
+				PlayEatSound();
+			}
+			score += level * 10;
+			snakeSize++;
+			if (snakeSize % 4 == 0)
+			{
+				snake_speed += 1;
+			}
+			snake_pos[snakeSize - 1] = last_pos;
+			snake_color[snakeSize - 1] = 9;
+			current_last_text++;
+			if (current_last_text >= textSize)
+			{
+				current_last_text = 0;
+			}
+			snake_text[snakeSize - 1] = snake_default_text[current_last_text];
+			if (snake_pos[0].x == two_food_pos[0].x && snake_pos[0].y == two_food_pos[0].y)
+			{
+				snake_pos[0]=two_food_pos[1];
+			}
+			else if (snake_pos[0].x == two_food_pos[1].x && snake_pos[0].y == two_food_pos[1].y)
+			{
+				snake_pos[0] = two_food_pos[0];
+			}
+			SpawnTwoFood();
+		}
+	}
+}
+void SpawnTwoFood()
+{
+	DrawPixel(two_food_pos[0], game_field_color);
+	DrawPixel(two_food_pos[1], game_field_color);
+	Generate2Food();
+	DrawPixel(two_food_pos[0], food_color, 15, food_text);
+	DrawPixel(two_food_pos[1], food_color, 15, food_text);
+}
