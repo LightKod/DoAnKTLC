@@ -175,6 +175,8 @@ void PlayingGame()
 	GoToXYPixel(27, 14);
 	cout << "MiniGameRevert" << endl;
 	GoToXYPixel(27, 15);
+	cout << "MiniGameTeleport" << endl;
+	GoToXYPixel(27, 16);
 	cout << "Return" << endl;
 	cursor = { 25,12 };
 	while (1)
@@ -198,9 +200,11 @@ void PlayingGame()
 				else if (cursor.y == 14)
 					RunMiniGame2();
 				else if (cursor.y == 15)
+					RunMiniGame3();
+				else if (cursor.y == 16)
 					break;
 			}
-			else if (toupper(temp) == 'S' && cursor.y < 15)
+			else if (toupper(temp) == 'S' && cursor.y < 16)
 			{
 				cursor.y++;
 			}
