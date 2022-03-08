@@ -22,8 +22,8 @@ int main()
 	PlayMusic();
 	Load();
 	// TestSaveLoad();
-	//GUI();
-	RunMiniGame3();
+	GUI();
+	//RunMiniGame3();
 	//RunMiniGame2();
 	//RunMiniGame1();
 	//GenerateMaze();
