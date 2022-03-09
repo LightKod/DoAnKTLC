@@ -216,6 +216,28 @@ void PlayingGame()
 	}
 }
 
+void PlayingGameNew() {
+	//ClearScreen();
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	
+	
+	for (int i = 0; i < 4; i++)
+	{
+		DrawBorder(3 + i * 19, 13, 17, 17, 0, 15);
+	}
+	POINT start = { 5,16 };
+
+	int color = 0;
+	DrawRectangle(start.x + 2, start.y + 2, 1, 7, color);
+	DrawRectangle(start.x + 9, start.y + 2, 1, 7, color);
+	for (int i = 0; i < 7; i++)
+	{
+		//DrawPixel(start.x + i + 1, )
+	}
+
+}
+
 void DisplayInstructions()
 {
 	ClearScreen();
@@ -543,7 +565,7 @@ void WaitPlayGame()
 		case 4:
 
 			return;
-		}Sleep(500);
+		}Sleep(200);
 	}
 
 

@@ -814,7 +814,7 @@ void GenerateBigFood()
 
 void RunMiniGame1() // Maze
 {
-	// WaitPlayGame();
+	WaitPlayGame();
 	float timer = 1;
 	float startTimer = 3;
 	MiniGame1ResetData();
@@ -880,7 +880,7 @@ void RunMiniGame1() // Maze
 						MiniGame1ResetData();
 						timer = 1;
 						startTimer = 3;
-						// WaitPlayGame();
+						WaitPlayGame();
 						GameplayUI();
 						GenerateMaze();
 						// SpawnFood();
@@ -896,8 +896,11 @@ void RunMiniGame1() // Maze
 void GenerateMaze()
 {
 	// https://www.dcode.fr/maze-generator width 14 || height 21
-
-	char mazePath[100] = "mazes\\maze_0.txt";
+	char mazePath[100] = "mazes\\maze_";
+	char ran = rand() % 3 + 48;
+	char ending[10] = "_.txt";
+	ending[0] = ran;
+	strcat_s(mazePath, ending);
 	fstream file;
 	file.open(mazePath);
 	char maze[game_field_width][game_field_height];
@@ -936,6 +939,21 @@ void MiniGame1ResetData()
 	snake_speed = 5;
 	food_state = 1;
 	score = 0;
+}
+
+void MiniGame1Eat() {
+	if (food_state == 1 && food_pos.x == snake_pos[0].x && food_pos.y == snake_pos[0].y)
+	{
+		if (sfx)
+		{
+			PlayEatSound();
+		}
+
+		MiniGame1ResetData();
+		GameplayUI();
+		GenerateMaze();
+		//Reset lai map moi
+	}
 }
 
 void RunMiniGame2() // Revert

@@ -103,6 +103,7 @@ void GenerateBigFood();
 void RunMiniGame1(); // Maze
 void GenerateMaze();
 void MiniGame1ResetData();
+void MiniGame1Eat();
 void RunMiniGame2(); // Revert
 void MiniGame2ResetData();
 void MiniGame2Eat();

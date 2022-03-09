@@ -21,8 +21,9 @@ int main()
 	OpenSound();
 	PlayMusic();
 	Load();
+	PlayingGameNew();
 	// TestSaveLoad();
-	GUI();
+	//GUI();
 	//RunMiniGame3();
 	//RunMiniGame2();
 	//RunMiniGame1();
@@ -31,5 +32,5 @@ int main()
 	CloseSound();
 	//GoToXYPixel(0, 0);
 	//cout << "\tHello snake\n";
-	// system("pause");
+	system("pause");
 }

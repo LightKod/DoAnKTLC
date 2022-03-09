@@ -16,3 +16,4 @@ void OptionMenu();
 void DisplayHighscore();
 void ScoreBox();
 void WaitPlayGame();
+void PlayingGameNew();
