@@ -765,7 +765,8 @@ void ToTheNextLevel()
 
 void ProcessBar()
 {
-	DrawRectangle(46, 13, 27, 2, 0);
+	DrawBorder(45, 12, 29, 4, 15, 0);
+	DrawBorder(75, 12, 4, 4, 15, 0);
 	for (int i = 0; i < process; i++)
 	{
 		DrawRectangle(46 + i * 3, 13, 3, 2, 11);

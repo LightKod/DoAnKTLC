@@ -125,8 +125,9 @@ void DisplaySNAKEIMG()
 }
 void MenuBG()
 {
-	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 	DrawRectangle(45, 1, 1, SCREEN_HEIGHT - 2, 15);
 	DrawRectangle(9, 1, 29, 7, 12);
 	DrawRectangle(12, 9, 23, 7, 12);
@@ -164,9 +165,10 @@ void StartMenu()
 
 void PlayingGame()
 {
-	ClearScreen();
-	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	//ClearScreen();
+	//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 	SetColor(2, 15);
 	GoToXYPixel(27, 12);
 	cout << "Normal" << endl;
@@ -220,8 +222,8 @@ void PlayingGameNew() {
 	//ClearScreen();
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
-	
-	
+
+
 	for (int i = 0; i < 4; i++)
 	{
 		DrawBorder(3 + i * 19, 13, 17, 17, 0, 15);
@@ -376,15 +378,13 @@ void GameplayUI()
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	DrawBorder(game_field_pos, game_field_width, game_field_height, 15, game_field_color);
 	DrawBorder(45, 1, 34, 10, 15, 0);
-	DrawBorder(45, 12, 29, 4, 15, 0);
-	DrawBorder(75, 12, 4, 4, 15, 0);
-
 }
 
 void OptionMenu()
 {
-	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 	cursor = { 27, 12 };
 	while (1)
 	{
@@ -488,8 +488,9 @@ void WaitPlayGame()
 		{
 		case 1:
 		{
-			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 
 			DrawRectangle(39, 1, 10, 43, 4);
 			DrawRectangle(38, 1, 1, 14, 4);
@@ -510,8 +511,9 @@ void WaitPlayGame()
 		}
 		case 2:
 		{
-			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 
 			DrawRectangle(30, 1, 23, 1, 4);
 			DrawRectangle(29, 2, 25, 1, 4);
@@ -536,8 +538,9 @@ void WaitPlayGame()
 		}
 		case 3:
 		{
-			DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-			DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+			//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+			DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 
 			DrawRectangle(30, 1, 23, 1, 4);
 			DrawRectangle(29, 2, 25, 1, 4);
@@ -572,8 +575,9 @@ void WaitPlayGame()
 
 }
 void DisplayHighscore() {
-	ClearScreen();
-	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	//ClearScreen();
+	//DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	//DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 	DisplayHighScoreInGame(34, 15, 2);
 }
