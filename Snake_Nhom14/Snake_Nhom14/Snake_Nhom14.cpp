@@ -21,16 +21,16 @@ int main()
 	OpenSound();
 	PlayMusic();
 	Load();
-	//PlayingGameNew();
+	PlayingGameNew();
 	// TestSaveLoad();
-	GUI();
+	//GUI();
 	//RunMiniGame3();
 	//RunMiniGame2();
 	//RunMiniGame1();
 	//GenerateMaze();
 	// RunGamePlay();
 	CloseSound();
-	//GoToXYPixel(0, 0);
+	GoToXYPixel(0, 0);
 	//cout << "\tHello snake\n";
 	system("pause");
 }
