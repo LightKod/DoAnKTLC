@@ -162,7 +162,109 @@ void StartMenu()
 	GoToXYPixel(61, 27);
 	cout << "Esc: Exit" << endl;
 }
+void DrawMiniGameGUI() {
+	//ClearScreen();
+	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
 
+
+	for (int i = 0; i < 4; i++)
+	{
+		DrawBorder(3 + i * 19, 13, 17, 17, 0, 15);
+	}
+	POINT start = { 6,16 };
+
+	//Normal
+	int color = 0;
+	DrawRectangle(start.x + 2, start.y + 2, 1, 7, color);
+	DrawRectangle(start.x + 8, start.y + 2, 1, 7, color);
+	for (int i = 0; i < 7; i++)
+	{
+		DrawPixel(start.x + i + 2, start.y + i + 2, color);
+	}
+
+
+	//Reverse
+	start = { 44,16 };
+	DrawRectangle(start.x + 2, start.y + 1, 1, 9, color);
+	DrawRectangle(start.x + 8, start.y + 1, 1, 9, color);
+	DrawRectangle(start.x + 1, start.y + 2, 3, 1, color);
+	DrawRectangle(start.x, start.y + 3, 5, 1, color);
+	DrawRectangle(start.x + 6, start.y + 7, 5, 1, color);
+	DrawRectangle(start.x + 7, start.y + 8, 3, 1, color);
+
+	//Portal
+	start = { 61,14 };
+	//DrawPixel(start, color);
+	DrawRectangle(start.x, start.y + 5, 1, 5, color);
+	DrawRectangle(start.x + 14, start.y + 5, 1, 5, color);
+	DrawRectangle(start.x + 5, start.y, 5, 1, color);
+	DrawRectangle(start.x + 5, start.y + 14, 5, 1, color);
+	DrawPixel(start.x + 2, start.y + 2, color);
+	DrawPixel(start.x + 1, start.y + 3, color);
+	DrawPixel(start.x + 1, start.y + 4, color);
+	DrawPixel(start.x + 3, start.y + 1, color);
+	DrawPixel(start.x + 4, start.y + 1, color);
+
+	DrawPixel(start.x + 2, start.y + 12, color);
+	DrawPixel(start.x + 3, start.y + 13, color);
+	DrawPixel(start.x + 4, start.y + 13, color);
+	DrawPixel(start.x + 1, start.y + 11, color);
+	DrawPixel(start.x + 1, start.y + 10, color);
+
+
+	DrawPixel(start.x + 12, start.y + 2, color);
+	DrawPixel(start.x + 11, start.y + 1, color);
+	DrawPixel(start.x + 10, start.y + 1, color);
+	DrawPixel(start.x + 13, start.y + 3, color);
+	DrawPixel(start.x + 13, start.y + 4, color);
+
+	DrawPixel(start.x + 12, start.y + 12, color);
+	DrawPixel(start.x + 11, start.y + 13, color);
+	DrawPixel(start.x + 10, start.y + 13, color);
+	DrawPixel(start.x + 13, start.y + 11, color);
+	DrawPixel(start.x + 13, start.y + 10, color);
+
+	DrawPixel(start.x + 4, start.y + 3, color);
+	DrawPixel(start.x + 3, start.y + 4, color);
+	DrawRectangle(start.x + 2, start.y + 5, 1, 4, color);
+	DrawRectangle(start.x + 3, start.y + 9, 1, 2, color);
+	DrawRectangle(start.x + 4, start.y + 11, 2, 1, color);
+	DrawRectangle(start.x + 6, start.y + 12, 3, 1, color);
+	DrawRectangle(start.x + 9, start.y + 11, 2, 1, color);
+	DrawRectangle(start.x + 11, start.y + 9, 1, 2, color);
+	DrawRectangle(start.x + 12, start.y + 6, 1, 3, color);
+	DrawRectangle(start.x + 11, start.y + 4, 1, 2, color);
+	DrawRectangle(start.x + 6, start.y + 3, 1, 1, color);
+	DrawRectangle(start.x + 7, start.y + 2, 2, 1, color);
+	DrawRectangle(start.x + 9, start.y + 3, 2, 1, color);
+	DrawPixel(start.x + 5, start.y + 4, color);
+	DrawRectangle(start.x + 4, start.y + 5, 1, 3, color);
+	DrawPixel(start.x + 5, start.y + 8, color);
+	DrawRectangle(start.x + 6, start.y + 9, 3, 1, color);
+	DrawRectangle(start.x + 9, start.y + 7, 1, 2, color);
+	DrawRectangle(start.x + 7, start.y + 6, 2, 1, color);
+	DrawPixel(start.x + 7, start.y + 7, color);
+
+	//Maze
+	start = { 23,14 };
+	DrawRectangle(start.x + 2, start.y + 2, 1, 4, color);
+	DrawRectangle(start.x + 2, start.y + 2, 4, 1, color);
+	DrawRectangle(start.x + 2, start.y + 5, 10, 1, color);
+	DrawRectangle(start.x + 9, start.y + 0, 1, 6, color);
+	DrawRectangle(start.x + 11, start.y + 2, 4, 1, color);
+	DrawRectangle(start.x + 13, start.y + 2, 1, 3, color);
+	DrawRectangle(start.x + 0, start.y + 9, 3, 1, color);
+	DrawRectangle(start.x + 1, start.y + 12, 7, 1, color);
+	DrawRectangle(start.x + 7, start.y + 9, 1, 4, color);
+	DrawRectangle(start.x + 7, start.y + 9, 5, 1, color);
+	DrawRectangle(start.x + 11, start.y + 5, 1, 5, color);
+	DrawRectangle(start.x + 12, start.y + 7, 2, 1, color);
+	DrawRectangle(start.x + 11, start.y + 13, 1, 2, color);
+	DrawRectangle(start.x + 10, start.y + 13, 2, 1, color);
+	DrawRectangle(start.x + 13, start.y + 11, 2, 1, color);
+	DrawRectangle(start.x + 5, start.y + 6, 1, 3, color);
+}
 void PlayingGame()
 {
 	//ClearScreen();
@@ -219,87 +321,62 @@ void PlayingGame()
 }
 
 void PlayingGameNew() {
-	//ClearScreen();
-	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
-	DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
+	DrawMiniGameGUI();
+	int index = 0;
+	POINT cursorPoint[4];
+	cursorPoint[0] = { 11,5 };
+	cursorPoint[1] = { 30,5 };
+	cursorPoint[2] = { 49,5 };
+	cursorPoint[3] = { 68,5 };
 
-
-	for (int i = 0; i < 4; i++)
+	while (1)
 	{
-		DrawBorder(3 + i * 19, 13, 17, 17, 0, 15);
+		DrawArrow(cursorPoint[index].x, cursorPoint[index].y, 0);
+		//DrawPixel(cursorPoint[index].x, cursorPoint[index].y, 0);
+		if (_kbhit())
+		{
+			int temp = _getch();
+			DrawPixel(cursor.x, cursor.y, 2);
+			GoToXYPixel(0, 3);
+			if (key_toggle)
+				PlayKey();
+			if (temp == 27)
+				break;
+			else if (temp == 13)
+			{
+				switch (index) {
+				case 0:
+					RunGamePlay();
+					break;
+				case 1:
+					RunMiniGame1();
+					break;
+				case 2:
+					RunMiniGame2();
+					break;
+				case 3:
+					RunMiniGame3();
+					break;
+				}
+			}
+			else if ((toupper(temp) == 'W' || toupper(temp) == 'D') && index < 3)
+			{
+				DrawArrow(cursorPoint[index].x, cursorPoint[index].y, 2);
+				index++;
+			}
+			else if ((toupper(temp) == 'A' || toupper(temp) == 'S') && index> 0)
+			{
+				DrawArrow(cursorPoint[index].x, cursorPoint[index].y, 2);
+				index--;
+			}
+		}
 	}
-	POINT start = { 6,16 };
-
-	int color = 0;
-	DrawRectangle(start.x + 2, start.y + 2, 1, 7, color);
-	DrawRectangle(start.x + 8, start.y + 2, 1, 7, color);
-	for (int i = 0; i < 7; i++)
-	{
-		DrawPixel(start.x + i + 2, start.y + i + 2,color);
-	}
-
-	start = { 44,16 };
-	DrawRectangle(start.x + 2, start.y + 1, 1, 9, color);
-	DrawRectangle(start.x + 8, start.y + 1, 1, 9, color);
-	DrawRectangle(start.x + 1, start.y + 2, 3, 1, color);
-	DrawRectangle(start.x, start.y + 3, 5, 1, color);
-	DrawRectangle(start.x + 6, start.y + 7, 5, 1, color);
-	DrawRectangle(start.x + 7, start.y + 8, 3, 1, color);
-
 	
-	start = { 61,14 };
-	//DrawPixel(start, color);
-	DrawRectangle(start.x, start.y + 5, 1, 5, color);
-	DrawRectangle(start.x + 14, start.y + 5, 1, 5, color);
-	DrawRectangle(start.x + 5, start.y, 5, 1, color);	
-	DrawRectangle(start.x + 5, start.y + 14, 5, 1, color);
-	DrawPixel(start.x+ 2,start.y + 2, color);
-	DrawPixel(start.x+ 1,start.y + 3, color);
-	DrawPixel(start.x+ 1,start.y + 4, color);
-	DrawPixel(start.x+ 3,start.y + 1, color);
-	DrawPixel(start.x+ 4,start.y + 1, color);
-
-	DrawPixel(start.x+ 2,start.y + 12, color);
-	DrawPixel(start.x+ 3,start.y + 13, color);
-	DrawPixel(start.x+ 4,start.y + 13, color);
-	DrawPixel(start.x+ 1,start.y + 11, color);
-	DrawPixel(start.x+ 1,start.y + 10, color);
-
-
-	DrawPixel(start.x+ 12,start.y + 2, color);
-	DrawPixel(start.x+ 11,start.y + 1, color);
-	DrawPixel(start.x+ 10,start.y + 1, color);
-	DrawPixel(start.x+ 13,start.y + 3, color);
-	DrawPixel(start.x+ 13,start.y + 4, color);
-
-	DrawPixel(start.x+ 12,start.y + 12, color);
-	DrawPixel(start.x+ 11,start.y + 13, color);
-	DrawPixel(start.x+ 10,start.y + 13, color);
-	DrawPixel(start.x+ 13,start.y + 11, color);
-	DrawPixel(start.x+ 13,start.y + 10, color);
-
-	DrawPixel(start.x+ 4,start.y + 3, color);
-	DrawPixel(start.x+ 3,start.y + 4, color);
-	DrawRectangle(start.x+ 2,start.y + 5,1,4 ,color);
-	DrawRectangle(start.x+ 3,start.y + 9,1,2 ,color);
-	DrawRectangle(start.x+ 4,start.y + 11,2,1 ,color);
-	DrawRectangle(start.x+ 6,start.y + 12,3,1 ,color);
-	DrawRectangle(start.x+ 9,start.y + 11,2,1 ,color);
-	DrawRectangle(start.x+ 11,start.y + 9,1,2 ,color);
-	DrawRectangle(start.x+ 12,start.y + 6,1,3 ,color);
-	DrawRectangle(start.x+ 11,start.y + 4,1,2 ,color);
-	DrawRectangle(start.x+ 6,start.y + 3,1,1 ,color);
-	DrawRectangle(start.x+ 7,start.y + 2,2,1 ,color);
-	DrawRectangle(start.x+ 9,start.y + 3,2,1 ,color);
-	DrawPixel(start.x + 5, start.y + 4, color);
-	DrawRectangle(start.x+ 4,start.y + 5,1,3 ,color);
-	DrawPixel(start.x + 5, start.y + 8, color);
-	DrawRectangle(start.x+ 6,start.y + 9,3,1 ,color);
-	DrawRectangle(start.x+ 9,start.y + 7,1,2 ,color);
-	DrawRectangle(start.x+ 7,start.y + 6,2,1 ,color);
-	DrawPixel(start.x + 7, start.y + 7, color);
-
-
+}
+void DrawArrow(int x, int y, int color) {
+	DrawRectangle(x, y, 1, 5, color);
+	DrawRectangle(x - 1, y + 3, 3, 1, color);
+	DrawRectangle(x - 2, y + 2, 5, 1, color);
 }
 
 void DisplayInstructions()

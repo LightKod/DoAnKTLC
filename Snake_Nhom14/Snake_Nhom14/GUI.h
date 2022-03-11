@@ -17,3 +17,5 @@ void DisplayHighscore();
 void ScoreBox();
 void WaitPlayGame();
 void PlayingGameNew();
+void DrawMiniGameGUI();
+void DrawArrow(int x, int y, int color);
