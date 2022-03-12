@@ -15,7 +15,7 @@ bool exitGame = false;
 bool exitStartMenu = false;
 bool optionMenu = false;
 
-POINT cursor = {59, 19};
+POINT cursor = { 59, 19 };
 using namespace std;
 
 void DisplaySNAKE()
@@ -173,7 +173,7 @@ void DrawMiniGameGUI()
 	{
 		DrawBorder(3 + i * 19, 13, 17, 17, 0, 15);
 	}
-	POINT start = {6, 16};
+	POINT start = { 6, 16 };
 
 	// Normal
 	int color = 0;
@@ -185,7 +185,7 @@ void DrawMiniGameGUI()
 	}
 
 	// Reverse
-	start = {44, 16};
+	start = { 44, 16 };
 	DrawRectangle(start.x + 2, start.y + 1, 1, 9, color);
 	DrawRectangle(start.x + 8, start.y + 1, 1, 9, color);
 	DrawRectangle(start.x + 1, start.y + 2, 3, 1, color);
@@ -194,7 +194,7 @@ void DrawMiniGameGUI()
 	DrawRectangle(start.x + 7, start.y + 8, 3, 1, color);
 
 	// Portal
-	start = {61, 14};
+	start = { 61, 14 };
 	// DrawPixel(start, color);
 	DrawRectangle(start.x, start.y + 5, 1, 5, color);
 	DrawRectangle(start.x + 14, start.y + 5, 1, 5, color);
@@ -246,7 +246,7 @@ void DrawMiniGameGUI()
 	DrawPixel(start.x + 7, start.y + 7, color);
 
 	// Maze
-	start = {23, 14};
+	start = { 23, 14 };
 	DrawRectangle(start.x + 2, start.y + 2, 1, 4, color);
 	DrawRectangle(start.x + 2, start.y + 2, 4, 1, color);
 	DrawRectangle(start.x + 2, start.y + 5, 10, 1, color);
@@ -281,7 +281,7 @@ void PlayingGame()
 	cout << "MiniGameTeleport" << endl;
 	GoToXYPixel(27, 16);
 	cout << "Return" << endl;
-	cursor = {25, 12};
+	cursor = { 25, 12 };
 	while (1)
 	{
 		DrawPixel(cursor.x, cursor.y, 15);
@@ -324,10 +324,10 @@ void PlayingGameNew()
 	DrawMiniGameGUI();
 	int index = 0;
 	POINT cursorPoint[4];
-	cursorPoint[0] = {11, 5};
-	cursorPoint[1] = {30, 5};
-	cursorPoint[2] = {49, 5};
-	cursorPoint[3] = {68, 5};
+	cursorPoint[0] = { 11, 5 };
+	cursorPoint[1] = { 30, 5 };
+	cursorPoint[2] = { 49, 5 };
+	cursorPoint[3] = { 68, 5 };
 
 	while (1)
 	{
@@ -349,16 +349,20 @@ void PlayingGameNew()
 				case 0:
 					RunGamePlay();
 					break;
+
 				case 1:
 					RunMiniGame1();
 					break;
+
 				case 2:
 					RunMiniGame2();
 					break;
+
 				case 3:
 					RunMiniGame3();
 					break;
 				}
+				return;
 			}
 			else if ((toupper(temp) == 'W' || toupper(temp) == 'D') && index < 3)
 			{
@@ -409,7 +413,7 @@ void GUI()
 {
 	while (!exitGame)
 	{
-		cursor = {59, 19};
+		cursor = { 59, 19 };
 		MenuBG();
 		StartMenu();
 		while (1)
@@ -527,7 +531,7 @@ void OptionMenu()
 	// DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 	// DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
 	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
-	cursor = {27, 12};
+	cursor = { 27, 12 };
 	while (1)
 	{
 		DrawPixel(cursor, 15);
