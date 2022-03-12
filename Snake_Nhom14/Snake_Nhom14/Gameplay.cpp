@@ -817,7 +817,6 @@ void RunMiniGame1() // Maze
 {
 	WaitPlayGame();
 	float timer = 1;
-	float startTimer = 3;
 	MiniGame1ResetData();
 	GameplayUI();
 	GenerateMaze();
@@ -828,7 +827,7 @@ void RunMiniGame1() // Maze
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
 		GoToXYPixel(46, 2);
 		SetColor(0, 15);
-		cout << "SCORE: " << score;
+		cout << "Level: " << level << " ";
 		DrawPixels(wall_pos, wall_size, 15);
 
 		if (snake_state != State::DEAD)
@@ -838,6 +837,7 @@ void RunMiniGame1() // Maze
 			{
 
 				timer += 0.01;
+				startTimer = 0;
 
 				if (timer >= 1 / snake_speed)
 				{
@@ -855,6 +855,7 @@ void RunMiniGame1() // Maze
 				{
 					snake_dir = Direction::RIGHT;
 				}
+
 			}
 		}
 		else
@@ -880,7 +881,6 @@ void RunMiniGame1() // Maze
 						// ResetData();
 						MiniGame1ResetData();
 						timer = 1;
-						startTimer = 3;
 						WaitPlayGame();
 						GameplayUI();
 						GenerateMaze();
@@ -891,7 +891,7 @@ void RunMiniGame1() // Maze
 				Sleep(100);
 			}
 		}
-		Sleep(1000 / fps);
+		Sleep(100);
 	}
 }
 void GenerateMaze()
@@ -937,9 +937,10 @@ void MiniGame1ResetData()
 	current_last_text = 1;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
-	snake_speed = 5;
+	snake_speed = 25;
 	food_state = 1;
-	score = 0;
+	level = 0;
+	startTimer = 3;
 }
 
 void MiniGame1Eat() {
@@ -950,7 +951,10 @@ void MiniGame1Eat() {
 			PlayEatSound();
 		}
 
-		MiniGame1ResetData();
+		//MiniGame1ResetData();
+		level++;
+		snake_dir = Direction::STOP;
+		startTimer = 3;
 		GameplayUI();
 		GenerateMaze();
 		//Reset lai map moi

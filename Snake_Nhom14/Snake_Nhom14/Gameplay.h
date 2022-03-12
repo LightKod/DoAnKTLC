@@ -69,6 +69,7 @@ static int level;
 static Direction previous_dir;
 static int process = 2;
 static bool sfx = true;
+static float startTimer = 3;
 
 int static MiniGame3_state;
 
