@@ -643,7 +643,6 @@ void OptionMenu()
 				}
 				else if (cursor.y == 14)
 				{
-					DrawStartMenu();
 					return;
 				}
 				else if (cursor.y == 15)
@@ -967,6 +966,7 @@ void StartMenuNew() {
 		{
 			// PlayingGame();
 			PlayingGameNew();
+			//DrawStartMenu();
 		}
 		else if (howtoplay)
 		{
@@ -992,6 +992,7 @@ void StartMenuNew() {
 		else if (optionMenu)
 		{
 			OptionMenu();
+			DrawStartMenu();
 		}
 		else if (escape) {
 			break;
