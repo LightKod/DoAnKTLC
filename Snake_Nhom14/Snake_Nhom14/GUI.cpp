@@ -340,8 +340,10 @@ void PlayingGameNew()
 			GoToXYPixel(0, 3);
 			if (key_toggle)
 				PlayKey();
-			if (temp == 27)
+			if (temp == 27) {
+				DrawStartMenu();
 				break;
+			}
 			else if (temp == 13)
 			{
 				switch (index)
@@ -383,7 +385,11 @@ void DrawArrow(int x, int y, int color)
 	DrawRectangle(x - 1, y + 3, 3, 1, color);
 	DrawRectangle(x - 2, y + 2, 5, 1, color);
 }
-
+void DrawArrow_V(int x, int y, int color) {
+	DrawRectangle(x-1, y, 5, 1, color);
+	DrawRectangle(x + 2, y - 1, 1, 3, color);
+	DrawRectangle(x + 1, y - 2, 1, 5, color);
+}
 void DisplayInstructions()
 {
 	// ClearScreen();
@@ -518,7 +524,44 @@ void GUI()
 		Sleep(100);
 	}
 }
-
+void NewGui() {
+	while (!exitGame)
+	{
+		cursor = { 59, 19 };
+		MenuBG();
+		SetColor(15, 2);
+		GoToXYPixel(59, 19);
+		cout << "PRESS ANY KEY TO START";
+		SetColor(2, 15);
+		GoToXYPixel(61, 25);
+		cout << "WASD: Move" << endl;
+		GoToXYPixel(61, 26);
+		cout << "Enter: Select" << endl;
+		GoToXYPixel(61, 27);
+		cout << "Esc: Exit" << endl;
+		bool pressed = false;
+		while (!exitGame)
+		{
+			if (_kbhit())
+			{
+				int temp = _getch();
+				if (temp != 27)
+					pressed = true;
+				else
+					exitGame = true;
+				break;
+			}
+		}
+		if (pressed)
+		{
+			// PlayingGame();
+			StartMenuNew();
+		}
+		else if (exitGame)
+			return;
+		Sleep(100);
+	}
+}
 void GameplayUI()
 {
 	DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
@@ -600,6 +643,7 @@ void OptionMenu()
 				}
 				else if (cursor.y == 14)
 				{
+					DrawStartMenu();
 					return;
 				}
 				else if (cursor.y == 15)
@@ -620,6 +664,7 @@ void OptionMenu()
 		}
 		Sleep(100);
 	}
+	
 }
 
 void WaitPlayGame()
@@ -722,4 +767,235 @@ void DisplayHighscore()
 	// DrawRectangle(1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2, 2);
 	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
 	DisplayHighScoreInGame(34, 15, 2);
+}
+void DrawStartMenu() {
+	int backgroundColor = 15;
+	int color = 0;
+	DrawBorder(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 6, 2);
+	DrawBorder(23, 4, 34, 17, 0, backgroundColor);
+	for (int i = 0; i < 3; i++)
+	{
+		DrawBorder(7 + i * 25, 25, 17, 17, 0, backgroundColor);
+	}
+	POINT start = { 24,5 };
+	SetColor(2, 15);
+	GoToXY(75, 3);
+	cout << "START GAME";
+	for (int i = 0; i < 6; i++) {
+		DrawRectangle(start.x + 14 + i, start.y + 2 + i, 1, 11 - 2 * i, color);
+	}
+
+	//?
+	SetColor(2, 15);
+	start = { 8,26 };
+	GoToXY(25, 24);
+	cout << "HOW TO PLAY";
+	DrawRectangle(start.x + 3, start.y + 5, 1, 2, color);
+	DrawRectangle(start.x + 5, start.y + 2, 5, 1, color);
+	DrawRectangle(start.x + 4, start.y + 3, 1, 2, color);
+	DrawRectangle(start.x + 10, start.y + 3, 1, 2, color);
+	DrawRectangle(start.x + 11, start.y + 5, 1, 2, color);
+	DrawRectangle(start.x + 10, start.y + 7, 1, 2, color);
+	DrawRectangle(start.x + 8, start.y + 9, 2, 1, color);
+	DrawRectangle(start.x + 7, start.y + 10, 1, 2, color);
+	DrawPixel(start.x + 7, start.y + 13, color);
+
+
+	//Trophie
+	start = { 33,26 };
+	SetColor(2, 15);
+	GoToXY(76, 24);
+	cout << "HIGHSCORE";
+	DrawBorder(start.x + 3, start.y + 2, 9, 6, color);
+	DrawPixel(start.x + 3, start.y + 7, backgroundColor);
+	DrawPixel(start.x + 11, start.y + 7, backgroundColor);
+	DrawRectangle(start.x + 5, start.y + 7,5,1, backgroundColor);
+	DrawRectangle(start.x + 5, start.y + 8,2,1, color);
+	DrawRectangle(start.x + 8, start.y + 8,2,1, color);
+	DrawRectangle(start.x + 8, start.y + 8,1,3, color);
+	DrawRectangle(start.x + 6, start.y + 8,1,3, color);
+	DrawRectangle(start.x + 4, start.y + 11,2,1, color);
+	DrawRectangle(start.x + 9, start.y + 11,2,1, color);
+	DrawRectangle(start.x + 3, start.y + 12,9,1, color);
+	DrawPixel(start.x + 2, start.y + 3, color);
+	DrawPixel(start.x + 1, start.y + 4, color);
+	DrawPixel(start.x + 2, start.y + 5, color);
+	DrawPixel(start.x + 12, start.y + 3, color);
+	DrawPixel(start.x + 13, start.y + 4, color);
+	DrawPixel(start.x + 12, start.y + 5, color);
+	DrawRectangle(start.x + 6, start.y + 4,1,3, color);
+	DrawRectangle(start.x + 8, start.y + 4,1,3, color);
+	DrawPixel(start.x + 7, start.y + 5, color);
+
+	//Gear
+	SetColor(2, 15);
+	GoToXY(127, 24);
+	cout << "SETTING";
+	start = { 58,26 };
+	DrawPixel(start.x + 7, start.y + 1, color);
+	DrawPixel(start.x + 6, start.y + 2, color);
+	DrawPixel(start.x + 8, start.y + 2, color);
+	DrawPixel(start.x + 7, start.y + 13, color);
+	DrawPixel(start.x + 6, start.y + 12, color);
+	DrawPixel(start.x + 8, start.y + 12, color);
+
+	DrawPixel(start.x + 1, start.y + 7, color);
+	DrawPixel(start.x + 2, start.y + 6, color);
+	DrawPixel(start.x + 2, start.y + 8, color);
+	DrawPixel(start.x + 13, start.y + 7, color);
+	DrawPixel(start.x + 12, start.y + 6, color);
+	DrawPixel(start.x + 12, start.y + 8, color);
+	
+	DrawPixel(start.x + 3, start.y + 3, color);
+	DrawPixel(start.x + 4, start.y + 3, color);
+	DrawPixel(start.x + 3, start.y + 4, color);
+
+	DrawPixel(start.x + 11, start.y + 3, color);
+	DrawPixel(start.x + 10, start.y + 3, color);
+	DrawPixel(start.x + 11, start.y + 4, color);
+
+	DrawPixel(start.x + 3, start.y + 11, color);
+	DrawPixel(start.x + 4, start.y + 11, color);
+	DrawPixel(start.x + 3, start.y + 10, color);
+
+	DrawPixel(start.x + 11, start.y + 11, color);
+	DrawPixel(start.x + 10, start.y + 11, color);
+	DrawPixel(start.x + 11, start.y + 10, color);
+
+	for (int i = 0; i < 4; i++) {
+		DrawPixel(start.x + 7 + i, start.y + 4 + i, color);
+	}
+	for (int i = 0; i < 4; i++) {
+		DrawPixel(start.x + 7 - i, start.y + 4 + i, color);
+	}
+	for (int i = 0; i < 4; i++) {
+		DrawPixel(start.x + 7 + i, start.y + 10 - i, color);
+	}
+	for (int i = 0; i < 4; i++) {
+		DrawPixel(start.x + 7 - i, start.y + 10 - i, color);
+	}
+}
+void StartMenuNew() {
+	DrawStartMenu();
+	int index = 0;
+	//x-6 y +7 
+	POINT cursorPoint[4];
+	cursorPoint[0] = { 18, 12 };
+	cursorPoint[1] = { 2, 33 };
+	cursorPoint[2] = { 27, 33 };
+	cursorPoint[3] = { 52, 33 };
+	/*DrawPixel(cursorPoint[0].x, cursorPoint[0].y, 8);
+	DrawPixel(cursorPoint[1].x, cursorPoint[1].y, 8);
+	DrawPixel(cursorPoint[2].x, cursorPoint[2].y, 8);
+	DrawPixel(cursorPoint[3].x, cursorPoint[3].y, 8);*/
+	//DrawArrow_V(cursorPoint[1].x, cursorPoint[1].y, 0);
+	while (1)
+	{
+		
+		DrawArrow_V(cursorPoint[index].x, cursorPoint[index].y, 0);
+		playingGame = false;
+		howtoplay = false;
+		highscore = false;
+		optionMenu = false;
+		exitGame = false;
+		bool escape = false;
+		// DrawPixel(cursorPoint[index].x, cursorPoint[index].y, 0);
+		if (_kbhit())
+		{
+			int temp = _getch();
+			GoToXYPixel(0, 3);
+			if (key_toggle)
+				PlayKey();
+			if (temp == 27) {
+				playingGame = false;
+				howtoplay = false;
+				highscore = false;
+				optionMenu = false;
+				escape = true;
+				break;
+			}
+			else if (temp == 13)
+			{
+				exitGame = false;
+				switch (index)
+				{
+				case 0:
+					playingGame = true;
+					howtoplay = false;
+					highscore = false;
+					optionMenu = false;
+					exitGame = false;
+					break;
+
+				case 1:
+					playingGame = false;
+					howtoplay = true;
+					highscore = false;
+					optionMenu = false;
+					exitGame = false;
+					break;
+
+				case 2:
+					playingGame = false;
+					howtoplay = false;
+					highscore = true;
+					optionMenu = false;
+					exitGame = false;
+					break;
+
+				case 3:
+					playingGame = false;
+					howtoplay = false;
+					highscore = false;
+					optionMenu = true;
+					exitGame = false;
+					break;
+				}
+			}
+			else if ((toupper(temp) == 'S' || toupper(temp) == 'D') && index < 3)
+			{
+				DrawArrow_V(cursorPoint[index].x, cursorPoint[index].y, 2);
+				index++;
+			}
+			else if ((toupper(temp) == 'A' || toupper(temp) == 'W') && index > 0)
+			{
+				DrawArrow_V(cursorPoint[index].x, cursorPoint[index].y, 2);
+				index--;
+			}
+		}
+		if (playingGame)
+		{
+			// PlayingGame();
+			PlayingGameNew();
+		}
+		else if (howtoplay)
+		{
+			DisplayInstructions();
+			printf("\t Press any key to return to the main menu...");
+			while (true)
+				if (_kbhit()) {
+					DrawStartMenu();
+					break;
+				}
+			_getch();
+		}
+		else if (highscore)
+		{
+			DisplayHighscore();
+			while (true)
+				if (_kbhit()) {
+					DrawStartMenu();
+					break;
+				}
+			_getch();
+		}
+		else if (optionMenu)
+		{
+			OptionMenu();
+		}
+		else if (escape) {
+			break;
+		}
+		Sleep(100);
+	}
 }
