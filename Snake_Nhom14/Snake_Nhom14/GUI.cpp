@@ -341,7 +341,6 @@ void PlayingGameNew()
 			if (key_toggle)
 				PlayKey();
 			if (temp == 27) {
-				DrawStartMenu();
 				break;
 			}
 			else if (temp == 13)
@@ -386,7 +385,7 @@ void DrawArrow(int x, int y, int color)
 	DrawRectangle(x - 2, y + 2, 5, 1, color);
 }
 void DrawArrow_V(int x, int y, int color) {
-	DrawRectangle(x-1, y, 5, 1, color);
+	DrawRectangle(x - 1, y, 5, 1, color);
 	DrawRectangle(x + 2, y - 1, 1, 3, color);
 	DrawRectangle(x + 1, y - 2, 1, 5, color);
 }
@@ -663,7 +662,7 @@ void OptionMenu()
 		}
 		Sleep(100);
 	}
-	
+
 }
 
 void WaitPlayGame()
@@ -808,22 +807,22 @@ void DrawStartMenu() {
 	DrawBorder(start.x + 3, start.y + 2, 9, 6, color);
 	DrawPixel(start.x + 3, start.y + 7, backgroundColor);
 	DrawPixel(start.x + 11, start.y + 7, backgroundColor);
-	DrawRectangle(start.x + 5, start.y + 7,5,1, backgroundColor);
-	DrawRectangle(start.x + 5, start.y + 8,2,1, color);
-	DrawRectangle(start.x + 8, start.y + 8,2,1, color);
-	DrawRectangle(start.x + 8, start.y + 8,1,3, color);
-	DrawRectangle(start.x + 6, start.y + 8,1,3, color);
-	DrawRectangle(start.x + 4, start.y + 11,2,1, color);
-	DrawRectangle(start.x + 9, start.y + 11,2,1, color);
-	DrawRectangle(start.x + 3, start.y + 12,9,1, color);
+	DrawRectangle(start.x + 5, start.y + 7, 5, 1, backgroundColor);
+	DrawRectangle(start.x + 5, start.y + 8, 2, 1, color);
+	DrawRectangle(start.x + 8, start.y + 8, 2, 1, color);
+	DrawRectangle(start.x + 8, start.y + 8, 1, 3, color);
+	DrawRectangle(start.x + 6, start.y + 8, 1, 3, color);
+	DrawRectangle(start.x + 4, start.y + 11, 2, 1, color);
+	DrawRectangle(start.x + 9, start.y + 11, 2, 1, color);
+	DrawRectangle(start.x + 3, start.y + 12, 9, 1, color);
 	DrawPixel(start.x + 2, start.y + 3, color);
 	DrawPixel(start.x + 1, start.y + 4, color);
 	DrawPixel(start.x + 2, start.y + 5, color);
 	DrawPixel(start.x + 12, start.y + 3, color);
 	DrawPixel(start.x + 13, start.y + 4, color);
 	DrawPixel(start.x + 12, start.y + 5, color);
-	DrawRectangle(start.x + 6, start.y + 4,1,3, color);
-	DrawRectangle(start.x + 8, start.y + 4,1,3, color);
+	DrawRectangle(start.x + 6, start.y + 4, 1, 3, color);
+	DrawRectangle(start.x + 8, start.y + 4, 1, 3, color);
 	DrawPixel(start.x + 7, start.y + 5, color);
 
 	//Gear
@@ -844,7 +843,7 @@ void DrawStartMenu() {
 	DrawPixel(start.x + 13, start.y + 7, color);
 	DrawPixel(start.x + 12, start.y + 6, color);
 	DrawPixel(start.x + 12, start.y + 8, color);
-	
+
 	DrawPixel(start.x + 3, start.y + 3, color);
 	DrawPixel(start.x + 4, start.y + 3, color);
 	DrawPixel(start.x + 3, start.y + 4, color);
@@ -890,7 +889,7 @@ void StartMenuNew() {
 	//DrawArrow_V(cursorPoint[1].x, cursorPoint[1].y, 0);
 	while (1)
 	{
-		
+
 		DrawArrow_V(cursorPoint[index].x, cursorPoint[index].y, 0);
 		playingGame = false;
 		howtoplay = false;
@@ -966,7 +965,7 @@ void StartMenuNew() {
 		{
 			// PlayingGame();
 			PlayingGameNew();
-			//DrawStartMenu();
+			DrawStartMenu();
 		}
 		else if (howtoplay)
 		{
