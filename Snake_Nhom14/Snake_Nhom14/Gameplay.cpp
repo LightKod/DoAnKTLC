@@ -825,9 +825,9 @@ void RunMiniGame1() // Maze
 	{
 
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		GoToXYPixel(46, 2);
-		SetColor(0, 15);
-		cout << "Level: " << level << " ";
+		//GoToXYPixel(46, 2);
+		//SetColor(0, 15);
+		//cout << "Level: " << level << " ";
 		DrawPixels(wall_pos, wall_size, 15);
 
 		if (snake_state != State::DEAD)
@@ -844,7 +844,7 @@ void RunMiniGame1() // Maze
 					timer = 0;
 					ProcessDead();
 					Move();
-					MiniGame2Eat();
+					MiniGame1Eat();
 				}
 			}
 			else
@@ -897,9 +897,9 @@ void RunMiniGame1() // Maze
 void GenerateMaze()
 {
 	// https://www.dcode.fr/maze-generator width 14 || height 21
-	char mazePath[100] = "mazes\\maze_";
-	char ran = rand() % 3 + 48;
-	char ending[10] = "_.txt";
+	char mazePath[17] = "mazes\\maze_";
+	char ran = rand() % 10 + 48;
+	char ending[6] = "_.txt";
 	ending[0] = ran;
 	strcat_s(mazePath, ending);
 	fstream file;
@@ -937,9 +937,9 @@ void MiniGame1ResetData()
 	current_last_text = 1;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
-	snake_speed = 25;
+	snake_speed = 100;
 	food_state = 1;
-	level = 0;
+	//level = 1;
 	startTimer = 3;
 }
 
@@ -951,8 +951,8 @@ void MiniGame1Eat() {
 			PlayEatSound();
 		}
 
-		//MiniGame1ResetData();
-		level++;
+		MiniGame1ResetData();
+		//level++;
 		snake_dir = Direction::STOP;
 		startTimer = 3;
 		GameplayUI();
@@ -1108,9 +1108,9 @@ void RunMiniGame3() // Teleport
 	while (1)
 	{
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		GoToXYPixel(46, 2);
+		/*GoToXYPixel(46, 2);
 		SetColor(0, 15);
-		cout << "SCORE: " << score;
+		cout << "SCORE: " << score;*/
 
 		if (snake_state != State::DEAD)
 		{
@@ -1201,7 +1201,7 @@ void MiniGame3Eat()
 			{
 				PlayEatSound();
 			}
-			score += level * 10;
+			//score += level * 10;
 			snakeSize++;
 			if (snakeSize % 4 == 0)
 			{

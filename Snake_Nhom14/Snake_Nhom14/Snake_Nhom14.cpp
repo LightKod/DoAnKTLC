@@ -31,7 +31,4 @@ int main()
 	//GenerateMaze();
 	// RunGamePlay();
 	CloseSound();
-	GoToXYPixel(0, 0);
-	//cout << "\tHello snake\n";
-	system("pause");
 }
