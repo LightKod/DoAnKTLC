@@ -336,8 +336,8 @@ void PlayingGameNew()
 		if (_kbhit())
 		{
 			int temp = _getch();
-			DrawPixel(cursor.x, cursor.y, 2);
-			GoToXYPixel(0, 3);
+			//DrawPixel(cursor.x, cursor.y, 2);
+			//GoToXYPixel(0, 3);
 			if (key_toggle)
 				PlayKey();
 			if (temp == 27) {

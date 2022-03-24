@@ -750,6 +750,12 @@ void GenerateGate() // Do not change this function
 void ToTheNextLevel()
 {
 	GameplayUI();
+	snake_pos[0] = { 3, 2 };
+	snake_pos[1] = { 2, 2 };
+	snake_dir = Direction::RIGHT;
+	for (int i = 2; i < snakeSize; i++) {
+		snake_pos[i] = {-1,-1};
+	}
 	bigfood_state = 0;
 	gate_state = 0;
 	level += 1;
@@ -825,9 +831,9 @@ void RunMiniGame1() // Maze
 	{
 
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		//GoToXYPixel(46, 2);
-		//SetColor(0, 15);
-		//cout << "Level: " << level << " ";
+		GoToXYPixel(46, 2);
+		SetColor(0, 15);
+		cout << "Score: " << score << " ";
 		DrawPixels(wall_pos, wall_size, 15);
 
 		if (snake_state != State::DEAD)
@@ -939,7 +945,7 @@ void MiniGame1ResetData()
 	snake_state = State::ALIVE;
 	snake_speed = 100;
 	food_state = 1;
-	//level = 1;
+	score = 0;
 	startTimer = 3;
 }
 
@@ -952,7 +958,7 @@ void MiniGame1Eat() {
 		}
 
 		MiniGame1ResetData();
-		//level++;
+		score += 100;
 		snake_dir = Direction::STOP;
 		startTimer = 3;
 		GameplayUI();
@@ -968,6 +974,7 @@ void RunMiniGame2() // Revert
 	MiniGame2ResetData();
 	GameplayUI();
 	GenerateFood();
+	wall_size = 0;
 	DrawPixel(food_pos, food_color, 15, food_text);
 	while (1)
 	{
@@ -1102,15 +1109,16 @@ void RunMiniGame3() // Teleport
 	MiniGame2ResetData();
 	GameplayUI();
 	Generate2Food();
+	wall_size = 0;
 	DrawPixel(two_food_pos[0], food_color, 15, food_text);
 	DrawPixel(two_food_pos[1], food_color, 15, food_text);
 	snake_dir = Direction::STOP;
 	while (1)
 	{
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		/*GoToXYPixel(46, 2);
+		GoToXYPixel(46, 2);
 		SetColor(0, 15);
-		cout << "SCORE: " << score;*/
+		cout << "SCORE: " << score;
 
 		if (snake_state != State::DEAD)
 		{
@@ -1201,7 +1209,7 @@ void MiniGame3Eat()
 			{
 				PlayEatSound();
 			}
-			//score += level * 10;
+			score += 10;
 			snakeSize++;
 			if (snakeSize % 4 == 0)
 			{
