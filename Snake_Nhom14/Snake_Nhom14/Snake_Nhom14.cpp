@@ -18,10 +18,10 @@ using namespace std;
 int main()
 {
 	SetUp();
-	//OpenSound();
-	//PlayMusic();
-	//Load();
-	//NewGui();
+	OpenSound();
+	PlayMusic();
+	Load();
+	NewGui();
 	PlayingGameNew();
 	// TestSaveLoad();
 	//GUI();
