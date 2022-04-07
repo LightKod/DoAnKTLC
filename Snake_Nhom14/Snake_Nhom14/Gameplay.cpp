@@ -537,8 +537,8 @@ void GenerateWall()
 
 void GenerateWallNew()
 {
-	switch ((level - 1) % 4 + 1) // Do not change this line
-	// 4: how many levels
+	switch ((level - 1) % 6 + 1) // Do not change this line
+	// 6: how many levels
 	// 1 level -> 1
 	// 2 levels -> 2
 	// x levels -> x
@@ -654,9 +654,40 @@ void GenerateWallNew()
 
 		break;
 	}
+	case 5:
+	{
+		wall_size = 71;
+		for (int i = 0; i < 35; i++)
+		{
+			wall_pos[i] = { 5 + i,5 + i };
+		}
+		for (int i = 0; i < 35; i++)
+		{
+			wall_pos[35 + i] = { 40 - i,5 + i };
+		}
+		break;
+	}
+	case 6:
+	{
+		wall_size = 861;
+		int Mark = 11;
+		int f = 0;
+		for (int g = 12; g <= 32; g++)
+		{
+			for (int i = 2; i <= 42; i++)
+			{
+				if ((i != Mark) && (i != Mark + 1))
+				{
+					wall_pos[f] = { g,i };
+					f++;
+				}
+			}
+			Mark++;
+		}
+		break;
+	}
 	}
 }
-
 void SetGateCollider() // Do not change this function
 {
 	switch (gate_dir)

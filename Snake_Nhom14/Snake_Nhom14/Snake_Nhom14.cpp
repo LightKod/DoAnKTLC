@@ -18,11 +18,11 @@ using namespace std;
 int main()
 {
 	SetUp();
-	OpenSound();
-	PlayMusic();
-	Load();
-	NewGui();
-	//PlayingGameNew();
+	//OpenSound();
+	//PlayMusic();
+	//Load();
+	//NewGui();
+	PlayingGameNew();
 	// TestSaveLoad();
 	//GUI();
 	//RunMiniGame3();
@@ -30,5 +30,5 @@ int main()
 	//RunMiniGame1();
 	//GenerateMaze();
 	// RunGamePlay();
-	CloseSound();
+	//CloseSound();
 }
