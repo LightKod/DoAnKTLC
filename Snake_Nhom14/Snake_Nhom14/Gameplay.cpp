@@ -1153,6 +1153,7 @@ void RunMiniGame3() // Teleport
 
 		if (snake_state != State::DEAD)
 		{
+			MiniGame3_state = 1;
 			GameInput();
 			if (snake_dir != Direction::STOP)
 			{

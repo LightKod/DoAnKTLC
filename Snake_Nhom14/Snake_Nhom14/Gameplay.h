@@ -71,7 +71,7 @@ static int process = 2;
 static bool sfx = true;
 static float startTimer = 3;
 
-int static MiniGame3_state;
+int static MiniGame3_state = 0;
 
 bool IsValid(int x, int y);
 bool IsWallValid(int x, int y);
