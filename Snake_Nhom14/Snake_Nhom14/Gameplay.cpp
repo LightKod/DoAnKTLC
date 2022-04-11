@@ -76,14 +76,14 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 3, 2 };
-	snake_pos[1] = { 2, 2 };
+	snake_pos[0] = { 2, 2 };
+	snake_pos[1] = { 1, 2 };
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
 	snake_dir = Direction::RIGHT;
 	snake_state = State::ALIVE;
-	snake_speed = 5;
+	snake_speed = 20;
 	strcpy_s(name, "");
 	food_state = 1;
 	score = 0;
@@ -136,7 +136,7 @@ void RunGamePlay()
 	float bigfood_timer = 0;
 	int h = 0, min = 0, sec = 0;
 	ResetData();
-	WaitPlayGame();
+	//WaitPlayGame();
 	GameplayUI();
 	DisplayHighScoreInGame(46, 18, 0);
 	GenerateWallNew();
@@ -537,155 +537,34 @@ void GenerateWall()
 
 void GenerateWallNew()
 {
-	switch ((level - 1) % 6 + 1) // Do not change this line
+	//(level - 1) % 7 + 1
+	switch ((level - 1) % 7 + 1) // Do not change this line
 	// 6: how many levels
 	// 1 level -> 1
 	// 2 levels -> 2
 	// x levels -> x
 	{
 	case 1: // Level 1: 0 wall
-		wall_size = 0;
+		DrawLevel1();
 		break;
-	case 2: // Level 2: 4 cuc vuong o 4 goc
-		wall_size = 16;
-		// Top Right
-		wall_pos[0] = { 5, 5 };
-		wall_pos[1] = { 6, 5 };
-		wall_pos[2] = { 6, 6 };
-		wall_pos[3] = { 5, 6 };
-
-		// Top Left
-		wall_pos[4] = { 42 - 5, 5 };
-		wall_pos[5] = { 42 - 6, 5 };
-		wall_pos[6] = { 42 - 6, 6 };
-		wall_pos[7] = { 42 - 5, 6 };
-
-		// Bottom Left
-		wall_pos[8] = { 42 - 5, 42 - 5 };
-		wall_pos[9] = { 42 - 6, 42 - 5 };
-		wall_pos[10] = { 42 - 6, 42 - 6 };
-		wall_pos[11] = { 42 - 5, 42 - 6 };
-
-		// Bottom Right
-		wall_pos[12] = { 5, 42 - 5 };
-		wall_pos[13] = { 6, 42 - 5 };
-		wall_pos[14] = { 6, 42 - 6 };
-		wall_pos[15] = { 5, 42 - 6 };
+	case 2:
+		DrawLevel2();
 		break;
-
 	case 3:
-		wall_size = 28;
-
-		// Top left
-		wall_pos[0] = { 6, 3 };
-		wall_pos[1] = { 6, 4 };
-		wall_pos[2] = { 6, 5 };
-		wall_pos[3] = { 6, 6 };
-		wall_pos[4] = { 5, 6 };
-		wall_pos[5] = { 4, 6 };
-		wall_pos[6] = { 3, 6 };
-
-		// Top right
-		wall_pos[7] = { 38, 3 };
-		wall_pos[8] = { 38, 4 };
-		wall_pos[9] = { 38, 5 };
-		wall_pos[10] = { 38, 6 };
-		wall_pos[11] = { 39, 6 };
-		wall_pos[12] = { 40, 6 };
-		wall_pos[13] = { 41, 6 };
-
-		// Bottom right
-		wall_pos[14] = { 38, 41 };
-		wall_pos[15] = { 38, 40 };
-		wall_pos[16] = { 38, 39 };
-		wall_pos[17] = { 38, 38 };
-		wall_pos[18] = { 39, 38 };
-		wall_pos[19] = { 40, 38 };
-		wall_pos[20] = { 41, 38 };
-
-		// Bottom left
-		wall_pos[21] = { 6, 41 };
-		wall_pos[22] = { 6, 40 };
-		wall_pos[23] = { 6, 39 };
-		wall_pos[24] = { 6, 38 };
-		wall_pos[25] = { 5, 38 };
-		wall_pos[26] = { 4, 38 };
-		wall_pos[27] = { 3, 38 };
+		DrawLevel3();
 		break;
-
 	case 4:
-	{
-		wall_size = 90;
-
-		// Outside
-		int i = 0;
-		for (int temp1 = 8, temp2 = 8; i < (wall_size - 30) / 4; i++)
-		{
-			wall_pos[i] = { temp1, temp2 };
-			wall_pos[90 - i - 1] = { 44 - temp1, 44 - temp2 };
-			i++;
-			wall_pos[i] = { 44 - temp1, temp2 };
-			wall_pos[wall_size - i - 1] = { temp1, 44 - temp2 };
-			if (i < 7)
-				temp1++;
-			else
-			{
-				temp1 = 8;
-				temp2++;
-			}
-		}
-
-		// Inside
-		for (int temp1 = 13, temp2 = 16; i < (wall_size / 2); i++)
-		{
-			wall_pos[i] = { temp1, temp2 };
-			wall_pos[90 - i - 1] = { 44 - temp1, 44 - temp2 };
-			i++;
-			wall_pos[i] = { 44 - temp1, temp2 };
-			wall_pos[wall_size - i - 1] = { temp1, 44 - temp2 };
-			if (i < (wall_size / 2) - 5)
-				temp1++;
-			else
-			{
-				temp1 = 13;
-				temp2++;
-			}
-		}
-
+		DrawLevel4();
 		break;
-	}
 	case 5:
-	{
-		wall_size = 71;
-		for (int i = 0; i < 35; i++)
-		{
-			wall_pos[i] = { 5 + i,5 + i };
-		}
-		for (int i = 0; i < 35; i++)
-		{
-			wall_pos[35 + i] = { 40 - i,5 + i };
-		}
+		DrawLevel5();
 		break;
-	}
 	case 6:
-	{
-		wall_size = 861;
-		int Mark = 11;
-		int f = 0;
-		for (int g = 12; g <= 32; g++)
-		{
-			for (int i = 2; i <= 42; i++)
-			{
-				if ((i != Mark) && (i != Mark + 1))
-				{
-					wall_pos[f] = { g,i };
-					f++;
-				}
-			}
-			Mark++;
-		}
+		DrawLevel6();
 		break;
-	}
+	case 7:
+		DrawLevel7();
+		break;
 	}
 }
 void SetGateCollider() // Do not change this function
@@ -1274,4 +1153,504 @@ void SpawnTwoFood()
 	Generate2Food();
 	DrawPixel(two_food_pos[0], food_color, 15, food_text);
 	DrawPixel(two_food_pos[1], food_color, 15, food_text);
+}
+
+
+void DrawLevel1() {
+	wall_size = 0;
+}
+void DrawLevel2() {
+	wall_size = 16;
+	// Top Right
+	wall_pos[0] = { 5, 5 };
+	wall_pos[1] = { 6, 5 };
+	wall_pos[2] = { 6, 6 };
+	wall_pos[3] = { 5, 6 };
+
+	// Top Left
+	wall_pos[4] = { 42 - 5, 5 };
+	wall_pos[5] = { 42 - 6, 5 };
+	wall_pos[6] = { 42 - 6, 6 };
+	wall_pos[7] = { 42 - 5, 6 };
+
+	// Bottom Left
+	wall_pos[8] = { 42 - 5, 42 - 5 };
+	wall_pos[9] = { 42 - 6, 42 - 5 };
+	wall_pos[10] = { 42 - 6, 42 - 6 };
+	wall_pos[11] = { 42 - 5, 42 - 6 };
+
+	// Bottom Right
+	wall_pos[12] = { 5, 42 - 5 };
+	wall_pos[13] = { 6, 42 - 5 };
+	wall_pos[14] = { 6, 42 - 6 };
+	wall_pos[15] = { 5, 42 - 6 };
+}
+void DrawLevel3() {
+	wall_size = 28;
+
+	// Top left
+	wall_pos[0] = { 6, 3 };
+	wall_pos[1] = { 6, 4 };
+	wall_pos[2] = { 6, 5 };
+	wall_pos[3] = { 6, 6 };
+	wall_pos[4] = { 5, 6 };
+	wall_pos[5] = { 4, 6 };
+	wall_pos[6] = { 3, 6 };
+
+	// Top right
+	wall_pos[7] = { 38, 3 };
+	wall_pos[8] = { 38, 4 };
+	wall_pos[9] = { 38, 5 };
+	wall_pos[10] = { 38, 6 };
+	wall_pos[11] = { 39, 6 };
+	wall_pos[12] = { 40, 6 };
+	wall_pos[13] = { 41, 6 };
+
+	// Bottom right
+	wall_pos[14] = { 38, 41 };
+	wall_pos[15] = { 38, 40 };
+	wall_pos[16] = { 38, 39 };
+	wall_pos[17] = { 38, 38 };
+	wall_pos[18] = { 39, 38 };
+	wall_pos[19] = { 40, 38 };
+	wall_pos[20] = { 41, 38 };
+
+	// Bottom left
+	wall_pos[21] = { 6, 41 };
+	wall_pos[22] = { 6, 40 };
+	wall_pos[23] = { 6, 39 };
+	wall_pos[24] = { 6, 38 };
+	wall_pos[25] = { 5, 38 };
+	wall_pos[26] = { 4, 38 };
+	wall_pos[27] = { 3, 38 };
+}
+void DrawLevel4() {
+	wall_size = 90;
+
+	// Outside
+	int i = 0;
+	for (int temp1 = 8, temp2 = 8; i < (wall_size - 30) / 4; i++)
+	{
+		wall_pos[i] = { temp1, temp2 };
+		wall_pos[90 - i - 1] = { 44 - temp1, 44 - temp2 };
+		i++;
+		wall_pos[i] = { 44 - temp1, temp2 };
+		wall_pos[wall_size - i - 1] = { temp1, 44 - temp2 };
+		if (i < 7)
+			temp1++;
+		else
+		{
+			temp1 = 8;
+			temp2++;
+		}
+	}
+
+	// Inside
+	for (int temp1 = 13, temp2 = 16; i < (wall_size / 2); i++)
+	{
+		wall_pos[i] = { temp1, temp2 };
+		wall_pos[90 - i - 1] = { 44 - temp1, 44 - temp2 };
+		i++;
+		wall_pos[i] = { 44 - temp1, temp2 };
+		wall_pos[wall_size - i - 1] = { temp1, 44 - temp2 };
+		if (i < (wall_size / 2) - 5)
+			temp1++;
+		else
+		{
+			temp1 = 13;
+			temp2++;
+		}
+	}
+
+}
+void DrawLevel5() {
+	wall_size = 71;
+	for (int i = 0; i < 35; i++)
+	{
+		wall_pos[i] = { 5 + i,5 + i };
+	}
+	for (int i = 0; i < 35; i++)
+	{
+		wall_pos[35 + i] = { 40 - i,5 + i };
+	}
+}
+void DrawLevel6() {
+	//wall_size = 861;
+	//int Mark = 11;
+	//int f = 0;
+	//for (int g = 12; g <= 32; g++)
+	//{
+	//	for (int i = 2; i <= 42; i++)
+	//	{
+	//		if ((i != Mark) && (i != Mark + 1))
+	//		{
+	//			wall_pos[f] = { g,i };
+	//			f++;
+	//		}
+	//	}
+	//	Mark++;
+	//}
+
+	wall_size = 1;
+	int size = 0;
+	int temp = 1;
+	for (int i = 0; i < 9; i++)
+	{
+		for (int k = 0; k < 18 - temp*2; k++)
+		{
+			wall_pos[size++] = { 13 + k + temp,6 + i };
+		}
+		temp++;
+	}
+	temp = 1;
+	for (int i = 8; i >= 0; i--)
+	{
+		for (int k = 0; k < 18 - temp * 2; k++)
+		{
+			wall_pos[size++] = { 13 + k + temp, 36-6 + i };
+		}
+		temp++;
+	}
+
+	temp = 1;
+	for (int i = 0; i < 9; i++)
+	{
+		for (int k = 0; k < 18 - temp * 2; k++)
+		{
+			wall_pos[size++] = {6 + i ,13 + k + temp };
+		}
+		temp++;
+	}
+	temp = 1;
+	for (int i = 8; i >= 0; i--)
+	{
+		for (int k = 0; k < 18 - temp * 2; k++)
+		{
+			wall_pos[size++] = {36 - 6 + i, 13 + k + temp};
+		}
+		temp++;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		wall_pos[size++] = {6+i, 10+i };
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		wall_pos[size++] = { 10 + i, 6 + i };
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		wall_pos[size++] = {42-7- 6 + i,42 - 7 - 11 + i };
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		wall_pos[size++] = { 42-7- 11 + i,42 - 7 - 6 + i };
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 12+i, 2+k};
+		}
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 12 + 18 + i, 2 + k };
+		}
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 13 + i, 41 + k };
+		}
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 13+ 18 + i, 41 + k };
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int k = 0; k < 3; k++)
+		{
+			wall_pos[size++] = { 40 + i, 2 + k };
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int k = 0; k < 3; k++)
+		{
+			wall_pos[size++] = { 2 + i, 40 + k };
+		}
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 13 + i, 25 + k };
+		}
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int k = 0; k < 2; k++)
+		{
+			wall_pos[size++] = { 29 + i, 17 + k };
+		}
+	}
+
+	wall_pos[size++] = { 4,3 };
+	wall_pos[size++] = { 3,4 };
+	wall_pos[size++] = { 41,40 };
+	wall_pos[size++] = { 40,41 };
+	wall_size = size;
+}
+void DrawLevel7() {
+	int size = 0;
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 13; y++)
+		{
+			wall_pos[size++] = { 2 + x, 2 + y };
+		}
+	}
+
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 8; y++)
+		{
+			wall_pos[size++] = { 2 + x, 15 + y };
+		}
+	}
+	for (int x = 0; x < 7; x++)
+	{
+		for (int y = 0; y < 5; y++)
+		{
+			wall_pos[size++] = { 2 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 1; x++)
+	{
+		for (int y = 0; y < 17; y++)
+		{
+			wall_pos[size++] = { 2 + x, 26 + y };
+		}
+	}
+
+	for (int x = 0; x < 42; x++)
+	{
+		for (int y = 0; y < 1; y++)
+		{
+			wall_pos[size++] = { 2 + x, 42 + y };
+		}
+	}
+	for (int x = 0; x < 13; x++)
+	{
+		for (int y = 0; y < 1; y++)
+		{
+			wall_pos[size++] = { 2 + x, 41 + y };
+		}
+	}
+	for (int x = 0; x < 11; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			wall_pos[size++] = { 32 + x, 40 + y };
+		}
+	}
+	for (int x = 0; x < 8; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			wall_pos[size++] = { 35 + x, 33 + y };
+		}
+	}
+	for (int x = 0; x < 14; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 13 + x, 2 + y };
+		}
+	}
+	for (int x = 0; x < 11; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			wall_pos[size++] = { 16 + x, 4 + y };
+		}
+	}
+	for (int x = 0; x < 6; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			wall_pos[size++] = { 31 + x, 5 + y };
+		}
+	}
+	for (int x = 0; x < 1; x++)
+	{
+		for (int y = 0; y < 19; y++)
+		{
+			wall_pos[size++] = { 42 + x, 2 + y };
+		}
+	}
+	for (int x = 0; x < 1; x++)
+	{
+		for (int y = 0; y < 14; y++)
+		{
+			wall_pos[size++] = { 41 + x, 7 + y };
+		}
+	}
+	for (int x = 0; x < 11; x++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			wall_pos[size++] = { 7 + x, 15 + y };
+		}
+	}
+	for (int x = 0; x < 4; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 7 + x, 19 + y };
+		}
+	}
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 9 + x, 21 + y };
+		}
+	}
+	for (int x = 0; x < 4; x++)
+	{
+		for (int y = 0; y < 1; y++)
+		{
+			wall_pos[size++] = { 17 + x, 13 + y };
+		}
+	}
+	for (int x = 0; x < 11; x++)
+	{
+		for (int y = 0; y < 1; y++)
+		{
+			wall_pos[size++] = { 23 + x, 11 + y };
+		}
+	}
+	for (int x = 0; x < 7; x++)
+	{
+		for (int y = 0; y < 6; y++)
+		{
+			wall_pos[size++] = { 27 + x, 12 + y };
+		}
+	}
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y <11; y++)
+		{
+			wall_pos[size++] = { 24 + x, 15 + y };
+		}
+	}
+	for (int x = 0; x < 1; x++)
+	{
+		for (int y = 0; y < 11; y++)
+		{
+			wall_pos[size++] = { 21 + x, 15 + y };
+		}
+	}
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 8; y++)
+		{
+			wall_pos[size++] = { 22 + x, 18 + y };
+		}
+	}
+
+	for (int x = 0; x < 13; x++)
+	{
+		for (int y = 0; y < 5; y++)
+		{
+			wall_pos[size++] = { 15 + x, 32 + y };
+		}
+	}
+	for (int x = 0; x < 5; x++)
+	{
+		for (int y = 0; y < 5; y++)
+		{
+			wall_pos[size++] = { 11 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 5; x++)
+	{
+		for (int y = 0; y < 5; y++)
+		{
+			wall_pos[size++] = { 11 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 4; x++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			wall_pos[size++] = { 14 + x, 21 + y };
+		}
+	}
+	for (int x = 0; x < 6; x++)
+	{
+		for (int y = 0; y < 3; y++)
+		{
+			wall_pos[size++] = { 27 + x, 23 + y };
+		}
+	}
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			wall_pos[size++] = { 32 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 1; x++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			wall_pos[size++] = { 37 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 4; y++)
+		{
+			wall_pos[size++] = { 40 + x, 25 + y };
+		}
+	}
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 38 + x, 27 + y };
+		}
+	}
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 15 + x, 30 + y };
+		}
+	}
+	for (int x = 0; x < 2; x++)
+	{
+		for (int y = 0; y < 2; y++)
+		{
+			wall_pos[size++] = { 10 + x, 6 + y };
+		}
+	}
+	wall_pos[size++] = { 3, 40 };
+	wall_pos[size++] = { 3, 30 };
+	wall_pos[size++] = { 4, 30 };
+	wall_pos[size++] = { 17, 14 };
+
+	wall_size = size;
 }

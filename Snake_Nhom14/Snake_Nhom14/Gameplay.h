@@ -112,3 +112,12 @@ void RunMiniGame3();
 void Generate2Food();
 void MiniGame3Eat();
 void SpawnTwoFood();
+
+
+void DrawLevel1();
+void DrawLevel2();
+void DrawLevel3();
+void DrawLevel4();
+void DrawLevel5();
+void DrawLevel6();
+void DrawLevel7();

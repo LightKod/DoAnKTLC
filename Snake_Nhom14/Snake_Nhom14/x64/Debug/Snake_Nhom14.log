@@ -1,16 +1,16 @@
 ﻿  Gameplay.cpp
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(91,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(170,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(175,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(176,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(179,27): warning C4305: '+=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(198,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(274,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(286,13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(880,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(894,23): warning C4305: '-=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1028,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1074,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1163,18): warning C4305: '+=': truncation from 'double' to 'float'
-D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1208,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  Snake_Nhom14.vcxproj -> D:\KHTN\KTLT\DoAn\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(91,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(171,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(176,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(177,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(180,27): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(199,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(275,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(287,13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(756,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(770,23): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(904,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(950,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1040,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1085,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  Snake_Nhom14.vcxproj -> C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe
