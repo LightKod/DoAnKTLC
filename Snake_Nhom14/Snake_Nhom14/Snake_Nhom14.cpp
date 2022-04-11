@@ -21,9 +21,11 @@ int main()
 	OpenSound();
 	PlayMusic();
 	Load();
-	//NewGui();
+	NewGui();
+	
+
 	//PlayingGameNew();
-	RunGamePlay();
+	//RunGamePlay();
 	// TestSaveLoad();
 	//GUI();
 	//RunMiniGame3();

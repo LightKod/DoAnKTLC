@@ -20,11 +20,6 @@ bool IsValid(int x, int y)
 			return false;
 		}
 	}
-	return true;
-}
-
-bool IsWallValid(int x, int y)
-{
 	for (int i = 0; i < wall_size; i++)
 	{
 		if (wall_pos[i].x == x && wall_pos[i].y == y)
@@ -35,6 +30,7 @@ bool IsWallValid(int x, int y)
 	return true;
 }
 
+
 void GenerateFood()
 {
 	int x, y;
@@ -42,7 +38,7 @@ void GenerateFood()
 	{
 		x = rand() % (game_field_width - 2) + game_field_pos.x + 1;
 		y = rand() % (game_field_height - 2) + game_field_pos.y + 1;
-	} while (!IsValid(x, y) || !IsWallValid(x, y));
+	} while (!IsValid(x, y));
 	food_pos.x = x;
 	food_pos.y = y;
 	if (current_last_text >= textSize - 1)
@@ -76,14 +72,14 @@ void TestFoodSpawn()
 void ResetData()
 {
 	snakeSize = 2;
-	snake_pos[0] = { 2, 2 };
-	snake_pos[1] = { 1, 2 };
+	snake_pos[0] = { 3, 2 };
+	snake_pos[1] = { 2, 2 };
 	snake_text[0] = snake_default_text[0];
 	snake_text[1] = snake_default_text[1];
 	current_last_text = 1;
 	snake_dir = Direction::RIGHT;
 	snake_state = State::ALIVE;
-	snake_speed = 20;
+	snake_speed = 5;
 	strcpy_s(name, "");
 	food_state = 1;
 	score = 0;
@@ -136,7 +132,7 @@ void RunGamePlay()
 	float bigfood_timer = 0;
 	int h = 0, min = 0, sec = 0;
 	ResetData();
-	//WaitPlayGame();
+	WaitPlayGame();
 	GameplayUI();
 	DisplayHighScoreInGame(46, 18, 0);
 	GenerateWallNew();
@@ -544,7 +540,7 @@ void GenerateWallNew()
 	// 2 levels -> 2
 	// x levels -> x
 	{
-	case 1: // Level 1: 0 wall
+	case 1: 
 		DrawLevel1();
 		break;
 	case 2:
@@ -651,7 +647,7 @@ void GenerateGate() // Do not change this function
 	{
 		x = rand() % (game_field_width - 12) + game_field_pos.x + 4;
 		y = rand() % (game_field_height - 12) + game_field_pos.y + 4;
-	} while (!IsValid(x, y) || !IsWallValid(x, y));
+	} while (!IsValid(x, y));
 	gate_pos = { x, y };
 	gate_dir = rand() % 4;
 	SetGateCollider();
@@ -677,7 +673,7 @@ void ToTheNextLevel()
 	food_state = 1;
 	GenerateWallNew();
 	SpawnFood();
-}
+}	 
 
 void ProcessBar()
 {
@@ -720,7 +716,7 @@ void GenerateBigFood()
 			bigfood_pos[3] = { a + 1, b + 1 };
 			bigfood_lifeTime = (abs(bigfood_pos[0].x - snake_pos[0].x) + abs(bigfood_pos[0].y - snake_pos[0].y) + bigfood_lifetimeDelay) * 0.2f;
 
-		} while (!IsValid(a, b) || !IsWallValid(a, b) || !IsValid(a + 1, b) || !IsWallValid(a + 1, b) || !IsValid(a, b + 1) || !IsWallValid(a, b + 1) || !IsValid(a + 1, b + 1) || !IsWallValid(a + 1, b + 1));
+		} while (!IsValid(a, b) || !IsValid(a + 1, b) ||  !IsValid(a, b + 1) || !IsValid(a + 1, b + 1));
 		DrawPixels(bigfood_pos, 4, bigfood_color);
 	}
 	else
@@ -1095,7 +1091,7 @@ void Generate2Food()
 			y0 = rand() % (game_field_height - 2) + game_field_pos.y + 1;
 			x1 = rand() % (game_field_width - 2) + game_field_pos.x + 1;
 			y1 = rand() % (game_field_height - 2) + game_field_pos.y + 1;
-		} while (!IsValid(x0, y0) || !IsWallValid(x0, y0) || !IsValid(x1, y1) || !IsWallValid(x1, y1));
+		} while (!IsValid(x0, y0) || !IsValid(x1, y1));
 	} while (x0 == x1 && y0 == y1);
 	two_food_pos[0].x = x0;
 	two_food_pos[1].x = x1;

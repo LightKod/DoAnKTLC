@@ -74,7 +74,6 @@ static float startTimer = 3;
 int static MiniGame3_state = 0;
 
 bool IsValid(int x, int y);
-bool IsWallValid(int x, int y);
 void GenerateFood();
 void TestFoodSpawn();
 void ResetData(); // Reset game data
