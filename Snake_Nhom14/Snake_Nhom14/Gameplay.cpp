@@ -541,7 +541,7 @@ void GenerateWallNew()
 	// 2 levels -> 2
 	// x levels -> x
 	{
-	case 1: 
+	case 1:
 		DrawLevel1();
 		break;
 	case 2:
@@ -648,7 +648,7 @@ void GenerateGate() // Do not change this function
 	{
 		x = rand() % (game_field_width - 12) + game_field_pos.x + 4;
 		y = rand() % (game_field_height - 12) + game_field_pos.y + 4;
-	} while (!IsValid(x, y) || !IsValid(x+1,y) || !IsValid(x+1, y+1) || !IsValid(x+1,y-1) || !IsValid(x, y-1) || !IsValid(x,y+1) || !IsValid(x-1, y-1) || !IsValid(x-1,y+1) !IsValid(x-1,y));
+	} while (!IsValid(x, y) || !IsValid(x + 1, y) || !IsValid(x + 1, y + 1) || !IsValid(x + 1, y - 1) || !IsValid(x, y - 1) || !IsValid(x, y + 1) || !IsValid(x - 1, y - 1) || !IsValid(x - 1, y + 1) | !IsValid(x - 1, y));
 	gate_pos = { x, y };
 	gate_dir = rand() % 4;
 	SetGateCollider();
@@ -661,7 +661,7 @@ void ToTheNextLevel()
 	snake_pos[1] = { 2, 2 };
 	snake_dir = Direction::RIGHT;
 	for (int i = 2; i < snakeSize; i++) {
-		snake_pos[i] = {-1,-1};
+		snake_pos[i] = { -1,-1 };
 	}
 	bigfood_state = 0;
 	gate_state = 0;
@@ -675,7 +675,7 @@ void ToTheNextLevel()
 	GenerateWallNew();
 	DrawPixels(wall_pos, wall_size, wall_color);
 	SpawnFood();
-}	 
+}
 
 void ProcessBar()
 {
@@ -718,7 +718,7 @@ void GenerateBigFood()
 			bigfood_pos[3] = { a + 1, b + 1 };
 			bigfood_lifeTime = (abs(bigfood_pos[0].x - snake_pos[0].x) + abs(bigfood_pos[0].y - snake_pos[0].y) + bigfood_lifetimeDelay) * 0.2f;
 
-		} while (!IsValid(a, b) || !IsValid(a + 1, b) ||  !IsValid(a, b + 1) || !IsValid(a + 1, b + 1));
+		} while (!IsValid(a, b) || !IsValid(a + 1, b) || !IsValid(a, b + 1) || !IsValid(a + 1, b + 1));
 		DrawPixels(bigfood_pos, 4, bigfood_color);
 	}
 	else
@@ -1294,7 +1294,7 @@ void DrawLevel6() {
 	int temp = 1;
 	for (int i = 0; i < 9; i++)
 	{
-		for (int k = 0; k < 18 - temp*2; k++)
+		for (int k = 0; k < 18 - temp * 2; k++)
 		{
 			wall_pos[size++] = { 13 + k + temp,6 + i };
 		}
@@ -1305,7 +1305,7 @@ void DrawLevel6() {
 	{
 		for (int k = 0; k < 18 - temp * 2; k++)
 		{
-			wall_pos[size++] = { 13 + k + temp, 36-6 + i };
+			wall_pos[size++] = { 13 + k + temp, 36 - 6 + i };
 		}
 		temp++;
 	}
@@ -1315,7 +1315,7 @@ void DrawLevel6() {
 	{
 		for (int k = 0; k < 18 - temp * 2; k++)
 		{
-			wall_pos[size++] = {6 + i ,13 + k + temp };
+			wall_pos[size++] = { 6 + i ,13 + k + temp };
 		}
 		temp++;
 	}
@@ -1324,14 +1324,14 @@ void DrawLevel6() {
 	{
 		for (int k = 0; k < 18 - temp * 2; k++)
 		{
-			wall_pos[size++] = {36 - 6 + i, 13 + k + temp};
+			wall_pos[size++] = { 36 - 6 + i, 13 + k + temp };
 		}
 		temp++;
 	}
 
 	for (int i = 0; i < 10; i++)
 	{
-		wall_pos[size++] = {6+i, 10+i };
+		wall_pos[size++] = { 6 + i, 10 + i };
 	}
 	for (int i = 0; i < 10; i++)
 	{
@@ -1339,17 +1339,17 @@ void DrawLevel6() {
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		wall_pos[size++] = {42-7- 6 + i,42 - 7 - 11 + i };
+		wall_pos[size++] = { 42 - 7 - 6 + i,42 - 7 - 11 + i };
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		wall_pos[size++] = { 42-7- 11 + i,42 - 7 - 6 + i };
+		wall_pos[size++] = { 42 - 7 - 11 + i,42 - 7 - 6 + i };
 	}
 	for (int i = 0; i < 2; i++)
 	{
 		for (int k = 0; k < 2; k++)
 		{
-			wall_pos[size++] = { 12+i, 2+k};
+			wall_pos[size++] = { 12 + i, 2 + k };
 		}
 	}
 	for (int i = 0; i < 2; i++)
@@ -1370,7 +1370,7 @@ void DrawLevel6() {
 	{
 		for (int k = 0; k < 2; k++)
 		{
-			wall_pos[size++] = { 13+ 18 + i, 41 + k };
+			wall_pos[size++] = { 13 + 18 + i, 41 + k };
 		}
 	}
 	for (int i = 0; i < 3; i++)
@@ -1548,7 +1548,7 @@ void DrawLevel7() {
 	}
 	for (int x = 0; x < 3; x++)
 	{
-		for (int y = 0; y <11; y++)
+		for (int y = 0; y < 11; y++)
 		{
 			wall_pos[size++] = { 24 + x, 15 + y };
 		}
