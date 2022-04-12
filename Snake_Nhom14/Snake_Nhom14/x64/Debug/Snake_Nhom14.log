@@ -1,2 +1,16 @@
-﻿  LINK : C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe not found or not built by the last incremental link; performing full link
+﻿  Gameplay.cpp
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(87,11): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(166,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(171,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(172,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(175,27): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(194,14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(270,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(282,13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(753,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(767,23): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(901,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(947,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1037,18): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\Snake_Nhom14\Gameplay.cpp(1082,14): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
   Snake_Nhom14.vcxproj -> C:\Users\Nhat Quang\Documents\Projects\Github\DoAnKTLC\Snake_Nhom14\x64\Debug\Snake_Nhom14.exe

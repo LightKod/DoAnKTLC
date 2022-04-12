@@ -139,11 +139,11 @@ void RunGamePlay()
 	GenerateFood();
 	DrawPixel(food_pos, food_color, 15, food_text);
 	ProcessBar();
+	DrawPixels(wall_pos, wall_size, wall_color);
 	while (1)
 	{
 
 		DrawPixels(snake_pos, snakeSize, snake_color, 15, snake_text);
-		DrawPixels(wall_pos, wall_size, wall_color);
 		if (gate_state == 1)
 		{
 			DrawGate(gate_pos, gate_color, gate_dir);
@@ -281,6 +281,7 @@ void GameInput()
 			OptionMenu();
 			t1 = time(0);
 			GameplayUI();
+			DrawPixels(wall_pos, wall_size, wall_color);
 			if (MiniGame3_state == 0)
 			{
 				DrawPixel(food_pos, food_color, 15, food_text);
@@ -672,6 +673,7 @@ void ToTheNextLevel()
 	}*/
 	food_state = 1;
 	GenerateWallNew();
+	DrawPixels(wall_pos, wall_size, wall_color);
 	SpawnFood();
 }	 
 
@@ -733,6 +735,7 @@ void RunMiniGame1() // Maze
 	GameplayUI();
 	GenerateMaze();
 	snake_dir = Direction::STOP;
+	DrawPixels(wall_pos, wall_size, 15);
 	while (1)
 	{
 
@@ -740,7 +743,6 @@ void RunMiniGame1() // Maze
 		GoToXYPixel(46, 2);
 		SetColor(0, 15);
 		cout << "Score: " << score << " ";
-		DrawPixels(wall_pos, wall_size, 15);
 
 		if (snake_state != State::DEAD)
 		{
@@ -849,7 +851,7 @@ void MiniGame1ResetData()
 	current_last_text = 1;
 	snake_dir = Direction::STOP;
 	snake_state = State::ALIVE;
-	snake_speed = 100;
+	snake_speed = 30;
 	food_state = 1;
 	score = 0;
 	startTimer = 3;
