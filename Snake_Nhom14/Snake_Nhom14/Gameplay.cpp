@@ -648,7 +648,7 @@ void GenerateGate() // Do not change this function
 	{
 		x = rand() % (game_field_width - 12) + game_field_pos.x + 4;
 		y = rand() % (game_field_height - 12) + game_field_pos.y + 4;
-	} while (!IsValid(x, y));
+	} while (!IsValid(x, y) || !IsValid(x+1,y) || !IsValid(x+1, y+1) || !IsValid(x+1,y-1) || !IsValid(x, y-1) || !IsValid(x,y+1) || !IsValid(x-1, y-1) || !IsValid(x-1,y+1) !IsValid(x-1,y));
 	gate_pos = { x, y };
 	gate_dir = rand() % 4;
 	SetGateCollider();
