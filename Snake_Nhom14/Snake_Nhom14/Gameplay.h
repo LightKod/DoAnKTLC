@@ -72,6 +72,7 @@ static bool sfx = true;
 static float startTimer = 3;
 
 int static MiniGame3_state = 0;
+bool static mainGameState = false;
 
 bool IsValid(int x, int y);
 void GenerateFood();

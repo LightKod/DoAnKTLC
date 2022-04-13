@@ -71,6 +71,7 @@ void TestFoodSpawn()
 
 void ResetData()
 {
+	mainGameState = true;
 	snakeSize = 2;
 	snake_pos[0] = { 3, 2 };
 	snake_pos[1] = { 2, 2 };
@@ -258,8 +259,9 @@ void RunGamePlay()
 						timer = 1;
 						WaitPlayGame();
 						GameplayUI();
-						// DrawBorder(45, 17, 15, 15, 15, 0);
+						//DrawBorder(45, 17, 15, 15, 15, 0);
 						DisplayHighScoreInGame(46, 18, 0);
+						ProcessBar();
 						SpawnFood();
 						break;
 					}
@@ -281,7 +283,6 @@ void GameInput()
 			OptionMenu();
 			t1 = time(0);
 			GameplayUI();
-			DrawPixels(wall_pos, wall_size, wall_color);
 			if (MiniGame3_state == 0)
 			{
 				DrawPixel(food_pos, food_color, 15, food_text);
@@ -291,6 +292,12 @@ void GameInput()
 				{
 					DrawPixel(two_food_pos[i], food_color, 15, food_text);
 				}
+			if (mainGameState)
+			{
+				DrawPixels(wall_pos, wall_size, wall_color);
+				ProcessBar();
+				DisplayHighScoreInGame(46, 18, 0);
+			}
 		}
 		switch (toupper(temp))
 		{
