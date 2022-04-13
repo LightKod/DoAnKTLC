@@ -247,6 +247,7 @@ void RunGamePlay()
 					int temp = _getch();
 					if (temp == 27)
 					{
+						mainGameState = false;
 						return;
 					}
 					else
